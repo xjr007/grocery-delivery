@@ -1,6 +1,10 @@
 const express = require('express');
+const conn = require('./config/db');
 
 const app = express();
+
+// Connect db
+conn();
 
 app.get('/', (req, res) => res.json({ message: 'Account API' }));
 
