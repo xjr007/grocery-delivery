@@ -6,6 +6,9 @@ const app = express();
 // Connect db
 conn();
 
+// Initialize middleware
+app.use(express.json({ extend: false }));
+
 app.get('/', (req, res) => res.json({ message: 'Account API' }));
 
 /* Routes */
