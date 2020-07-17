@@ -15,7 +15,7 @@ app.get('/', (req, res) => res.json({ message: 'Account API' }));
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
-app.use('/api/orders', require('./routes/orders'));
+app.use('/api/products', require('./routes/products'));
 
 const PORT = process.env.PORT || 5000;
 
