@@ -6,4 +6,4 @@
 
 ## Status:
 
-    [AUR last modified](/aur/last-modified/:grocery-delivery)
+    [AUR last modified](https://github.com/xjr007/grocery-delivery)
