@@ -6,4 +6,4 @@
 
 ## Status:
 
-    [[Last modified]http://inch-ci.org/github/xjr007/grocery-delivery.svg?branch=master)]
+    [![Last modified] (https://github.com/xjr007/grocery-delivery)]http://inch-ci.org/github/xjr007/grocery-delivery.svg?branch=master)
