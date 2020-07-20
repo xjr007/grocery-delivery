@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import store from './store';
-import Products from './components/Products';
 import { Provider } from 'react-redux';
+import SearchBar from './components/layout/SearchBar';
+import Products from './components/products/Products';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 	return (
 		<Provider store={store}>
-			<Products />
+			<Fragment>
+				<SearchBar />
+				<Products />
+			</Fragment>
 		</Provider>
 	);
 }

@@ -1,13 +1,37 @@
-import { FETCH_PRODUCTS, ORDER_PRODUCTS_BY_PRICE } from '../types';
+import { FETCH_PRODUCTS, ORDER_PRODUCTS_BY_PRICE, PRODUCTS_ERROR, SET_LOADING } from '../types';
+import axios from 'axios';
 
 export const fetchProducts = () => async dispatch => {
-	const res = await fetch('/api/products');
-	const data = await res.json();
+	try {
+		setLoading();
+		const res = await axios.get('/api/products');
 
-	dispatch({
-		type: FETCH_PRODUCTS,
-		payload: data,
-	});
+		dispatch({
+			type: FETCH_PRODUCTS,
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: PRODUCTS_ERROR,
+			payload: err.response.data,
+		});
+	}
+};
+
+// export const fetchProducts = () => async dispatch => {
+// 	const res = await fetch('/api/products');
+// 	const data = await res.json();
+
+// 	dispatch({
+// 		type: FETCH_PRODUCTS,
+// 		payload: data,
+// 	});
+// };
+
+export const setLoading = () => {
+	return {
+		type: SET_LOADING,
+	};
 };
 
 // export const filterProducts = (products, size) => dispatch => {
