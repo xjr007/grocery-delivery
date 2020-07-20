@@ -8,10 +8,6 @@ const OrderSchema = mongoose.Schema(
 			ref: 'users',
 		},
 		_id: { type: String, default: shortid.generate },
-		name: {
-			type: String,
-		},
-
 		referenceNumber: {
 			type: String,
 			default: shortid.generate,
@@ -20,7 +16,6 @@ const OrderSchema = mongoose.Schema(
 
 		deliveryType: {
 			type: String,
-			default: 'Normal',
 		},
 	},
 	{
