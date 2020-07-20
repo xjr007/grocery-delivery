@@ -1,9 +1,10 @@
 const express = require('express');
+const Order = require('../models/Order');
 const Product = require('../models/Product');
 const router = express.Router();
 
-// @route   GET api/orders
-// @desc    Get all users orders
+// @route   GET api/prudcts
+// @desc    Get all Orders
 // @access  Private
 
 router.get('/', async (req, res) => {
