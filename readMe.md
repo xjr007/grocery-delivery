@@ -10,8 +10,4 @@
         4.Add to cart.
         5. View cart.
         6. Delete from cart..
-        3. View orders.
-
-## Status:
-
-[! [13e1c7e3](http://inch-ci.org/github/last-commit/:xjr007/:grocery-delivery.svg?branch=master)](http://inch-ci.org/xjr007/grocery-delivery)
+        7. View orders.
