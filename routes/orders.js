@@ -19,15 +19,31 @@ router.get('/', auth, async (req, res) => {
 	}
 });
 
-router.post('/', async (req, res) => {
-	try {
-		const newOrder = new Order(req.body);
-		const saveOrder = await newOrder.save();
-		res.send(saveOrder);
-	} catch (err) {
-		console.error(err.message);
-		res.status(500).send('Error saving order to db');
+router.post(
+	'/',
+	[auth, [check('deliveryType', 'Delivery priority required').not().isEmpty()]],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+
+		const { _id, referenceNumber, deliveryType } = req.body;
+		try {
+			const newOrder = new Order({
+				_id,
+				referenceNumber,
+				deliveryType,
+				user: req.user._id,
+			});
+
+			const saveOrder = await newOrder.save();
+			res.json(saveOrder);
+		} catch (err) {
+			console.error(err.message);
+			res.status(500).send('Error saving order to db');
+		}
 	}
-});
+);
 
 module.exports = router;
