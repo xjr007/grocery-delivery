@@ -1,12 +1,16 @@
 import { FETCH_PRODUCTS, ORDER_PRODUCTS_BY_PRICE } from '../types';
-
+import axios from 'axios';
 export const fetchProducts = () => async dispatch => {
-	const res = await fetch('/api/products');
-	const data = await res.json();
-
+	// const res = await fetch('/api/products');
+	// const data = await res.json();
+	// dispatch({
+	// 	type: FETCH_PRODUCTS,
+	// 	payload: data,
+	// });
+	const res = await axios.get('/api/products');
 	dispatch({
 		type: FETCH_PRODUCTS,
-		payload: data,
+		payload: res.data,
 	});
 };
 
