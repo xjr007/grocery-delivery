@@ -3,10 +3,10 @@ const conn = require('./config/db');
 
 const app = express();
 
-// Connect db
+// db connected
 conn();
 
-// Initialize middleware
+// Mmiddleware
 app.use(express.json({ extend: false }));
 
 app.get('/', (req, res) => res.json({ message: 'Account API' }));
@@ -16,6 +16,7 @@ app.get('/', (req, res) => res.json({ message: 'Account API' }));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/products', require('./routes/products'));
+app.use('/api/orders', require('./routes/orders'));
 
 const PORT = process.env.PORT || 5000;
 
