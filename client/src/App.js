@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { MemoryRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
 import AlertState from './context/alert/AlertState';
 import { Provider } from 'react-redux';
@@ -12,10 +12,6 @@ import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
 
 import { LOGIN, REGISTER } from './types';
-import Products from './components/Products';
-import Filter from './components/Filter';
-// import Products from './components/Products';
-// import Filter from './components/Filter';
 
 const App = () => {
 	if (localStorage.token) {

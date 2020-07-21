@@ -10,17 +10,12 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, history }
 	const { setAlert } = alertContext;
 
 	useEffect(() => {
-		if (isAuthenticated) {
-			console.error('useEffect in Login');
-			history.push('/');
-		}
-
 		if (error === 'Invalid Credentials') {
 			setAlert(error, 'danger');
 			clearErrors();
 		}
-		// eslint-disable-next-line
-	}, [error, isAuthenticated, history]);
+		//eslint-disable-next-line
+	}, [error, clearErrors, setAlert]);
 
 	const [user, setUser] = useState({
 		email: '',
@@ -44,28 +39,34 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, history }
 	};
 
 	return (
-		<div className='form-container'>
-			<h1>
-				Account <span className='text-primary'>Login</span>
-			</h1>
-			<form onSubmit={onSubmit}>
-				<div className='form-group'>
-					<label htmlFor='email'>Email Address</label>
-					<input id='email' type='email' name='email' value={email} onChange={onChange} required />
+		<div>
+			{!isAuthenticated ? (
+				<div className='form-container'>
+					<h1>
+						Account <span className='text-primary'>Login</span>
+					</h1>
+					<form onSubmit={onSubmit}>
+						<div className='form-group'>
+							<label htmlFor='email'>Email Address</label>
+							<input id='email' type='email' name='email' value={email} onChange={onChange} required />
+						</div>
+						<div className='form-group'>
+							<label htmlFor='password'>Password</label>
+							<input
+								id='password'
+								type='password'
+								name='password'
+								value={password}
+								onChange={onChange}
+								required
+							/>
+						</div>
+						<input type='submit' value='Login' className='btn btn-primary btn-block' />
+					</form>
 				</div>
-				<div className='form-group'>
-					<label htmlFor='password'>Password</label>
-					<input
-						id='password'
-						type='password'
-						name='password'
-						value={password}
-						onChange={onChange}
-						required
-					/>
-				</div>
-				<input type='submit' value='Login' className='btn btn-primary btn-block' />
-			</form>
+			) : (
+				history.push('/')
+			)}
 		</div>
 	);
 };
@@ -74,7 +75,7 @@ Login.propTypes = {
 	clearErrors: PropTypes.func.isRequired,
 	login: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
-	history: PropTypes.object,
+	history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
