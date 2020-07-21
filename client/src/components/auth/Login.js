@@ -72,7 +72,7 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, history, login }
 Login.propTypes = {
 	auth: PropTypes.object.isRequired,
 	clearErrors: PropTypes.func.isRequired,
-	history: PropTypes.object.isRequired,
+	history: PropTypes.object,
 	login: PropTypes.func.isRequired,
 };
 
@@ -81,6 +81,9 @@ const mapStateToProps = state => ({
 		isAuthenticated: state.isAuthenticated,
 		error: state.error,
 	},
+	clearErrors: state.clearErrors,
+	history: state.history,
+	login: state.login,
 });
 
 export default connect(mapStateToProps, { clearErrors, login })(Login);

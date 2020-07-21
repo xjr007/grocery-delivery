@@ -11,7 +11,7 @@ import {
 	CLEAR_ERRORS,
 } from '../types';
 
-export const loadUser = token => async dispatch => {
+export const loadUser = () => async dispatch => {
 	// const token = localStorage.getItem('token')
 	//Remember to change it in reducer
 

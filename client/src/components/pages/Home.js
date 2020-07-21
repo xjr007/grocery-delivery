@@ -1,19 +1,20 @@
-// import React, { Fragment, useContext, useEffect } from 'react';
-// import Login from '../auth/Login';
-// import { Provider } from 'react-redux';
-// import { loadUser } from '../../actions/auth';
-// import store from '../../store';
+import React, { useEffect } from 'react';
+import { loadUser } from '../../actions/auth';
+import { connect } from 'react-redux';
+import Filter from '../Filter';
+import Products from '../Products';
 
-// const Home = () => {
-// 	useEffect(() => {
-// 		loadUser();
-// 		// eslint-disable-next-line
-// 	}, []);
-// 	return (
-// 		<Provider store={store} className='grid-2'>
-// 			<Login />
-// 		</Provider>
-// 	);
-// };
+const Home = ({ loadUser }) => {
+	useEffect(() => {
+		loadUser();
+		// eslint-disable-next-line
+	}, []);
+	return (
+		<div className='grid-2'>
+			<Filter />
+			<Products />
+		</div>
+	);
+};
 
-// export default Home;
+export default connect({ loadUser })(Home);
