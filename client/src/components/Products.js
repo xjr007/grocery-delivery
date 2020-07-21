@@ -26,7 +26,7 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts 
 	return (
 		<div>
 			<Fade bottom cascade>
-				{!products && !isAuthenticated && !loading ? (
+				{!products || (isAuthenticated && loading) ? (
 					<div>Loading...</div>
 				) : (
 					<ul className='products'>
@@ -92,16 +92,14 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts 
 Products.propTypes = {
 	products: PropTypes.array,
 	fetchProducts: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
 	// addToCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
 	products: state.products.filteredItems,
 	fetchProducts: state.products.fetchProducts,
-	auth: {
-		isAuthenticated: state.isAuthenticated,
-		loading: state.loading,
-	},
+	auth: state.auth,
 	// addToCart: state.addToCart,
 });
 export default connect(mapStateToProps, {

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { MemoryRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
 import AlertState from './context/alert/AlertState';
 import { Provider } from 'react-redux';
@@ -14,8 +14,10 @@ import Home from './components/pages/Home';
 import { LOGIN, REGISTER } from './types';
 import Products from './components/Products';
 import Filter from './components/Filter';
+// import Products from './components/Products';
+// import Filter from './components/Filter';
 
-function App() {
+const App = () => {
 	if (localStorage.token) {
 		setAuthToken(localStorage.token);
 	}
@@ -25,8 +27,6 @@ function App() {
 				<Router>
 					<Fragment>
 						<div className='container'>
-							<Filter />
-							<Products />
 							<Alerts />
 							<Switch>
 								<PrivateRoute exact path='/' component={Home} />
@@ -40,6 +40,6 @@ function App() {
 			</AlertState>
 		</Provider>
 	);
-}
+};
 
 export default App;

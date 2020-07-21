@@ -4,13 +4,14 @@ import { clearErrors, login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Login = ({ auth: { isAuthenticated, error }, clearErrors, history, login }) => {
+const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, history }) => {
 	const alertContext = useContext(AlertContext);
 
 	const { setAlert } = alertContext;
 
 	useEffect(() => {
 		if (isAuthenticated) {
+			console.error('useEffect in Login');
 			history.push('/');
 		}
 
@@ -70,19 +71,14 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, history, login }
 };
 
 Login.propTypes = {
-	auth: PropTypes.object.isRequired,
 	clearErrors: PropTypes.func.isRequired,
-	history: PropTypes.object,
 	login: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	history: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
-	auth: {
-		isAuthenticated: state.isAuthenticated,
-		error: state.error,
-	},
-	clearErrors: state.clearErrors,
-	history: state.history,
+	auth: state.auth,
 	login: state.login,
 });
 
