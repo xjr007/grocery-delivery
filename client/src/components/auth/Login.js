@@ -4,22 +4,18 @@ import { clearErrors, login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Login = ({ auth: { isAuthenticated, error }, clearErrors, history, login }) => {
+const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, history }) => {
 	const alertContext = useContext(AlertContext);
 
 	const { setAlert } = alertContext;
 
 	useEffect(() => {
-		if (isAuthenticated) {
-			history.push('/');
-		}
-
 		if (error === 'Invalid Credentials') {
 			setAlert(error, 'danger');
 			clearErrors();
 		}
-		// eslint-disable-next-line
-	}, [error, isAuthenticated, history]);
+		//eslint-disable-next-line
+	}, [error, clearErrors, setAlert]);
 
 	const [user, setUser] = useState({
 		email: '',
@@ -43,46 +39,47 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, history, login }
 	};
 
 	return (
-		<div className='form-container'>
-			<h1>
-				Account <span className='text-primary'>Login</span>
-			</h1>
-			<form onSubmit={onSubmit}>
-				<div className='form-group'>
-					<label htmlFor='email'>Email Address</label>
-					<input id='email' type='email' name='email' value={email} onChange={onChange} required />
+		<div>
+			{!isAuthenticated ? (
+				<div className='form-container'>
+					<h1>
+						Account <span className='text-primary'>Login</span>
+					</h1>
+					<form onSubmit={onSubmit}>
+						<div className='form-group'>
+							<label htmlFor='email'>Email Address</label>
+							<input id='email' type='email' name='email' value={email} onChange={onChange} required />
+						</div>
+						<div className='form-group'>
+							<label htmlFor='password'>Password</label>
+							<input
+								id='password'
+								type='password'
+								name='password'
+								value={password}
+								onChange={onChange}
+								required
+							/>
+						</div>
+						<input type='submit' value='Login' className='btn btn-primary btn-block' />
+					</form>
 				</div>
-				<div className='form-group'>
-					<label htmlFor='password'>Password</label>
-					<input
-						id='password'
-						type='password'
-						name='password'
-						value={password}
-						onChange={onChange}
-						required
-					/>
-				</div>
-				<input type='submit' value='Login' className='btn btn-primary btn-block' />
-			</form>
+			) : (
+				history.push('/')
+			)}
 		</div>
 	);
 };
 
 Login.propTypes = {
-	auth: PropTypes.object.isRequired,
 	clearErrors: PropTypes.func.isRequired,
-	history: PropTypes.object,
 	login: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-	auth: {
-		isAuthenticated: state.isAuthenticated,
-		error: state.error,
-	},
-	clearErrors: state.clearErrors,
-	history: state.history,
+	auth: state.auth,
 	login: state.login,
 });
 

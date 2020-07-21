@@ -12,10 +12,8 @@ import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
 
 import { LOGIN, REGISTER } from './types';
-import Products from './components/Products';
-import Filter from './components/Filter';
 
-function App() {
+const App = () => {
 	if (localStorage.token) {
 		setAuthToken(localStorage.token);
 	}
@@ -25,8 +23,6 @@ function App() {
 				<Router>
 					<Fragment>
 						<div className='container'>
-							<Filter />
-							<Products />
 							<Alerts />
 							<Switch>
 								<PrivateRoute exact path='/' component={Home} />
@@ -40,6 +36,6 @@ function App() {
 			</AlertState>
 		</Provider>
 	);
-}
+};
 
 export default App;
