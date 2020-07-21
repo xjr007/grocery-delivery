@@ -1,17 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react';
-import AuthContext from '../../context/auth/AuthContext';
 import AlertContext from '../../context/alert/AlertContext';
+import { clearErrors, login } from '../../actions/auth';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Login = props => {
+const Login = ({ auth: { isAuthenticated, error }, clearErrors, history, login }) => {
 	const alertContext = useContext(AlertContext);
-	const authContext = useContext(AuthContext);
 
 	const { setAlert } = alertContext;
-	const { login, error, clearErrors, isAuthenticated } = authContext;
 
 	useEffect(() => {
 		if (isAuthenticated) {
-			props.history.push('/');
+			history.push('/');
 		}
 
 		if (error === 'Invalid Credentials') {
@@ -19,7 +19,7 @@ const Login = props => {
 			clearErrors();
 		}
 		// eslint-disable-next-line
-	}, [error, isAuthenticated, props.history]);
+	}, [error, isAuthenticated, history]);
 
 	const [user, setUser] = useState({
 		email: '',
@@ -69,4 +69,18 @@ const Login = props => {
 	);
 };
 
-export default Login;
+Login.propTypes = {
+	auth: PropTypes.object.isRequired,
+	clearErrors: PropTypes.func.isRequired,
+	history: PropTypes.object.isRequired,
+	login: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+	auth: {
+		isAuthenticated: state.isAuthenticated,
+		error: state.error,
+	},
+});
+
+export default connect(mapStateToProps, { clearErrors, login })(Login);

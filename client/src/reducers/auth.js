@@ -7,9 +7,18 @@ import {
 	LOGIN_FAIL,
 	LOGOUT,
 	CLEAR_ERRORS,
-} from '../../types';
+} from '../types';
 
-export default (state, action) => {
+export const auth = (
+	state = {
+		token: localStorage.getItem('token'),
+		isAuthenticated: null,
+		loading: true,
+		user: null,
+		error: null,
+	},
+	action
+) => {
 	switch (action.type) {
 		case USER_LOADED:
 			return {
@@ -49,3 +58,5 @@ export default (state, action) => {
 			return state;
 	}
 };
+
+export default auth;

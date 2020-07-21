@@ -1,18 +1,19 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import AuthContext from '../../context/auth/AuthContext';
-import ProductStore from './productStore';
+// import React, { Fragment, useContext, useEffect } from 'react';
+// import Login from '../auth/Login';
+// import { Provider } from 'react-redux';
+// import { loadUser } from '../../actions/auth';
+// import store from '../../store';
 
-const Home = () => {
-	const authContext = useContext(AuthContext);
-	useEffect(() => {
-		authContext.loadUser();
-		// eslint-disable-next-line
-	}, []);
-	return (
-		<Fragment className='grid-2'>
-			<ProductStore />
-		</Fragment>
-	);
-};
+// const Home = () => {
+// 	useEffect(() => {
+// 		loadUser();
+// 		// eslint-disable-next-line
+// 	}, []);
+// 	return (
+// 		<Provider store={store} className='grid-2'>
+// 			<Login />
+// 		</Provider>
+// 	);
+// };
 
-export default Home;
+// export default Home;
