@@ -6,10 +6,7 @@ import Order from '../layout/Order';
 
 const Profile = ({
 	auth: { isAuthenticated, loading },
-	orders = {
-		orders,
-		loading,
-	},
+	orders = { orders, loading },
 	fetchOrders,
 }) => {
 	useEffect(() => {
@@ -17,24 +14,21 @@ const Profile = ({
 		//eslint-disable-next-line
 	}, [fetchOrders]);
 
-	if (orders !== null && orders.length === 0 && !loading) {
-		return <h4>No orders</h4>;
-	}
-
 	return (
 		<div>
-			{orders && !loading && isAuthenticated && (
-				<div>
-					{orders.orders.map(order => (
-						<ul className='order'>
-							<li key={order._id}>
-								<Order order={order} />
-							</li>
-						</ul>
-					))}
-					)
-				</div>
-			)}
+			{orders !== null ||
+				(!loading && isAuthenticated && (
+					<div>
+						{orders.orders.map(order => (
+							<ul className='order'>
+								<li key={order._id}>
+									<Order order={order} />
+								</li>
+							</ul>
+						))}
+						)
+					</div>
+				))}
 		</div>
 	);
 };

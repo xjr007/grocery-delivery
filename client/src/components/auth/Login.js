@@ -4,7 +4,7 @@ import { clearErrors, login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, history }) => {
+const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, history }) => {
 	const alertContext = useContext(AlertContext);
 
 	const { setAlert } = alertContext;
@@ -28,6 +28,7 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, history }
 
 	const onSubmit = e => {
 		e.preventDefault();
+
 		if (email === '' || password === '') {
 			setAlert('Please fill in all fields', 'danger');
 		} else {
@@ -40,7 +41,7 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, history }
 
 	return (
 		<div>
-			{!isAuthenticated ? (
+			{!isAuthenticated && !loading ? (
 				<div className='form-container'>
 					<h1>
 						Account <span className='text-primary'>Login</span>
@@ -80,6 +81,7 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
 	auth: state.auth,
+	error: state.err,
 });
 
 export default connect(mapStateToProps, { clearErrors, login })(Login);

@@ -43,6 +43,7 @@ export const auth = (
 		case LOGIN_FAIL:
 		case LOGOUT:
 			localStorage.removeItem('token');
+			localStorage.removeItem('cartItems');
 			return {
 				...state,
 				token: null,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
 import { removeFromCart } from '../../actions/cart';
