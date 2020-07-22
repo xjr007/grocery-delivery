@@ -46,4 +46,24 @@ router.post(
 	}
 );
 
+router.delete('/:id', auth, async (req, res) => {
+	try {
+		let order = await Order.findById(req.params.id);
+
+		if (!order) return res.status(404).json({ msg: 'Order does not exist' });
+
+		// Make sure user owns contact
+		if (order.user.toString() !== req.user._id) {
+			return res.status(401).json({ msg: 'Not authorised' });
+		}
+
+		await Order.findByIdAndRemove(req.params.id);
+
+		res.json({ msg: 'Order removed' });
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Server Error');
+	}
+});
+
 module.exports = router;

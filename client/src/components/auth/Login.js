@@ -10,7 +10,7 @@ const Login = ({ auth: { isAuthenticated, error }, clearErrors, login, history }
 	const { setAlert } = alertContext;
 
 	useEffect(() => {
-		if (error === 'Invalid Credentials') {
+		if (error === 'Invalid email/password') {
 			setAlert(error, 'danger');
 			clearErrors();
 		}
@@ -80,7 +80,6 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
 	auth: state.auth,
-	login: state.login,
 });
 
 export default connect(mapStateToProps, { clearErrors, login })(Login);

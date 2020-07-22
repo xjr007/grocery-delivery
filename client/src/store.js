@@ -5,6 +5,7 @@ import products from './reducers/products';
 import auth from './reducers/auth';
 import cart from './reducers/cart';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import orders from './reducers/orders';
 
 const initialState = {};
 
@@ -15,6 +16,7 @@ const store = createStore(
 		products: products,
 		auth: auth,
 		cart: cart,
+		orders: orders,
 		// order: orderReducer,
 	}),
 	initialState,

@@ -12,6 +12,7 @@ const OrderSchema = mongoose.Schema(
 			type: String,
 			default: shortid.generate,
 			unique: true,
+			required: true,
 		},
 
 		deliveryType: {

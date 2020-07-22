@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Filter from '../layout/Filter';
 import Products from '../layout/Products';
 import Cart from '../layout/Cart';
+import Profile from './Profile';
 
 const Home = ({ loadUser }) => {
 	useEffect(() => {
@@ -16,6 +17,7 @@ const Home = ({ loadUser }) => {
 			<Filter />
 			<Cart />
 			<Products />
+			<Profile />
 		</div>
 	);
 };

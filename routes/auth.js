@@ -7,10 +7,6 @@ const config = require('config');
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
-// @route   GET api/auth
-// @desc   Get logged in user
-// @access  Private
-
 router.get('/', auth, async (req, res) => {
 	try {
 		const user = await User.findById(req.user._id).select('-password');
@@ -21,15 +17,11 @@ router.get('/', auth, async (req, res) => {
 	}
 });
 
-// @route   POST api/auth
-// @desc   Auth user & get token
-// @access  Public
-
 router.post(
 	'/',
 	[
-		check('email', 'Please enter a valid email').isEmail(),
-		check('password', 'Password required').exists(),
+		check('email', 'Enter a valid email').isEmail(),
+		check('password', 'Enter a valid password').exists(),
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -43,13 +35,13 @@ router.post(
 			let user = await User.findOne({ email });
 
 			if (!user) {
-				return res.status(400).json({ message: 'Invalid credentials' });
+				return res.status(400).json({ msg: 'Invalid email/password' });
 			}
 
 			const authenticated = await bcrypt.compare(password, user.password);
 
 			if (!authenticated) {
-				return res.status(400).json({ message: 'Invalid credentials' });
+				return res.status(400).json({ msg: 'Invalid email/password' });
 			}
 
 			const payload = {

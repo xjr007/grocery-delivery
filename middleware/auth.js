@@ -5,7 +5,7 @@ module.exports = function (req, res, next) {
 	const authToken = req.header('x-auth-token');
 
 	if (!authToken) {
-		return res.status(401).json({ message: 'Authorisation denied' });
+		return res.status(401).json({ msg: 'Authorisation denied' });
 	}
 
 	try {
@@ -15,6 +15,6 @@ module.exports = function (req, res, next) {
 		next();
 	} catch (err) {
 		console.error(err.message);
-		res.status(401).json({ message: 'Authorisation denied. Token not valid' });
+		res.status(401).json({ msg: 'Authorisation denied. Token not valid' });
 	}
 };

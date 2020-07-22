@@ -6,7 +6,6 @@ const UserSchema = mongoose.Schema(
 		_id: { type: String, default: shortid.generate },
 		name: {
 			type: String,
-			required: true,
 		},
 
 		email: {

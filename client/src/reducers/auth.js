@@ -7,6 +7,8 @@ import {
 	LOGIN_FAIL,
 	LOGOUT,
 	CLEAR_ERRORS,
+	SET_CURRENT,
+	CLEAR_CURRENT,
 } from '../types';
 
 export const auth = (
