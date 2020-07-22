@@ -5,9 +5,11 @@
 ## Usage:
 
         1. Create Account.
-        2. Search through items.
-        3. Select item.
-        4.Add to cart.
-        5. View cart.
-        6. Delete from cart..
-        7. View orders.
+        2. Log in.
+        3. Search through items.
+        4. Select item.
+        5.Add to cart.
+        6. View cart.
+        7. Delete from cart.
+        8. View orders.
+        9. Log out.
