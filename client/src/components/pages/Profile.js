@@ -4,11 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Order from '../layout/Order';
 
-const Profile = ({
-	auth: { isAuthenticated, loading },
-	orders = { orders, loading },
-	fetchOrders,
-}) => {
+const Profile = ({ auth: { isAuthenticated, loading }, orders = { orders }, fetchOrders }) => {
 	useEffect(() => {
 		fetchOrders();
 		//eslint-disable-next-line
@@ -16,10 +12,10 @@ const Profile = ({
 
 	return (
 		<div>
-			{orders !== null ||
+			{!orders ||
 				(!loading && isAuthenticated && (
 					<div>
-						{orders.orders.map(order => (
+						{orders.map(order => (
 							<ul className='order'>
 								<li key={order._id}>
 									<Order order={order} />
@@ -34,13 +30,13 @@ const Profile = ({
 };
 
 Profile.propTypes = {
-	orders: PropTypes.object,
+	orders: PropTypes.array,
 	fetchOrders: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-	orders: state.orders,
+	orders: state.orders.orders,
 	fetchOrders: state.fetchOrders,
 	auth: state.auth,
 });

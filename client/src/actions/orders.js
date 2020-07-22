@@ -11,15 +11,15 @@ import axios from 'axios';
 
 export const fetchOrders = () => async dispatch => {
 	try {
-		const res = await fetch('/api/products');
-		const data = await res.json();
+		const res = await axios.get('/api/orders');
+		dispatch({ type: FETCH_ORDERS, payload: res.data });
+		// const res = await fetch('/api/orders');
+		// const data = await res.json();
 
-		dispatch({
-			type: FETCH_ORDERS,
-			payload: data,
-		});
-		// const res = await axios.get('/api/orders');
-		// dispatch({ type: FETCH_ORDERS, payload: res.data });
+		// dispatch({
+		// 	type: FETCH_ORDERS,
+		// 	payload: data,
+		// });
 	} catch (err) {
 		dispatch({ type: ORDER_ERROR, payload: err.response.msg });
 	}
