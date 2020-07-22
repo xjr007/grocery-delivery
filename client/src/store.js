@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 //  import reducer
 import products from './reducers/products';
 import auth from './reducers/auth';
+import cart from './reducers/cart';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {};
@@ -13,6 +14,7 @@ const store = createStore(
 	combineReducers({
 		products: products,
 		auth: auth,
+		cart: cart,
 		// order: orderReducer,
 	}),
 	initialState,
