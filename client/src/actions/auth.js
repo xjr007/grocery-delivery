@@ -15,9 +15,7 @@ export const loadUser = () => async dispatch => {
 	// const token = localStorage.getItem('token')
 	//Remember to change it in reducer
 
-	if (localStorage.token) {
-		setAuthToken(localStorage.token);
-	}
+	setAuthToken(localStorage.token);
 
 	try {
 		const res = await axios.get('/api/auth');
