@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 
-const Cart = ({ cart: { cartItems, showCheckout }, removeFromCart }) => {
+const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 	const [checkout, setcheckout] = useState(false);
 	const [handleInput, setHandleInput] = useState(null);
 

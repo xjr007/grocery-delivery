@@ -10,8 +10,9 @@ import Login from './components/auth/Login';
 // import Register from './components/auth/Register';
 import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
+import Cart from './components/pages/cartPreview';
 
-import { LOGIN, REGISTER } from './types';
+import { LOGIN, REGISTER, CART } from './types';
 
 const App = () => {
 	if (localStorage.token) {
@@ -27,6 +28,7 @@ const App = () => {
 							<Switch>
 								<PrivateRoute exact path='/' component={Home} />
 								<Route exact path={LOGIN} component={Login} />
+								<PrivateRoute exact path={CART} component={Cart} />
 
 								{/* <Route exact path={REGISTER} component={Register} /> */}
 							</Switch>

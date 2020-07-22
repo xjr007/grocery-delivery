@@ -3,7 +3,6 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from '../types';
 export const cart = (
 	state = {
 		cartItems: JSON.parse(localStorage.getItem('cartItems') || '[]'),
-		showCheckout: false,
 	},
 	action
 ) => {

@@ -25,3 +25,4 @@ export const SET_ALERT = 'SET_ALERT';
 export const HOME = '/';
 export const LOGIN = '/login';
 export const REGISTER = '/register';
+export const CART = 'CART';
