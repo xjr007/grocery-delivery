@@ -1,5 +1,5 @@
 import React from 'react';
-import { sortProducts } from '../actions/products';
+import { sortProducts } from '../../actions/products';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 

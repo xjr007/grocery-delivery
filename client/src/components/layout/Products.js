@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { formatCurrency } from '../util';
+import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../actions/products';
+import { fetchProducts } from '../../actions/products';
 import PropTypes from 'prop-types';
-// import { addToCart } from '../actions/cartActions';
+import { addToCart } from '../../actions/cart';
 
-const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts }) => {
+const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts, addToCart }) => {
 	const [product, setProduct] = useState(null);
 
 	useEffect(() => {
 		fetchProducts();
+		Modal.setAppElement('body');
 		//eslint-disable-next-line
 	}, []);
 
@@ -38,9 +39,10 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts 
 										<h5>{product.title}</h5>
 									</a>
 									<div className='product-price'>{formatCurrency(product.price)}</div>
-									{/* <button className='button primary' onClick={() => addToCart(product)}>
+									<button className='button primary' onClick={() => addToCart(product)}>
 										Add To Cart
-									</button> */}
+									</button>{' '}
+									*
 								</div>
 							</li>
 						))}
@@ -74,7 +76,7 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts 
 									<button
 										className='button primary'
 										onClick={() => {
-											// addToCart(product);
+											addToCart(product);
 											closeModal();
 										}}>
 										Add To Cart
@@ -93,16 +95,15 @@ Products.propTypes = {
 	products: PropTypes.array,
 	fetchProducts: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
-	// addToCart: PropTypes.func.isRequired,
+	addToCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
 	products: state.products.filteredItems,
 	fetchProducts: state.products.fetchProducts,
 	auth: state.auth,
-	// addToCart: state.addToCart,
 });
 export default connect(mapStateToProps, {
 	fetchProducts,
-	// addToCart,
+	addToCart,
 })(Products);
