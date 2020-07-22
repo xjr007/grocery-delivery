@@ -4,11 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Order from '../layout/Order';
 
-const Profile = ({
-	auth: { isAuthenticated, loading },
-	orders = { orders, loading },
-	fetchOrders,
-}) => {
+const Profile = ({ auth: { isAuthenticated, loading }, orders = { orders }, fetchOrders }) => {
 	useEffect(() => {
 		fetchOrders();
 		//eslint-disable-next-line
