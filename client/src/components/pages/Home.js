@@ -19,7 +19,9 @@ const Home = ({ loadUser, logout }) => {
 		e.preventDefault();
 	};
 
-	const exitApp = () => logout();
+	const exitApp = () => {
+		logout();
+	};
 
 	return (
 		<div className='home'>
