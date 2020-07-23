@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { CHECKOUT } from '../../types';
 import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
 import { removeFromCart } from '../../actions/cart';
@@ -9,13 +11,19 @@ import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 
 const Cart = ({ cart: { cartItems }, removeFromCart }) => {
-	const [checkout, setcheckout] = useState(false);
+	const [viewCheckout, setViewCheckout] = useState(false);
 	const [handleInput, setHandleInput] = useState(null);
+	const [clearOrder, setClearOrder] = useState(false);
+	const [order, setOrder] = useState(null);
+
+	useEffect(() => {
+		Modal.setAppElement('body');
+		//eslint-disable-next-line
+	}, []);
 
 	// const createOrder = e => {
 	// 	e.preventDefault();
 	// 	const order = {
-	// 		name: name,
 	// 		email: email,
 	// 		address: address,
 	// 		cartItems: cartItems,
@@ -24,10 +32,14 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 	// 	// 	createOrder(order);
 	// };
 
-	const closeModal = () => {
-		// clearOrder();
+	const openModal = order => {
+		setOrder(order);
 	};
-	// const { cartItems, order } = this.props;
+
+	const closeModal = () => {
+		setOrder(null);
+	};
+	// // const { cartItems, order } = this.props;
 	return (
 		<div>
 			{cartItems.length === 0 ? (
@@ -114,12 +126,43 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 							<button
 								className='button primary'
 								onClick={() => {
-									setcheckout(true);
+									openModal({
+										total: cartItems.reduce((acc, curr) => acc + curr.price * curr.count, 0),
+										cartItems: cartItems,
+									});
 								}}>
 								Proceed
 							</button>
 						</div>
 					</div>
+
+					{order && (
+						<Modal isOpen={true} onRequestClose={closeModal}>
+							<Zoom>
+								<button className='close-modal' onClick={closeModal}>
+									Back
+								</button>
+								<Link to={CHECKOUT} onClick={closeModal}>
+									Confirm
+								</Link>
+								<div className='order-details'>
+									<div>Total: {formatCurrency(order.total)}</div>
+									<div className='items-in-cart'>
+										All items: <br />
+										{order.cartItems.map(item => (
+											<ul className='item'>
+												<li>
+													<img src={item.image} alt={item.title} />
+													<p>{item.title}</p>
+												</li>
+											</ul>
+										))}
+									</div>
+								</div>
+							</Zoom>
+						</Modal>
+					)}
+
 					{/* {showCheckout && (
 						<Fade right cascade>
 							<div className='cart'>

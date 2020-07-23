@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteOrder, setCurrent } from '../../actions/orders';
 
-const ContactItem = ({ deleteOrder, setCurrent, order }) => {
+const Order = ({ deleteOrder, setCurrent, order }) => {
 	const { _id, referenceNumber, deliveryType } = order;
 
 	const onDelete = () => {
@@ -38,7 +38,7 @@ const ContactItem = ({ deleteOrder, setCurrent, order }) => {
 	);
 };
 
-ContactItem.propTypes = {
+Order.propTypes = {
 	orders: PropTypes.object.isRequired,
 	order: PropTypes.object.isRequired,
 	deleteOrder: PropTypes.func.isRequired,
@@ -50,4 +50,4 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
 	deleteOrder,
 	setCurrent,
-})(ContactItem);
+})(Order);
