@@ -1,6 +1,7 @@
 # Buy&Dash
 ## `...From the comfort of your couch.`
-## MERN Stack - (Active)
+## MERN Stack Application
+### Status: (Active)
 
         Buy&Dash is an e-commerce application, 
         where the goods you buy is delivered to your door-step.
