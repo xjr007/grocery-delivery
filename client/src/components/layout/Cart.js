@@ -39,7 +39,6 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 	const closeModal = () => {
 		setOrder(null);
 	};
-	// // const { cartItems, order } = this.props;
 	return (
 		<div>
 			{cartItems.length === 0 ? (
@@ -48,57 +47,11 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 				<div className='cart cart-header'>You have {cartItems.length} in the cart </div>
 			)}
 
-			{/* {order && (
-				<Modal isOpen={true} onRequestClose={closeModal}>
-					<Zoom>
-						<button className='close-modal' onClick={closeModal}>
-							x
-						</button>
-						<div className='order-details'>
-							<h3 className='success-message'>Your order has been placed</h3>
-							<h2>Order {order._id}</h2>
-							<ul>
-								<li>
-									<div>Name:</div>
-									<div>{order.name}</div>
-								</li>
-								<li>
-									<div>Email:</div>
-									<div>{order.email}</div>
-								</li>
-								<li>
-									<div>Address:</div>
-									<div>{order.address}</div>
-								</li>
-								<li>
-									<div>Date:</div>
-									<div>{order.createdAt}</div>
-								</li>
-								<li>
-									<div>Total:</div>
-									<div>{order.total}</div>
-								</li>
-								<li>
-									<div>Cart Items:</div>
-									<div>
-										{order.cartItems.map(x => (
-											<div>
-												{x.count} {' x '} {x.title}
-											</div>
-										))}
-									</div>
-								</li>
-							</ul>
-						</div>
-					</Zoom>
-				</Modal>
-			)} */}
-
 			<div className='cart'>
 				<Fade left cascade>
 					<ul className='cart-items'>
 						{cartItems.map(item => (
-							<li key={cartItems._id}>
+							<li key={item._id}>
 								<div>
 									<img src={item.image} alt={item.title} />
 								</div>
@@ -151,7 +104,7 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 										All items: <br />
 										{order.cartItems.map(item => (
 											<ul className='item'>
-												<li>
+												<li key={item._id}>
 													<img src={item.image} alt={item.title} />
 													<p>{item.title}</p>
 												</li>
@@ -162,39 +115,6 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 							</Zoom>
 						</Modal>
 					)}
-
-					{/* {showCheckout && (
-						<Fade right cascade>
-							<div className='cart'>
-								<form onSubmit='createOrder'>
-									<ul className='form-container'>
-										<li>
-											<label>Email</label>
-											<input
-												name='email'
-												type='email'
-												required
-												onChange={e => setHandleInput({ [e.target.name]: e.target.value })}
-											/>
-										</li>
-										<li>
-											<label>Name</label>
-											<input name='name' type='text' required onChange={handleInput} />
-										</li>
-										<li>
-											<label>Address</label>
-											<input name='address' type='text' required onChange={handleInput} />
-										</li>
-										<li>
-											<button className='button primary' type='submit'>
-												Checkout
-											</button>
-										</li>
-									</ul>
-								</form>
-							</div>
-						</Fade>
-					)} */}
 				</div>
 			)}
 		</div>

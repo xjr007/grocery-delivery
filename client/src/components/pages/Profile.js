@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { fetchOrders } from '../../actions/orders';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Order from '../layout/Order';
+import { loadUser } from '../../actions/auth';
 
-const Profile = ({ auth: { isAuthenticated, loading }, orders = { orders }, fetchOrders }) => {
+const Profile = ({
+	auth: { isAuthenticated, loading },
+	orders = { orders },
+	// loadUser,
+	fetchOrders,
+}) => {
 	useEffect(() => {
+		// loadUser();
 		fetchOrders();
+
 		//eslint-disable-next-line
 	}, [fetchOrders]);
-
 	return (
 		<div>
+			<h1>Profile</h1>
 			{!orders ||
 				(!loading && isAuthenticated && (
 					<div>
@@ -33,6 +41,7 @@ Profile.propTypes = {
 	orders: PropTypes.array,
 	fetchOrders: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
+	// loadUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -43,4 +52,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
 	fetchOrders,
+	// loadUser,
 })(Profile);

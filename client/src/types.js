@@ -27,3 +27,4 @@ export const LOGIN = '/login';
 export const REGISTER = '/register';
 export const CART = '/cart';
 export const CHECKOUT = '/checkout';
+export const PROFILE = '/profile';

@@ -8,6 +8,7 @@ import {
 	SET_ORDER,
 } from '../types';
 import axios from 'axios';
+import { loadUser } from './auth';
 
 export const fetchOrders = () => async dispatch => {
 	try {

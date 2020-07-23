@@ -4,15 +4,19 @@ import { connect } from 'react-redux';
 import { deleteOrder, setOrder } from '../../actions/orders';
 
 const Order = ({ deleteOrder, setOrder, order }) => {
-	const { _id, referenceNumber, deliveryType } = order;
-
 	const onDelete = () => {
-		deleteOrder(_id);
+		deleteOrder(order._id);
 		setOrder();
 	};
 
 	return (
 		<div className='card bg-light'>
+			<ul className='order'>
+				<li key={order._id}>
+					<div className='ref-number'>Reference Number: #{order.referenceNumber}</div>
+					<div className='delivery-type'>Delivery Type: {order.deliveryType}</div>
+				</li>
+			</ul>
 			<p>
 				<button className='button' onClick={() => setOrder(order)}>
 					Edit
