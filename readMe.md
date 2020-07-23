@@ -13,4 +13,5 @@
         6. View cart.
         7. Delete from cart.
         8. View orders.
-        9. Log out.
+        9. Checkout.
+        10. Log out.
