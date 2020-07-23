@@ -1,10 +1,10 @@
-# Grocery Delivery App - MERN Stack
+# Buy&Dash - MERN Stack (Active)
 
         Buy&Dash is an e-commerce application, 
         where the goods you buy is delivered to your door-step
         from the comfort of your couch.
 
-## Usage (current):
+## Usage:
 
         1. Create Account.
         2. Log in.
