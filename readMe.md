@@ -1,7 +1,7 @@
 # Grocery Delivery App - MERN Stack
 
         Grocery Delivery App is an e-commerce application/website 
-                where the goods you buy is delivered to your door-step.
+        where the goods you buy is delivered to your door-step.
 
 ## Usage:
 
