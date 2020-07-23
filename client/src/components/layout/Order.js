@@ -1,36 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteOrder, setCurrent } from '../../actions/orders';
+import { deleteOrder, setOrder } from '../../actions/orders';
 
-const Order = ({ deleteOrder, setCurrent, order }) => {
+const Order = ({ deleteOrder, setOrder, order }) => {
 	const { _id, referenceNumber, deliveryType } = order;
 
 	const onDelete = () => {
 		deleteOrder(_id);
-		setCurrent();
+		setOrder();
 	};
 
 	return (
 		<div className='card bg-light'>
-			<ul className='list'>
-				{referenceNumber && (
-					<li>
-						<i className='fas fa-envelope-open'></i>
-						{referenceNumber}
-					</li>
-				)}
-				{deliveryType && (
-					<li>
-						<i className='fas fa-phone'></i> {deliveryType}
-					</li>
-				)}
-			</ul>
 			<p>
-				<button className='btn btn-dark btn-sm' onClick={() => setCurrent(order)}>
+				<button className='button' onClick={() => setOrder(order)}>
 					Edit
 				</button>
-				<button className='btn btn-danger btn-sm' onClick={onDelete}>
+				<button className='button' onClick={onDelete}>
 					Delete
 				</button>
 			</p>
@@ -49,5 +36,5 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
 	deleteOrder,
-	setCurrent,
+	setOrder,
 })(Order);

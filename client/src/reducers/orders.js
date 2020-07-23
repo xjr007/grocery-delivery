@@ -4,8 +4,8 @@ import {
 	ORDER_ERROR,
 	UPDATE_ORDER,
 	DELETE_ORDER,
-	SET_CURRENT,
-	CLEAR_CURRENT,
+	SET_ORDER,
+	CLEAR_ORDER,
 } from '../types';
 
 export const orders = (
@@ -40,12 +40,12 @@ export const orders = (
 				...state,
 				error: action.payload,
 			};
-		case SET_CURRENT:
+		case SET_ORDER:
 			return {
 				...state,
 				current: action.payload,
 			};
-		case CLEAR_CURRENT:
+		case CLEAR_ORDER:
 			return {
 				...state,
 				current: null,
