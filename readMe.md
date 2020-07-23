@@ -1,4 +1,5 @@
-# Buy&Dash ...From the comfort of your couch.
+# Buy&Dash
+## `...From the comfort of your couch.`
 ## MERN Stack - (Active)
 
         Buy&Dash is an e-commerce application, 
