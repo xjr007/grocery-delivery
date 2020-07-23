@@ -1,5 +1,5 @@
 # Buy&Dash
-## `...From the comfort of your couch.`
+#### `...From the comfort of your couch.`
 ## MERN Stack Application
 ### Status: (Active)
 
