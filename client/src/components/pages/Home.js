@@ -9,7 +9,7 @@ import Cart from '../layout/Cart';
 import { PROFILE } from '../../types';
 // import { setAuthToken } from '../../util';
 
-const Home = ({ loadUser, logout, cart: { cartItems } }) => {
+const Home = ({ loadUser, logout }) => {
 	useEffect(() => {
 		loadUser();
 	}, [loadUser]);
@@ -54,14 +54,8 @@ const Home = ({ loadUser, logout, cart: { cartItems } }) => {
 };
 
 Home.propTypes = {
-	cart: PropTypes.object,
 	loadUser: PropTypes.func.isRequired,
 	logout: PropTypes.func.isRequired,
 };
 
-export default connect(
-	state => ({
-		cart: state.cart,
-	}),
-	{ loadUser, logout }
-)(Home);
+export default connect(null, { loadUser, logout })(Home);
