@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
 import AlertState from './context/alert/AlertState';
@@ -12,7 +12,8 @@ import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
 import Cart from './components/pages/cartPreview';
 
-import { LOGIN, REGISTER, CART } from './types';
+import { LOGIN, REGISTER, CART, PROFILE } from './types';
+import Profile from './components/pages/Profile';
 
 const App = () => {
 	if (localStorage.token) {
@@ -29,6 +30,7 @@ const App = () => {
 								<PrivateRoute exact path='/' component={Home} />
 								<Route exact path={LOGIN} component={Login} />
 								<PrivateRoute exact path={CART} component={Cart} />
+								<PrivateRoute exact path={PROFILE} component={Profile} />
 
 								{/* <Route exact path={REGISTER} component={Register} /> */}
 							</Switch>

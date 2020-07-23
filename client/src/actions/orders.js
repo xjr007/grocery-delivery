@@ -4,10 +4,11 @@ import {
 	ORDER_ERROR,
 	UPDATE_ORDER,
 	DELETE_ORDER,
-	CLEAR_CURRENT,
-	SET_CURRENT,
+	CLEAR_ORDER,
+	SET_ORDER,
 } from '../types';
 import axios from 'axios';
+import { loadUser } from './auth';
 
 export const fetchOrders = () => async dispatch => {
 	try {
@@ -70,11 +71,11 @@ export const deleteOrder = id => async dispatch => {
 	}
 };
 
-export const setCurrent = order => dispatch => {
-	dispatch({ type: SET_CURRENT, payload: order });
+export const setOrder = order => dispatch => {
+	dispatch({ type: SET_ORDER, payload: order });
 };
 
 //Clear Current Contact
 export const clearCurrent = () => dispatch => {
-	dispatch({ type: CLEAR_CURRENT });
+	dispatch({ type: CLEAR_ORDER });
 };

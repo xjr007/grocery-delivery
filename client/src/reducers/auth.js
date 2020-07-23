@@ -7,8 +7,6 @@ import {
 	LOGIN_FAIL,
 	LOGOUT,
 	CLEAR_ERRORS,
-	SET_CURRENT,
-	CLEAR_CURRENT,
 } from '../types';
 
 export const auth = (
@@ -16,8 +14,8 @@ export const auth = (
 		token: localStorage.getItem('token'),
 		isAuthenticated: null,
 		loading: true,
-		user: null,
 		error: null,
+		user: null,
 	},
 	action
 ) => {

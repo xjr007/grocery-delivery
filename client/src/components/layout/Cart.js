@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { CHECKOUT } from '../../types';
 import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
 import { removeFromCart } from '../../actions/cart';
@@ -9,13 +11,19 @@ import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 
 const Cart = ({ cart: { cartItems }, removeFromCart }) => {
-	const [checkout, setcheckout] = useState(false);
+	const [viewCheckout, setViewCheckout] = useState(false);
 	const [handleInput, setHandleInput] = useState(null);
+	const [clearOrder, setClearOrder] = useState(false);
+	const [order, setOrder] = useState(null);
+
+	useEffect(() => {
+		Modal.setAppElement('body');
+		//eslint-disable-next-line
+	}, []);
 
 	// const createOrder = e => {
 	// 	e.preventDefault();
 	// 	const order = {
-	// 		name: name,
 	// 		email: email,
 	// 		address: address,
 	// 		cartItems: cartItems,
@@ -24,10 +32,13 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 	// 	// 	createOrder(order);
 	// };
 
-	const closeModal = () => {
-		// clearOrder();
+	const openModal = order => {
+		setOrder(order);
 	};
-	// const { cartItems, order } = this.props;
+
+	const closeModal = () => {
+		setOrder(null);
+	};
 	return (
 		<div>
 			{cartItems.length === 0 ? (
@@ -36,57 +47,11 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 				<div className='cart cart-header'>You have {cartItems.length} in the cart </div>
 			)}
 
-			{/* {order && (
-				<Modal isOpen={true} onRequestClose={closeModal}>
-					<Zoom>
-						<button className='close-modal' onClick={closeModal}>
-							x
-						</button>
-						<div className='order-details'>
-							<h3 className='success-message'>Your order has been placed</h3>
-							<h2>Order {order._id}</h2>
-							<ul>
-								<li>
-									<div>Name:</div>
-									<div>{order.name}</div>
-								</li>
-								<li>
-									<div>Email:</div>
-									<div>{order.email}</div>
-								</li>
-								<li>
-									<div>Address:</div>
-									<div>{order.address}</div>
-								</li>
-								<li>
-									<div>Date:</div>
-									<div>{order.createdAt}</div>
-								</li>
-								<li>
-									<div>Total:</div>
-									<div>{order.total}</div>
-								</li>
-								<li>
-									<div>Cart Items:</div>
-									<div>
-										{order.cartItems.map(x => (
-											<div>
-												{x.count} {' x '} {x.title}
-											</div>
-										))}
-									</div>
-								</li>
-							</ul>
-						</div>
-					</Zoom>
-				</Modal>
-			)} */}
-
 			<div className='cart'>
 				<Fade left cascade>
 					<ul className='cart-items'>
 						{cartItems.map(item => (
-							<li key={cartItems._id}>
+							<li key={item._id}>
 								<div>
 									<img src={item.image} alt={item.title} />
 								</div>
@@ -114,44 +79,42 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 							<button
 								className='button primary'
 								onClick={() => {
-									setcheckout(true);
+									openModal({
+										total: cartItems.reduce((acc, curr) => acc + curr.price * curr.count, 0),
+										cartItems: cartItems,
+									});
 								}}>
 								Proceed
 							</button>
 						</div>
 					</div>
-					{/* {showCheckout && (
-						<Fade right cascade>
-							<div className='cart'>
-								<form onSubmit='createOrder'>
-									<ul className='form-container'>
-										<li>
-											<label>Email</label>
-											<input
-												name='email'
-												type='email'
-												required
-												onChange={e => setHandleInput({ [e.target.name]: e.target.value })}
-											/>
-										</li>
-										<li>
-											<label>Name</label>
-											<input name='name' type='text' required onChange={handleInput} />
-										</li>
-										<li>
-											<label>Address</label>
-											<input name='address' type='text' required onChange={handleInput} />
-										</li>
-										<li>
-											<button className='button primary' type='submit'>
-												Checkout
-											</button>
-										</li>
-									</ul>
-								</form>
-							</div>
-						</Fade>
-					)} */}
+
+					{order && (
+						<Modal isOpen={true} onRequestClose={closeModal}>
+							<Zoom>
+								<button className='close-modal' onClick={closeModal}>
+									Back
+								</button>
+								<Link to={CHECKOUT} onClick={closeModal}>
+									Confirm
+								</Link>
+								<div className='order-details'>
+									<div>Total: {formatCurrency(order.total)}</div>
+									<div className='items-in-cart'>
+										All items: <br />
+										{order.cartItems.map(item => (
+											<ul className='item'>
+												<li key={item._id}>
+													<img src={item.image} alt={item.title} />
+													<p>{item.title}</p>
+												</li>
+											</ul>
+										))}
+									</div>
+								</div>
+							</Zoom>
+						</Modal>
+					)}
 				</div>
 			)}
 		</div>

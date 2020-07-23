@@ -1,36 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteOrder, setCurrent } from '../../actions/orders';
+import { deleteOrder, setOrder } from '../../actions/orders';
 
-const ContactItem = ({ deleteOrder, setCurrent, order }) => {
-	const { _id, referenceNumber, deliveryType } = order;
-
+const Order = ({ deleteOrder, setOrder, order }) => {
 	const onDelete = () => {
-		deleteOrder(_id);
-		setCurrent();
+		deleteOrder(order._id);
+		setOrder();
 	};
 
 	return (
 		<div className='card bg-light'>
-			<ul className='list'>
-				{referenceNumber && (
-					<li>
-						<i className='fas fa-envelope-open'></i>
-						{referenceNumber}
-					</li>
-				)}
-				{deliveryType && (
-					<li>
-						<i className='fas fa-phone'></i> {deliveryType}
-					</li>
-				)}
+			<ul className='order'>
+				<li key={order._id}>
+					<div className='ref-number'>Reference Number: #{order.referenceNumber}</div>
+					<div className='delivery-type'>Delivery Type: {order.deliveryType}</div>
+				</li>
 			</ul>
 			<p>
-				<button className='btn btn-dark btn-sm' onClick={() => setCurrent(order)}>
+				<button className='button' onClick={() => setOrder(order)}>
 					Edit
 				</button>
-				<button className='btn btn-danger btn-sm' onClick={onDelete}>
+				<button className='button' onClick={onDelete}>
 					Delete
 				</button>
 			</p>
@@ -38,7 +29,7 @@ const ContactItem = ({ deleteOrder, setCurrent, order }) => {
 	);
 };
 
-ContactItem.propTypes = {
+Order.propTypes = {
 	orders: PropTypes.object.isRequired,
 	order: PropTypes.object.isRequired,
 	deleteOrder: PropTypes.func.isRequired,
@@ -49,5 +40,5 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
 	deleteOrder,
-	setCurrent,
-})(ContactItem);
+	setOrder,
+})(Order);

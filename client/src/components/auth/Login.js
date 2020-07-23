@@ -15,7 +15,7 @@ const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, 
 			clearErrors();
 		}
 		//eslint-disable-next-line
-	}, [error, clearErrors, setAlert]);
+	}, [error, setAlert]);
 
 	const [user, setUser] = useState({
 		email: '',
