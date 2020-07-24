@@ -10,7 +10,7 @@ const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, 
 	const { setAlert } = alertContext;
 
 	useEffect(() => {
-		if (error === 'Invalid email/password') {
+		if (error) {
 			setAlert(error, 'danger');
 			clearErrors();
 		}
