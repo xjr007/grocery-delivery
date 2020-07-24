@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { deleteOrder, setOrder } from '../../actions/orders';
 
 const Order = ({ deleteOrder, setOrder, orders }) => {
-	const onDelete = () => {
-		// deleteOrder(order);
+	const onDelete = order => {
+		deleteOrder(order._id);
 		// setOrder(order);
 	};
 	return (
@@ -33,7 +33,7 @@ const Order = ({ deleteOrder, setOrder, orders }) => {
 							<button className='button' onClick={() => setOrder(order)}>
 								Edit
 							</button>
-							<button className='button' onClick={onDelete}>
+							<button className='button' onClick={() => onDelete(order)}>
 								Delete
 							</button>
 						</p>
