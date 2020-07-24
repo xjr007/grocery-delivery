@@ -14,16 +14,10 @@ export const fetchOrders = () => async dispatch => {
 	try {
 		const res = await axios.get('/api/orders');
 		dispatch({ type: FETCH_ORDERS, payload: res.data });
-		// const res = await fetch('/api/orders');
-		// const data = await res.json();
-
-		// dispatch({
-		// 	type: FETCH_ORDERS,
-		// 	payload: data,
-		// });
 	} catch (err) {
 		dispatch({ type: ORDER_ERROR, payload: err.response.msg });
 	}
+	loadUser();
 };
 
 export const createOrder = order => async dispatch => {

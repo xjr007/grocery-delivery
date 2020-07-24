@@ -7,6 +7,7 @@ import {
 	LOGIN_FAIL,
 	LOGOUT,
 	CLEAR_ERRORS,
+	PRODUCTS_ERROR,
 } from '../types';
 
 export const auth = (
@@ -40,6 +41,7 @@ export const auth = (
 		case AUTH_ERROR:
 		case LOGIN_FAIL:
 		case LOGOUT:
+		case PRODUCTS_ERROR:
 			localStorage.clear();
 			return {
 				...state,

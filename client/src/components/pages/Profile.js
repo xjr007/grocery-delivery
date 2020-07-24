@@ -5,47 +5,34 @@ import PropTypes from 'prop-types';
 import Order from '../layout/Order';
 import { loadUser } from '../../actions/auth';
 
-const Profile = ({ auth: { isAuthenticated, loading }, orders = { orders }, fetchOrders }) => {
+const Profile = ({ auth: { isAuthenticated, loading }, fetchOrders }) => {
 	useEffect(() => {
-		// loadUser();
-		fetchOrders();
+		if (isAuthenticated) {
+			fetchOrders();
+		}
 
 		//eslint-disable-next-line
-	}, [fetchOrders]);
+	}, [fetchOrders, isAuthenticated]);
+
 	return (
 		<div>
 			<h1>Profile</h1>
-			{!orders ||
-				(!loading && isAuthenticated && (
-					<div>
-						{orders.map(order => (
-							<ul className='order'>
-								<li key={order._id}>
-									<Order order={order} />
-								</li>
-							</ul>
-						))}
-						)
-					</div>
-				))}
+			{!loading && isAuthenticated && (
+				<div>
+					<Order />
+				</div>
+			)}
 		</div>
 	);
 };
 
 Profile.propTypes = {
-	orders: PropTypes.array,
-	fetchOrders: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
-	// loadUser: PropTypes.func.isRequired,
+	fetchOrders: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-	orders: state.orders.orders,
-	fetchOrders: state.fetchOrders,
 	auth: state.auth,
 });
 
-export default connect(mapStateToProps, {
-	fetchOrders,
-	// loadUser,
-})(Profile);
+export default connect(mapStateToProps, { fetchOrders })(Profile);

@@ -4,8 +4,6 @@ export const formatCurrency = num => {
 	return 'R' + Number(num.toFixed(1)).toLocaleString() + ' ';
 };
 
-export default formatCurrency;
-
 export const setAuthToken = token => {
 	if (token) {
 		axios.defaults.headers.common['x-auth-token'] = token;

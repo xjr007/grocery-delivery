@@ -8,7 +8,7 @@ import {
 	CLEAR_ORDER,
 } from '../types';
 
-export const orders = (state = { orders: null, error: null, current: null }, action) => {
+export const orders = (state = { orders: null }, action) => {
 	switch (action.type) {
 		case FETCH_ORDERS:
 			return {

@@ -12,9 +12,6 @@ import {
 } from '../types';
 
 export const loadUser = () => async dispatch => {
-	// const token = localStorage.getItem('token')
-	//Remember to change it in reducer
-
 	setAuthToken(localStorage.token);
 
 	try {

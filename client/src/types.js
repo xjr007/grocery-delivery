@@ -20,6 +20,7 @@ export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const SET_ALERT = 'SET_ALERT';
+export const PRODUCTS_ERROR = 'PRODUCTS_ERROR';
 
 // Routes
 export const HOME = '/';

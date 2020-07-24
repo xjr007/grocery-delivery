@@ -1,6 +1,13 @@
 import { FETCH_PRODUCTS, ORDER_PRODUCTS_BY_PRICE } from '../types';
 
-export const products = (state = { filteredItems: null, sort: null }, action) => {
+export const products = (
+	state = {
+		filteredItems: null,
+		sort: null,
+		items: null,
+	},
+	action
+) => {
 	switch (action.type) {
 		case ORDER_PRODUCTS_BY_PRICE:
 			return {
