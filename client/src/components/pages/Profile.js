@@ -5,12 +5,7 @@ import PropTypes from 'prop-types';
 import Order from '../layout/Order';
 import { loadUser } from '../../actions/auth';
 
-const Profile = ({
-	auth: { isAuthenticated, loading },
-	orders = { orders },
-	// loadUser,
-	fetchOrders,
-}) => {
+const Profile = ({ auth: { isAuthenticated, loading }, orders = { orders }, fetchOrders }) => {
 	useEffect(() => {
 		// loadUser();
 		fetchOrders();

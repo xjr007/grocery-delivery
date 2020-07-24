@@ -28,12 +28,13 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const { _id, referenceNumber, deliveryType } = req.body;
+		const { _id, referenceNumber, deliveryType, cartOrder } = req.body;
 		try {
 			const newOrder = new Order({
 				_id,
 				referenceNumber,
 				deliveryType,
+				cartOrder,
 				user: req.user._id,
 			});
 

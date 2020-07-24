@@ -18,6 +18,15 @@ const OrderSchema = mongoose.Schema(
 		deliveryType: {
 			type: String,
 		},
+		cartOrder: [
+			{
+				_id: { type: String, default: shortid.generate },
+				item: String,
+				category: String,
+				price: Number,
+				count: Number,
+			},
+		],
 	},
 	{
 		timestamps: true,

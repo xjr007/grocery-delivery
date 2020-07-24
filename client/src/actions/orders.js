@@ -26,7 +26,7 @@ export const fetchOrders = () => async dispatch => {
 	}
 };
 
-export const addOrder = order => async dispatch => {
+export const createOrder = order => async dispatch => {
 	const config = {
 		headers: {
 			'Content-Type': 'application/json',
