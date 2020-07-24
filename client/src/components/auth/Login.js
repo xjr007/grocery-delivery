@@ -3,6 +3,8 @@ import AlertContext from '../../context/alert/AlertContext';
 import { clearErrors, login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { REGISTER } from '../../types';
 
 const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, history }) => {
 	const alertContext = useContext(AlertContext);
@@ -63,6 +65,8 @@ const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, 
 							/>
 						</div>
 						<input type='submit' value='Login' className='btn btn-primary btn-block' />
+						<br />
+						<Link to={REGISTER}>Register</Link>
 					</form>
 				</div>
 			) : (

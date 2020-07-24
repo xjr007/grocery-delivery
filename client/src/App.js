@@ -7,7 +7,7 @@ import store from './store';
 import { setAuthToken } from './util';
 
 import Login from './components/auth/Login';
-// import Register from './components/auth/Register';
+import Register from './components/auth/Register';
 import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
 import Delivery from './components/pages/createDelivery';
@@ -29,6 +29,7 @@ const App = () => {
 							<Switch>
 								<PrivateRoute exact path='/' component={Home} />
 								<Route exact path={LOGIN} component={Login} />
+								<Route exact path={REGISTER} component={Register} />
 								<PrivateRoute exact path={DELIVERY} component={Delivery} />
 								<PrivateRoute exact path={PROFILE} component={Profile} />
 
