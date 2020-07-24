@@ -12,10 +12,13 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 	const [product, setProduct] = useState(null);
 
 	useEffect(() => {
-		fetchProducts();
+		if (isAuthenticated) {
+			fetchProducts();
+		}
 		Modal.setAppElement('body');
+
 		//eslint-disable-next-line
-	}, []);
+	}, [fetchProducts]);
 
 	const openModal = product => {
 		setProduct(product);

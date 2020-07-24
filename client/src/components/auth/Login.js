@@ -11,18 +11,19 @@ const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, 
 
 	const { setAlert } = alertContext;
 
+	const [user, setUser] = useState({
+		email: '',
+		password: '',
+	});
+
 	useEffect(() => {
 		if (error) {
 			setAlert(error, 'danger');
 			clearErrors();
 		}
+
 		//eslint-disable-next-line
 	}, [error, setAlert]);
-
-	const [user, setUser] = useState({
-		email: '',
-		password: '',
-	});
 
 	const { email, password } = user;
 

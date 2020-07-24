@@ -1,24 +1,11 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createOrder } from '../../actions/orders';
+import React from 'react';
 
-export const CreateDelivery = ({ createOrder }) => {
+const createDelivery = () => {
 	return (
 		<div>
-			<h1>Create Order</h1>
+			<h1>Delivery created</h1>
 		</div>
 	);
 };
 
-CreateDelivery.propTypes = {
-	prop: PropTypes,
-};
-
-const mapStateToProps = state => ({
-	createOrder: PropTypes.func.isRequired,
-});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, { createOrder })(CreateDelivery);
+export default createDelivery;
