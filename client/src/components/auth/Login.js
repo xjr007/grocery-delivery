@@ -46,7 +46,7 @@ const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, 
 			{!isAuthenticated && !loading ? (
 				<div className='form-container'>
 					<h1>
-						Account <span className='text-primary'>Login</span>
+						<span className='login-register'>Login</span>
 					</h1>
 					<form onSubmit={onSubmit}>
 						<div className='form-group'>
