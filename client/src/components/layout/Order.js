@@ -6,7 +6,7 @@ import { deleteOrder, setOrder } from '../../actions/orders';
 const Order = ({ deleteOrder, setOrder, order }) => {
 	const onDelete = () => {
 		deleteOrder(order._id);
-		setOrder();
+		setOrder(order);
 	};
 
 	return (
@@ -15,6 +15,25 @@ const Order = ({ deleteOrder, setOrder, order }) => {
 				<li key={order._id}>
 					<div className='ref-number'>Reference Number: #{order.referenceNumber}</div>
 					<div className='delivery-type'>Delivery Type: {order.deliveryType}</div>
+					<div className='item-list'>
+						<select>
+							<option>View list</option>
+							{order.cartOrder.map(item => (
+								<option key={item._id} value={item.item}>
+									{item.item}
+								</option>
+							))}
+						</select>
+					</div>
+					{/* <div className='Item-list'>
+						Items:{' '}
+						{order.cartOrder.map(item => (
+							<div>
+								<div className='item-name'>Item: {item.item}</div>
+								<div className='item-price'>Price: {item.price}</div>
+							</div>
+						))}
+					</div> */}
 				</li>
 			</ul>
 			<p>

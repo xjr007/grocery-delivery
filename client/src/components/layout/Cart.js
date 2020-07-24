@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CHECKOUT } from '../../types';
+import { DELIVERY } from '../../types';
 import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
 import { removeFromCart } from '../../actions/cart';
@@ -9,11 +9,9 @@ import PropTypes from 'prop-types';
 // import { createOrder, clearOrder } from '../actions/orderActions';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
+import { createOrder } from '../../actions/orders';
 
-const Cart = ({ cart: { cartItems }, removeFromCart }) => {
-	const [viewCheckout, setViewCheckout] = useState(false);
-	const [handleInput, setHandleInput] = useState(null);
-	const [clearOrder, setClearOrder] = useState(false);
+const Cart = ({ cart: { cartItems }, removeFromCart, createOrder }) => {
 	const [order, setOrder] = useState(null);
 
 	useEffect(() => {
@@ -37,6 +35,11 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 	};
 
 	const closeModal = () => {
+		setOrder(null);
+	};
+
+	const confirmOrder = order => {
+		createOrder(order);
 		setOrder(null);
 	};
 	return (
@@ -95,7 +98,7 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 								<button className='close-modal' onClick={closeModal}>
 									Back
 								</button>
-								<Link to={CHECKOUT} onClick={closeModal}>
+								<Link to={DELIVERY} onClick={confirmOrder}>
 									Confirm
 								</Link>
 								<div className='order-details'>
@@ -122,16 +125,16 @@ const Cart = ({ cart: { cartItems }, removeFromCart }) => {
 };
 
 Cart.propTypes = {
-	// order: PropTypes.object,
 	cart: PropTypes.object.isRequired,
 	removeFromCart: PropTypes.func.isRequired,
+	createOrder: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-	// order: state.order.order,
 	cart: state.cart,
 });
 
 export default connect(mapStateToProps, {
 	removeFromCart,
+	createOrder,
 })(Cart);

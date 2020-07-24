@@ -10,9 +10,9 @@ import Login from './components/auth/Login';
 // import Register from './components/auth/Register';
 import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
-import Cart from './components/pages/cartPreview';
+import Delivery from './components/pages/createDelivery';
 
-import { LOGIN, REGISTER, CART, PROFILE } from './types';
+import { LOGIN, REGISTER, DELIVERY, PROFILE } from './types';
 import Profile from './components/pages/Profile';
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
 							<Switch>
 								<PrivateRoute exact path='/' component={Home} />
 								<Route exact path={LOGIN} component={Login} />
-								<PrivateRoute exact path={CART} component={Cart} />
+								<PrivateRoute exact path={DELIVERY} component={Delivery} />
 								<PrivateRoute exact path={PROFILE} component={Profile} />
 
 								{/* <Route exact path={REGISTER} component={Register} /> */}

@@ -25,6 +25,5 @@ export const SET_ALERT = 'SET_ALERT';
 export const HOME = '/';
 export const LOGIN = '/login';
 export const REGISTER = '/register';
-export const CART = '/cart';
-export const CHECKOUT = '/checkout';
+export const DELIVERY = '/delivery';
 export const PROFILE = '/profile';
