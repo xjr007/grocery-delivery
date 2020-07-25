@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { DELIVERY } from '../../types';
+import { ROUTES } from '../../types';
 import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
 import { removeFromCart } from '../../actions/cart';
@@ -93,7 +93,7 @@ const Cart = ({ cart: { cartItems }, removeFromCart, createOrder }) => {
 						<button className='close-modal' onClick={closeModal}>
 							Back
 						</button>
-						<Link to={DELIVERY} onClick={confirmOrder}>
+						<Link to={ROUTES.DELIVERY} onClick={confirmOrder}>
 							Confirm
 						</Link>
 						<div className='order-details'>

@@ -23,8 +23,16 @@ export const SET_ALERT = 'SET_ALERT';
 export const PRODUCTS_ERROR = 'PRODUCTS_ERROR';
 
 // Routes
-export const HOME = '/';
-export const LOGIN = '/login';
-export const REGISTER = '/register';
-export const DELIVERY = '/delivery';
-export const PROFILE = '/profile';
+// export const HOME = '/';
+// export const LOGIN = '/login';
+// export const REGISTER = '/register';
+// export const DELIVERY = '/delivery';
+// export const PROFILE = '/profile';
+
+export const ROUTES = {
+	HOME: '/',
+	LOGIN: '/login',
+	DELIVERY: '/delivery',
+	PROFILE: '/profile',
+	REGISTER: '/register',
+};
