@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

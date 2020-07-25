@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, Fragment } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AlertContext from '../../context/alert/AlertContext';
 import { clearErrors, login } from '../../actions/auth';
 import { connect } from 'react-redux';
