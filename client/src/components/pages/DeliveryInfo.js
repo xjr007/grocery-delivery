@@ -1,5 +1,5 @@
 import React from 'react';
-
+// MUST STILL ADD MAP OF COURIER OUTPOSTS
 const DeliveryInfo = () => {
 	return (
 		<div className='container delivery-info'>
