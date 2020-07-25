@@ -11,6 +11,7 @@ import Register from './components/auth/Register';
 import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
 import Delivery from './components/pages/createDelivery';
+import Contact from './components/pages/Contact';
 
 import { ROUTES } from './types';
 import Profile from './components/pages/Profile';
@@ -34,6 +35,7 @@ const App = () => {
 								<PrivateRoute exact path={ROUTES.HOME} component={Home} />
 								<Route exact path={ROUTES.LOGIN} component={Login} />
 								<Route exact path={ROUTES.REGISTER} component={Register} />
+								<Route exact path={ROUTES.CONTACT} component={Contact} />
 								<PrivateRoute exact path={ROUTES.DELIVERY} component={Delivery} />
 								<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
 							</Switch>

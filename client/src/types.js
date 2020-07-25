@@ -33,6 +33,8 @@ export const ROUTES = {
 	HOME: '/',
 	LOGIN: '/login',
 	DELIVERY: '/delivery',
+	DELIVERYINFO: '/delivery-information',
 	PROFILE: '/profile',
 	REGISTER: '/register',
+	CONTACT: '/contact',
 };
