@@ -29,7 +29,9 @@ const DeliveryInfo = () => {
 					Expect your order to be delivered within 40 - 50 minutes. <br /> Need faster deliveries? <br />{' '}
 					Use our <span>High Priority</span> courier services, ETA 20 - 30 minutes <br />
 				</p>
-				<p className='solo-center'>View our delivery zones here.</p>
+				<p className='solo-center'>
+					View our delivery zones <a href='#'>here.</a>
+				</p>
 			</div>
 		</div>
 	);

@@ -96,6 +96,10 @@
 	margin-top: 3rem;
 }
 
+.delivery-content p span {
+	font-weight: bolder;
+}
+
 .delivery-content-1 {
 	margin-top: 3rem;
 	text-align: center;
