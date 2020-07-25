@@ -37,7 +37,7 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 						<LinkContainer to={ROUTES.HOME}>
 							<Nav.Link>Home</Nav.Link>
 						</LinkContainer>
-						<LinkContainer to='/'>
+						<LinkContainer to={ROUTES.ABOUT}>
 							<Nav.Link>About us</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to='/'>

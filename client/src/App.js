@@ -10,6 +10,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
+import About from './components/pages/About';
 import Delivery from './components/pages/createDelivery';
 import Contact from './components/pages/Contact';
 
@@ -38,6 +39,7 @@ const App = () => {
 								<Route exact path={ROUTES.CONTACT} component={Contact} />
 								<PrivateRoute exact path={ROUTES.DELIVERY} component={Delivery} />
 								<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
+								<Route exact path={ROUTES.ABOUT} component={About} />
 							</Switch>
 						</div>
 					</Fragment>
