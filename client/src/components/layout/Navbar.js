@@ -10,7 +10,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import { Dropdown } from 'react-bootstrap';
 
-const NavbarComp = ({ auth: { isAuthenticated }, logout }) => {
+const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 	return (
 		<div>
 			<Nav>
@@ -23,33 +23,38 @@ const NavbarComp = ({ auth: { isAuthenticated }, logout }) => {
 						<LinkContainer to={ROUTES.PROFILE}>
 							<Dropdown.Item>Account</Dropdown.Item>
 						</LinkContainer>
-
 						<Dropdown.Divider />
-						<Dropdown.Item onClick={logout}>Log out</Dropdown.Item>
+
+						{isAuthenticated && !loading && <Dropdown.Item onClick={logout}>Log out</Dropdown.Item>}
 					</Dropdown.Menu>
 				</Dropdown>
 			</Nav>
 
-			<Nav className='justify-content-center'>
-				<LinkContainer to={ROUTES.HOME}>
-					<Nav.Link>Home</Nav.Link>
-				</LinkContainer>
-				<LinkContainer to='/'>
-					<Nav.Link>About us</Nav.Link>
-				</LinkContainer>
-				<LinkContainer to='/'>
-					<Nav.Link>Search</Nav.Link>
-				</LinkContainer>
-				<LinkContainer to='/'>
-					<Nav.Link>Shop</Nav.Link>
-				</LinkContainer>
-				<LinkContainer to='/'>
-					<Nav.Link>Delivery</Nav.Link>
-				</LinkContainer>
-				<LinkContainer to='/'>
-					<Nav.Link>Contact</Nav.Link>
-				</LinkContainer>
-			</Nav>
+			<Navbar collapseOnSelect expand='md' bg='light' variant='light' className=''>
+				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+				<Navbar.Collapse id='responsive-navbar-nav'>
+					<Nav className='ml-auto mr-auto'>
+						<LinkContainer to={ROUTES.HOME}>
+							<Nav.Link>Home</Nav.Link>
+						</LinkContainer>
+						<LinkContainer to='/'>
+							<Nav.Link>About us</Nav.Link>
+						</LinkContainer>
+						<LinkContainer to='/'>
+							<Nav.Link>Search</Nav.Link>
+						</LinkContainer>
+						<LinkContainer to='/'>
+							<Nav.Link>Shop</Nav.Link>
+						</LinkContainer>
+						<LinkContainer to='/'>
+							<Nav.Link>Delivery</Nav.Link>
+						</LinkContainer>
+						<LinkContainer to='/'>
+							<Nav.Link>Contact</Nav.Link>
+						</LinkContainer>
+					</Nav>
+				</Navbar.Collapse>
+			</Navbar>
 		</div>
 
 		// <Navbar collapseOnSelect expand='lg' bg='light' variant='light'>
