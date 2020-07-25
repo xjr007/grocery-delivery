@@ -84,3 +84,37 @@
 .about a {
 	margin: 2rem;
 }
+
+/*Delivery Info*/
+
+.delivery-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-flow: column;
+	margin-top: 3rem;
+}
+
+.delivery-content-1 {
+	margin-top: 3rem;
+	text-align: center;
+}
+.delivery-content-1 h6 {
+	margin-bottom: 1rem;
+}
+
+.solo-center {
+	margin-top: 3rem;
+	text-align: center;
+	color: green;
+}
+
+.delivery-content {
+	margin-top: 3rem;
+	text-align: center;
+}
+
+.delivery-content h6 {
+	margin-bottom: 1rem;
+}
