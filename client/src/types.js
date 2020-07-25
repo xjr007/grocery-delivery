@@ -31,6 +31,7 @@ export const PRODUCTS_ERROR = 'PRODUCTS_ERROR';
 
 export const ROUTES = {
 	HOME: '/',
+	ABOUT: '/about',
 	LOGIN: '/login',
 	DELIVERY: '/delivery',
 	PROFILE: '/profile',
