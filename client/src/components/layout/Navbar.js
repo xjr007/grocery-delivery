@@ -46,10 +46,10 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 						<LinkContainer to='/'>
 							<Nav.Link>Shop</Nav.Link>
 						</LinkContainer>
-						<LinkContainer to='/'>
-							<Nav.Link>Delivery</Nav.Link>
+						<LinkContainer to={ROUTES.DELIVERYINFO}>
+							<Nav.Link>Delivery Info</Nav.Link>
 						</LinkContainer>
-						<LinkContainer to='/'>
+						<LinkContainer to={ROUTES.CONTACT}>
 							<Nav.Link>Contact</Nav.Link>
 						</LinkContainer>
 					</Nav>
