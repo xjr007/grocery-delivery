@@ -8,48 +8,68 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
+import { Dropdown } from 'react-bootstrap';
 
 const NavbarComp = ({ auth: { isAuthenticated }, logout }) => {
 	return (
-		<Navbar collapseOnSelect expand='lg' bg='light' variant='light'>
-			<LinkContainer to={ROUTES.HOME}>
-				<Nav.Link>
-					<Navbar.Brand>Buy&Dash</Navbar.Brand>
-				</Nav.Link>
-			</LinkContainer>
+		<div>
+			<Nav>
+				<LinkContainer to={ROUTES.HOME}>
+					<Nav.Link>Buy&Dash</Nav.Link>
+				</LinkContainer>
+				<Dropdown as={Nav.Item} className='ml-auto'>
+					<Dropdown.Toggle as={Nav.Link}>Profile</Dropdown.Toggle>
+					<Dropdown.Menu>
+						<LinkContainer to={ROUTES.PROFILE}>
+							<Dropdown.Item>Account</Dropdown.Item>
+						</LinkContainer>
 
-			<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-			<Navbar.Collapse id='responsive-navbar-nav'>
-				<Nav className='ml-auto'>
-					<LinkContainer to={ROUTES.HOME}>
-						<Nav.Link>Home</Nav.Link>
-					</LinkContainer>
+						<Dropdown.Divider />
+						<Dropdown.Item onClick={logout}>Log out</Dropdown.Item>
+					</Dropdown.Menu>
+				</Dropdown>
+			</Nav>
 
-					{isAuthenticated && (
-						<NavDropdown title='Account' id='collasible-nav-dropdown'>
-							<LinkContainer to={ROUTES.PROFILE}>
-								<DropdownItem>Profile</DropdownItem>
-							</LinkContainer>
-							<NavDropdown.Divider />
+			<Nav className='justify-content-center'>
+				<LinkContainer to={ROUTES.HOME}>
+					<Nav.Link>Home</Nav.Link>
+				</LinkContainer>
+				<LinkContainer to='/'>
+					<Nav.Link>About us</Nav.Link>
+				</LinkContainer>
+				<LinkContainer to='/'>
+					<Nav.Link>Search</Nav.Link>
+				</LinkContainer>
+				<LinkContainer to='/'>
+					<Nav.Link>Shop</Nav.Link>
+				</LinkContainer>
+				<LinkContainer to='/'>
+					<Nav.Link>Delivery</Nav.Link>
+				</LinkContainer>
+				<LinkContainer to='/'>
+					<Nav.Link>Contact</Nav.Link>
+				</LinkContainer>
+			</Nav>
+		</div>
 
-							<LinkContainer to='' onClick={logout}>
-								<DropdownItem>Log out</DropdownItem>
-							</LinkContainer>
-						</NavDropdown>
-					)}
-					{!isAuthenticated && (
-						<Nav>
-							<LinkContainer to={ROUTES.LOGIN}>
-								<Nav.Link>Login</Nav.Link>
-							</LinkContainer>
-							<LinkContainer to={ROUTES.REGISTER}>
-								<Nav.Link>Register</Nav.Link>
-							</LinkContainer>
-						</Nav>
-					)}
-				</Nav>
-			</Navbar.Collapse>
-		</Navbar>
+		// <Navbar collapseOnSelect expand='lg' bg='light' variant='light'>
+		// 	<LinkContainer to={ROUTES.HOME}>
+		// 		<Nav.Link>
+		// 			<Navbar.Brand>Buy&Dash</Navbar.Brand>
+		// 		</Nav.Link>
+		// 	</LinkContainer>
+
+		// 	<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+		// 	<Navbar.Collapse id='responsive-navbar-nav'>
+		// 		<Nav fill variant='tabs' defaultActiveKey={ROUTES.HOME} className='justify-content-center'>
+		// 			<LinkContainer to={ROUTES.HOME}>
+		// 				<Nav.Item>Home</Nav.Item>
+		// 			</LinkContainer>
+		// 		</Nav>
+
+		// 	</Navbar.Collapse>
+		// </Navbar>
+
 		// <navbar className='navbar  '>
 		// 	<Link to={ROUTES.HOME}>
 		// 		{' '}
