@@ -3,7 +3,6 @@ import { fetchOrders } from '../../actions/orders';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Order from '../layout/Order';
-import { loadUser } from '../../actions/auth';
 
 const Profile = ({ auth: { isAuthenticated, loading }, fetchOrders }) => {
 	useEffect(() => {
