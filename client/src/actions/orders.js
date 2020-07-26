@@ -15,7 +15,7 @@ export const fetchOrders = () => async dispatch => {
 		const res = await axios.get('/api/orders');
 		dispatch({ type: FETCH_ORDERS, payload: res.data });
 	} catch (err) {
-		dispatch({ type: ORDER_ERROR, payload: err.response.msg });
+		dispatch({ type: ORDER_ERROR, payload: err.response.data.msg });
 	}
 	loadUser();
 };
@@ -31,7 +31,7 @@ export const createOrder = order => async dispatch => {
 		const res = await axios.post('/api/orders', order, config);
 		dispatch({ type: CREATE_ORDER, payload: res.data });
 	} catch (err) {
-		dispatch({ type: ORDER_ERROR, payload: err.response.msg });
+		dispatch({ type: ORDER_ERROR, payload: err.response.data.msg });
 	}
 };
 
@@ -46,7 +46,7 @@ export const updateOrder = order => async dispatch => {
 		const res = await axios.put(`/api/contacts/${order._id}`, order, config);
 		dispatch({ type: UPDATE_ORDER, payload: res.data });
 	} catch (err) {
-		dispatch({ type: ORDER_ERROR, payload: err.response.msg });
+		dispatch({ type: ORDER_ERROR, payload: err.response.data.msg });
 	}
 };
 
@@ -60,7 +60,7 @@ export const deleteOrder = id => async dispatch => {
 	} catch (err) {
 		dispatch({
 			type: ORDER_ERROR,
-			payload: err.response.msg,
+			payload: err.response.data.msg,
 		});
 	}
 };

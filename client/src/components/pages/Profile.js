@@ -3,6 +3,9 @@ import { fetchOrders } from '../../actions/orders';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Order from '../layout/Order';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import { ROUTES } from '../../types';
 
 const Profile = ({ auth: { isAuthenticated, loading }, fetchOrders }) => {
 	useEffect(() => {
@@ -15,10 +18,17 @@ const Profile = ({ auth: { isAuthenticated, loading }, fetchOrders }) => {
 
 	return (
 		<div>
-			<h1>Profile</h1>
 			{!loading && isAuthenticated && (
 				<div>
-					<Order />
+					<h2>Profile</h2>
+					<Tabs defaultActiveKey='user-info'>
+						<Tab className='tab-key' eventKey='user-info' title='Personal Info'>
+							<h4>User</h4>
+						</Tab>
+						<Tab className='tab-key' eventKey='order' title='Order'>
+							<Order />
+						</Tab>
+					</Tabs>
 				</div>
 			)}
 		</div>
