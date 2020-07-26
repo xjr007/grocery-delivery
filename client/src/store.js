@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import products from './reducers/products';
 import auth from './reducers/auth';
 import cart from './reducers/cart';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import orders from './reducers/orders';
 
 const middleware = [thunk];
