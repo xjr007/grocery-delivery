@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => {
 	return (
 		<div className='about d-flex flex-column justify-content-center align-items-center align-items-center '>
-			<h1>About</h1>
+			<h4>About</h4>
 			<p>
 				Here at <b>Buy&Dash</b>, we wanted to create a safer option for our consumers to purchase their
 				groceries with ease.
