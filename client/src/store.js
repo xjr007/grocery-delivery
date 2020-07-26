@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 //  import reducer
 import products from './reducers/products';
@@ -31,7 +31,7 @@ const middleware = [thunk];
 
 // const persistedState = fetchFromLocalStorage();
 
-const appReducer = combineReducers({
+const rootReducer = combineReducers({
 	products: products,
 	auth: auth,
 	cart: cart,
@@ -49,11 +49,13 @@ const appReducer = combineReducers({
 
 const initialState = {};
 
-const store = createStore(
-	appReducer,
-	initialState,
-	composeWithDevTools(applyMiddleware(...middleware))
-);
+const store = createStore(rootReducer, initialState, compose(applyMiddleware(...middleware)));
+
+// const store = createStore(
+// 	appReducer,
+// 	initialState,
+// 	composeWithDevTools(applyMiddleware(...middleware))
+// );
 
 // store.subscribe(() => saveToLocalStorage(store.getState()));
 
