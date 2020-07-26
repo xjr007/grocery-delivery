@@ -1,57 +1,86 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteOrder, setOrder } from '../../actions/orders';
+import { deleteOrder } from '../../actions/orders';
+import AlertContext from '../../context/alert/AlertContext';
+import { clearErrors, loadUser } from '../../actions/auth';
 
-const Order = ({ deleteOrder, setOrder, orders }) => {
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated, loading }, clearErrors }) => {
+	const alertContext = useContext(AlertContext);
+	const { setAlert } = alertContext;
+
+	const date = new Intl.DateTimeFormat('en-GB', {
+		year: 'numeric',
+		month: 'long',
+		day: '2-digit',
+	});
+
+	useEffect(() => {
+		if (error) {
+			setAlert(error, 'danger');
+			clearErrors();
+		}
+	});
 	const onDelete = order => {
 		deleteOrder(order._id);
-		// setOrder(order);
 	};
+
+	console.log(orders);
 	return (
 		<div>
-			{orders &&
+			{orders !== null && orders.length !== 0 && isAuthenticated && !loading ? (
 				orders.map(order => (
-					<div className='card bg-light'>
-						<ul className='order'>
-							<li key={order._id}>
-								<div className='ref-number'>Reference Number: #{order.referenceNumber}</div>
-								<div className='delivery-type'>Delivery Type: {order.deliveryType}</div>
-								<div className='item-list'>
-									<select>
-										<option>View list</option>
-										{order.cartOrder.map(item => (
-											<option key={item._id} value={item.item}>
-												{item.item}
-											</option>
-										))}
-									</select>
-								</div>
-							</li>
-						</ul>
-						<p>
-							<button className='button' onClick={() => setOrder(order)}>
-								Edit
-							</button>
-							<button className='button' onClick={() => onDelete(order)}>
+					<Card className='order' key={order._id}>
+						<Card.Header>Reference Number: #{order.referenceNumber}</Card.Header>
+						<Card.Body>
+							<Card.Title>Order created: {date.format(Date.parse(order.createdAt))}</Card.Title>
+							<Card.Title>Order type: {order.deliveryType}</Card.Title>
+
+							<Dropdown>
+								<Dropdown.Toggle className='button-left' variant='success' id='dropdown-basic'>
+									View items
+								</Dropdown.Toggle>
+
+								{order.cartOrder.map(item => (
+									<Dropdown.Menu key={item._id}>
+										<Dropdown.Item>{item.item}</Dropdown.Item>
+									</Dropdown.Menu>
+								))}
+							</Dropdown>
+
+							<Button className='button' onClick={() => onDelete(order)}>
 								Delete
-							</button>
-						</p>
-					</div>
-				))}
+							</Button>
+						</Card.Body>
+					</Card>
+				))
+			) : (
+				<h6 className='no-order'>
+					<span>You don't have any orders!</span> <span>Purchase an item to place an order...</span>
+				</h6>
+			)}
 		</div>
 	);
 };
 
 Order.propTypes = {
+	auth: PropTypes.object.isRequired,
 	orders: PropTypes.array,
 	deleteOrder: PropTypes.func.isRequired,
+	clearErrors: PropTypes.func.isRequired,
+	loadUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
 	orders: state.orders.orders,
+	auth: state.auth,
 });
 export default connect(mapStateToProps, {
 	deleteOrder,
-	setOrder,
+	clearErrors,
+	loadUser,
 })(Order);

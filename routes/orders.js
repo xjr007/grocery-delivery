@@ -14,8 +14,7 @@ router.get('/', auth, async (req, res) => {
 		const orders = await Order.find({ user: req.user._id }).sort({ timestamps: -1 });
 		res.json(orders);
 	} catch (err) {
-		console.error(err.message);
-		res.status(500).send('Error loading orders');
+		res.status(500).json('Error loading orders');
 	}
 });
 
@@ -41,8 +40,7 @@ router.post(
 			const saveOrder = await newOrder.save();
 			res.json(saveOrder);
 		} catch (err) {
-			console.error(err.message);
-			res.status(500).send('Error saving order to db');
+			res.status(500).json({ msg: 'Error saving order to db' });
 		}
 	}
 );
@@ -53,17 +51,15 @@ router.delete('/:id', auth, async (req, res) => {
 
 		if (!order) return res.status(404).json({ msg: 'Order does not exist' });
 
-		// Make sure user owns contact
 		if (order.user.toString() !== req.user._id) {
-			return res.status(401).json({ msg: 'Not authorised' });
+			return res.status(401).json({ msg: 'User does not exist' });
 		}
 
 		await Order.findByIdAndRemove(req.params.id);
 
 		res.json({ msg: 'Order removed' });
 	} catch (err) {
-		console.error(err.message);
-		res.status(500).send('Server Error');
+		res.status(500).json({ msg: 'Server Error' });
 	}
 });
 

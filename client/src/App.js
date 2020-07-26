@@ -14,9 +14,10 @@ import About from './components/pages/About';
 import CreateDelivery from './components/pages/createDelivery';
 import DeliveryInfo from './components/pages/DeliveryInfo';
 import Contact from './components/pages/Contact';
+import Profile from './components/pages/Profile';
 
 import { ROUTES } from './types';
-import Profile from './components/pages/Profile';
+
 import NavbarComp from './components/layout/Navbar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
