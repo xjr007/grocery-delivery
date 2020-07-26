@@ -164,4 +164,24 @@ a {
 
 .order {
 	margin: 1rem;
+	margin-top: 3rem !important;
+}
+
+.no-order {
+	margin-top: 3rem !important;
+	margin: 1rem;
+}
+
+.no-order {
+	text-align: justify;
+}
+
+.no-order span {
+	font-weight: bolder;
+}
+/*Profile: User*/
+
+.prof-form {
+	margin-top: 3rem !important;
+	margin: 1rem;
 }

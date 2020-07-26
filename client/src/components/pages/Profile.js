@@ -3,6 +3,7 @@ import { fetchOrders } from '../../actions/orders';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Order from '../layout/Order';
+import User from '../layout/User';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import { ROUTES } from '../../types';
@@ -23,7 +24,7 @@ const Profile = ({ auth: { isAuthenticated, loading }, fetchOrders }) => {
 					<h2>Profile</h2>
 					<Tabs defaultActiveKey='user-info'>
 						<Tab className='tab-key' eventKey='user-info' title='Personal Info'>
-							<h4>User</h4>
+							<User />
 						</Tab>
 						<Tab className='tab-key' eventKey='order' title='Order'>
 							<Order />

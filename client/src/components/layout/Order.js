@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated }, clearErrors }) => {
+const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated, loading }, clearErrors }) => {
 	const alertContext = useContext(AlertContext);
 	const { setAlert } = alertContext;
 
@@ -28,10 +28,11 @@ const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated }, clearErr
 	const onDelete = order => {
 		deleteOrder(order._id);
 	};
+
+	console.log(orders);
 	return (
 		<div>
-			{orders &&
-				isAuthenticated &&
+			{orders !== null && orders.length !== 0 && isAuthenticated && !loading ? (
 				orders.map(order => (
 					<Card className='order' key={order._id}>
 						<Card.Header>Reference Number: #{order.referenceNumber}</Card.Header>
@@ -56,7 +57,12 @@ const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated }, clearErr
 							</Button>
 						</Card.Body>
 					</Card>
-				))}
+				))
+			) : (
+				<h6 className='no-order'>
+					<span>You don't have any orders!</span> <span>Purchase an item to place an order...</span>
+				</h6>
+			)}
 		</div>
 	);
 };
