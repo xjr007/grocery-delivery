@@ -21,6 +21,7 @@ import { ROUTES } from './types';
 import NavbarComp from './components/layout/Navbar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Shop from './components/pages/Shop';
 
 const App = () => {
 	if (localStorage.token) {
@@ -35,9 +36,10 @@ const App = () => {
 							<NavbarComp />
 							<Alerts />
 							<Switch>
-								<PrivateRoute exact path={ROUTES.HOME} component={Home} />
 								<PrivateRoute exact path={ROUTES.DELIVERY} component={CreateDelivery} />
 								<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
+								<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />
+								<Route exact path={ROUTES.HOME} component={Home} />
 								<Route exact path={ROUTES.LOGIN} component={Login} />
 								<Route exact path={ROUTES.REGISTER} component={Register} />
 								<Route exact path={ROUTES.CONTACT} component={Contact} />

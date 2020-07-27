@@ -51,7 +51,7 @@ const Contact = () => {
 		<Form
 			noValidate
 			validated={validated}
-			className='align-items-center flex-column  d-flex'
+			className='align-items-center flex-column d-flex'
 			onSubmit={onSubmit}
 			action='https://formspree.io/mjvapdoq'
 			method='POST'>

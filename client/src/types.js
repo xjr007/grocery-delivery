@@ -38,5 +38,6 @@ export const ROUTES = {
 	PROFILE: '/profile',
 	REGISTER: '/register',
 	CONTACT: '/contact',
-	ORDER: 'order',
+	ORDER: '/order',
+	SHOP: '/shop',
 };
