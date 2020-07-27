@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/products';
 import PropTypes from 'prop-types';
 import { addToCart } from '../../actions/cart';
+import Button from 'react-bootstrap/Button';
 
 const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts, addToCart }) => {
 	const [product, setProduct] = useState(null);
@@ -42,9 +43,9 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 										<h5>{product.title}</h5>
 									</a>
 									<div className='product-price'>{formatCurrency(product.price)}</div>
-									<button className='button primary' onClick={() => addToCart(product)}>
+									<Button className='button primary' onClick={() => addToCart(product)}>
 										Add To Cart
-									</button>{' '}
+									</Button>{' '}
 									*
 								</div>
 							</li>
