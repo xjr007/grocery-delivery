@@ -43,7 +43,7 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 						<LinkContainer to='/'>
 							<Nav.Link>Search</Nav.Link>
 						</LinkContainer>
-						<LinkContainer to='/'>
+						<LinkContainer to={ROUTES.SHOP}>
 							<Nav.Link>Shop</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.DELIVERYINFO}>

@@ -21,6 +21,7 @@ import { ROUTES } from './types';
 import NavbarComp from './components/layout/Navbar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Shop from './components/pages/Shop';
 
 const App = () => {
 	if (localStorage.token) {
@@ -43,6 +44,7 @@ const App = () => {
 								<Route exact path={ROUTES.CONTACT} component={Contact} />
 								<Route exact path={ROUTES.DELIVERYINFO} component={DeliveryInfo} />
 								<Route exact path={ROUTES.ABOUT} component={About} />
+								<Route exact path={ROUTES.SHOP} component={Shop} />
 							</Switch>
 						</div>
 					</Fragment>

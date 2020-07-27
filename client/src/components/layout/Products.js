@@ -33,7 +33,7 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 				{!products || (isAuthenticated && loading) ? (
 					<div>Loading...</div>
 				) : (
-					<ul className='products'>
+					<ul className='products container d-flex flex-column'>
 						{products.map(product => (
 							<li key={product._id}>
 								<div className='product'>
@@ -69,7 +69,7 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 								<div className='product-price'>
 									<div>{formatCurrency(product.price)}</div>
 									<button
-										className='button primary'
+										className='button'
 										onClick={() => {
 											addToCart(product);
 											closeModal();
