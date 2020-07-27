@@ -36,15 +36,15 @@ const App = () => {
 							<NavbarComp />
 							<Alerts />
 							<Switch>
-								<PrivateRoute exact path={ROUTES.HOME} component={Home} />
 								<PrivateRoute exact path={ROUTES.DELIVERY} component={CreateDelivery} />
 								<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
+								<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />
+								<Route exact path={ROUTES.HOME} component={Home} />
 								<Route exact path={ROUTES.LOGIN} component={Login} />
 								<Route exact path={ROUTES.REGISTER} component={Register} />
 								<Route exact path={ROUTES.CONTACT} component={Contact} />
 								<Route exact path={ROUTES.DELIVERYINFO} component={DeliveryInfo} />
 								<Route exact path={ROUTES.ABOUT} component={About} />
-								<Route exact path={ROUTES.SHOP} component={Shop} />
 							</Switch>
 						</div>
 					</Fragment>
