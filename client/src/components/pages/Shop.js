@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import { sortProducts } from '../../actions/products';
+import { loadUser } from '../../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Products from '../layout/Products';
 import { Dropdown, ButtonGroup } from 'react-bootstrap';
 import Cart from '../layout/Cart';
 
-const Shop = ({ sort, filteredProducts, sortProducts }) => {
+const Shop = ({
+	auth: { isAuthenticated, loading },
+	sort,
+	filteredProducts,
+	sortProducts,
+	loadUser,
+}) => {
+	useEffect(() => {
+		loadUser();
+		//eslint-disable-next-line
+	}, [loadUser]);
+
 	const onChange = e => {
 		e.preventDefault();
-		sortProducts(filteredProducts, e.target.value);
+		try {
+			sortProducts(filteredProducts, e.target.value);
+		} catch (err) {
+			console.log(err);
+		}
 	};
-	return !filteredProducts ? (
+	return !filteredProducts && !isAuthenticated && !loading ? (
 		<div>Loading...</div>
 	) : (
 		<div>
@@ -44,12 +60,15 @@ const Shop = ({ sort, filteredProducts, sortProducts }) => {
 };
 
 Shop.propTypes = {
+	auth: PropTypes.object.isRequired,
 	products: PropTypes.array,
 	sort: PropTypes.string,
 	filteredProducts: PropTypes.array,
+	loadUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
+	auth: state.auth,
 	products: state.products.items,
 	sort: state.products.sort,
 	filteredProducts: state.products.filteredItems,
@@ -57,4 +76,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
 	sortProducts,
+	loadUser,
 })(Shop);

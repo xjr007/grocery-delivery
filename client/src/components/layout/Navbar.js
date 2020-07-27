@@ -15,7 +15,16 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 		<div>
 			<Nav>
 				<LinkContainer to={ROUTES.HOME}>
-					<Nav.Link>Buy&Dash</Nav.Link>
+					<Nav.Link>
+						<span>B</span>
+						<span>U</span>
+						<span>Y</span>
+						<span className='ampersamp'>&</span>
+						<span>D</span>
+						<span>A</span>
+						<span>S</span>
+						<span>H</span>
+					</Nav.Link>
 				</LinkContainer>
 				<Dropdown as={Nav.Item} className='ml-auto'>
 					<Dropdown.Toggle as={Nav.Link}>Profile</Dropdown.Toggle>

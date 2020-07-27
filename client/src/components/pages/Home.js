@@ -5,23 +5,34 @@ import { connect } from 'react-redux';
 import Filter from '../layout/Filter';
 import Products from '../layout/Products';
 import Cart from '../layout/Cart';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../types';
 
-const Home = ({ loadUser }) => {
+const Home = ({ auth: { isAuthenticated, loading }, loadUser }) => {
 	useEffect(() => {
 		loadUser();
 	}, [loadUser]);
-
 	return (
-		<div className='home'>
-			<Filter />
-			<Cart />
-			<Products />
+		<div className='container d-flex justify-content-center align-items-center flex-wrap flex-column mt-5'>
+			<h1>Welcome to BUY&DASH</h1>
+			{!isAuthenticated && !loading ? (
+				<div>
+					<p>Create an account to start purchasing!</p>
+					<Link to={ROUTES.REGISTER}>Create Account</Link>
+				</div>
+			) : (
+				<span>Select a few goodies and your order will be on its way</span>
+			)}
 		</div>
 	);
 };
 
 Home.propTypes = {
 	loadUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
 };
 
-export default connect(null, { loadUser })(Home);
+const mapStateToProps = state => ({
+	auth: state.auth,
+});
+export default connect(mapStateToProps, { loadUser })(Home);
