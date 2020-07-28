@@ -9,98 +9,71 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import { Dropdown } from 'react-bootstrap';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 	return (
-		<div>
+		<Nav className='d-flex flex-column sticky-top nav-custom'>
 			<Nav>
 				<LinkContainer to={ROUTES.HOME}>
 					<Nav.Link>
-						<span>B</span>
-						<span>U</span>
-						<span>Y</span>
+						<span className='d-logo'>B</span>
+						<span className='d-logo'>U</span>
+						<span className='d-logo'>Y</span>
 						<span className='ampersamp'>&</span>
-						<span>D</span>
-						<span>A</span>
-						<span>S</span>
-						<span>H</span>
+						<span className='d-logo'>D</span>
+						<span className='d-logo'>A</span>
+						<span className='d-logo'>S</span>
+						<span className='d-logo'>H</span>
 					</Nav.Link>
 				</LinkContainer>
-				<Dropdown as={Nav.Item} className='ml-auto'>
-					<Dropdown.Toggle as={Nav.Link}>Profile</Dropdown.Toggle>
-					<Dropdown.Menu>
+				{isAuthenticated ? (
+					<DropdownButton as={Nav.Item} className='ml-auto' title='Profile'>
 						<LinkContainer to={ROUTES.PROFILE}>
 							<Dropdown.Item>Account</Dropdown.Item>
 						</LinkContainer>
 						<Dropdown.Divider />
 
 						{isAuthenticated && !loading && <Dropdown.Item onClick={logout}>Log out</Dropdown.Item>}
-					</Dropdown.Menu>
-				</Dropdown>
+					</DropdownButton>
+				) : (
+					<div className='ml-auto d-flex flex-row'>
+						{' '}
+						<LinkContainer to={ROUTES.LOGIN}>
+							<Nav.Link>Login </Nav.Link>
+						</LinkContainer>
+						<LinkContainer to={ROUTES.REGISTER}>
+							<Nav.Link>Register </Nav.Link>
+						</LinkContainer>
+					</div>
+				)}
 			</Nav>
-
-			<Navbar collapseOnSelect expand='md' bg='light' variant='light' className=''>
+			<Navbar collapseOnSelect className=' ml-auto' expand='lg' variant='light'>
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-				<Navbar.Collapse id='responsive-navbar-nav'>
-					<Nav className='ml-auto mr-auto'>
+				<Navbar.Collapse id='responsive-navbar-nav '>
+					<Nav>
 						<LinkContainer to={ROUTES.HOME}>
-							<Nav.Link>Home</Nav.Link>
+							<Nav.Link className='link'>Home</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.ABOUT}>
-							<Nav.Link>About us</Nav.Link>
+							<Nav.Link className='link'>About us</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to='/'>
-							<Nav.Link>Search</Nav.Link>
+							<Nav.Link className='link'>Search</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.SHOP}>
-							<Nav.Link>Shop</Nav.Link>
+							<Nav.Link className='link'>Shop</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.DELIVERYINFO}>
-							<Nav.Link>Delivery Info</Nav.Link>
+							<Nav.Link className='link'>Delivery Info</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.CONTACT}>
-							<Nav.Link>Contact</Nav.Link>
+							<Nav.Link className='link'>Contact</Nav.Link>
 						</LinkContainer>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
-		</div>
-
-		// <Navbar collapseOnSelect expand='lg' bg='light' variant='light'>
-		// 	<LinkContainer to={ROUTES.HOME}>
-		// 		<Nav.Link>
-		// 			<Navbar.Brand>Buy&Dash</Navbar.Brand>
-		// 		</Nav.Link>
-		// 	</LinkContainer>
-
-		// 	<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-		// 	<Navbar.Collapse id='responsive-navbar-nav'>
-		// 		<Nav fill variant='tabs' defaultActiveKey={ROUTES.HOME} className='justify-content-center'>
-		// 			<LinkContainer to={ROUTES.HOME}>
-		// 				<Nav.Item>Home</Nav.Item>
-		// 			</LinkContainer>
-		// 		</Nav>
-
-		// 	</Navbar.Collapse>
-		// </Navbar>
-
-		// <navbar className='navbar  '>
-		// 	<Link to={ROUTES.HOME}>
-		// 		{' '}
-		// 		<span className='logo'>Logo</span>
-		// 	</Link>
-		// 	<nav className=' navbar-collapse navbar-nav'>
-		// 		<Link to={ROUTES.LOGIN}>
-		// 			<span className='nav-login'>Login</span>
-		// 		</Link>
-		// 		<Link to={ROUTES.PROFILE}>
-		// 			<span className='nav-profile'>Profile</span>
-		// 		</Link>
-		// 		<Link to={ROUTES.LOGIN} onClick={logout}>
-		// 			Logout
-		// 		</Link>
-		// 	</nav>
-		// </navbar>
+		</Nav>
 	);
 };
 

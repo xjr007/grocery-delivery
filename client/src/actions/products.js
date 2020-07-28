@@ -26,7 +26,9 @@ export const sortCategory = (products, selectedCategory) => dispatch => {
 		payload: {
 			selectedCategory: selectedCategory,
 			items:
-				selectedCategory === '' ? products : products.filter(item => item.category === 'Clothing'),
+				selectedCategory === ''
+					? products
+					: products.filter(item => item.category === selectedCategory),
 		},
 	});
 };

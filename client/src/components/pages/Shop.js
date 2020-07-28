@@ -69,7 +69,7 @@ const Shop = ({
 								title='Sort Category'>
 								<option value=''>Category</option>
 								<option value='Clothing'>Clothing</option>
-								<option value='Sport'>Sport</option>
+								<option value='Sports'>Sports</option>
 								<option value='Electronics'>Electronics</option>
 							</Form.Control>
 						</Form.Group>
