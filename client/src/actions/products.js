@@ -1,4 +1,9 @@
-import { FETCH_PRODUCTS, ORDER_PRODUCTS_BY_PRICE, PRODUCTS_ERROR } from '../types';
+import {
+	FETCH_PRODUCTS,
+	ORDER_PRODUCTS_BY_PRICE,
+	PRODUCTS_ERROR,
+	ORDER_BY_CATEGORY,
+} from '../types';
 import axios from 'axios';
 
 export const fetchProducts = () => async dispatch => {
@@ -15,15 +20,25 @@ export const fetchProducts = () => async dispatch => {
 		});
 	}
 };
+export const sortCategory = (products, selectedCategory) => dispatch => {
+	dispatch({
+		type: ORDER_BY_CATEGORY,
+		payload: {
+			selectedCategory: selectedCategory,
+			items:
+				selectedCategory === '' ? products : products.filter(item => item.category === 'Clothing'),
+		},
+	});
+};
 
 export const sortProducts = (filteredItems, sort) => dispatch => {
 	const sortedProducts = filteredItems.slice();
 
 	if (sort === 'latest') {
-		sortedProducts.sort((a, b) => (a._id > b._id ? 1 : -1));
+		sortedProducts.sort((itemA, itemB) => (itemA._id > itemB._id ? 1 : -1));
 	} else {
-		sortedProducts.sort((a, b) =>
-			sort === 'lowest' ? (a.price > b.price ? 1 : -1) : a.price > b.price ? -1 : 1
+		sortedProducts.sort((itemA, itemB) =>
+			sort === 'lowest' ? (itemA.price > itemB.price ? 1 : -1) : itemA.price > itemB.price ? -1 : 1
 		);
 	}
 
