@@ -31,10 +31,10 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 	return (
 		<div>
 			<Fade bottom cascade>
-				{!products || (isAuthenticated && loading) ? (
+				{!products || (!isAuthenticated && loading) ? (
 					<div>Loading...</div>
 				) : (
-					<ul className='products container d-flex flex-column'>
+					<ul className='products d-flex flex-wrap'>
 						{products.map(product => (
 							<li key={product._id}>
 								<div className='product'>
@@ -46,7 +46,6 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 									<Button className='button primary' onClick={() => addToCart(product)}>
 										Add To Cart
 									</Button>{' '}
-									*
 								</div>
 							</li>
 						))}
