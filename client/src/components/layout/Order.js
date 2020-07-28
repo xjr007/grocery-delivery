@@ -7,7 +7,8 @@ import { clearErrors, loadUser } from '../../actions/auth';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Dropdown from 'react-bootstrap/Dropdown';
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated, loading }, clearErrors }) => {
 	const alertContext = useContext(AlertContext);
@@ -29,28 +30,23 @@ const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated, loading },
 		deleteOrder(order._id);
 	};
 
-	console.log(orders);
 	return (
 		<div>
-			{orders !== null && orders.length !== 0 && isAuthenticated && !loading ? (
+			{orders !== null && isAuthenticated && !loading ? (
 				orders.map(order => (
 					<Card className='order' key={order._id}>
 						<Card.Header>Reference Number: #{order.referenceNumber}</Card.Header>
 						<Card.Body>
 							<Card.Title>Order created: {date.format(Date.parse(order.createdAt))}</Card.Title>
 							<Card.Title>Order type: {order.deliveryType}</Card.Title>
-
-							<Dropdown>
-								<Dropdown.Toggle className='button-left' variant='success' id='dropdown-basic'>
-									View items
-								</Dropdown.Toggle>
-
+							{/* 
+							<DropdownButton id='dropdown-basic-button' title='Item List'>
 								{order.cartOrder.map(item => (
-									<Dropdown.Menu key={item._id}>
-										<Dropdown.Item>{item.item}</Dropdown.Item>
-									</Dropdown.Menu>
+									<Dropdown.Item key={item._id}>
+										<div>{item.title}</div>
+									</Dropdown.Item>
 								))}
-							</Dropdown>
+							</DropdownButton> */}
 
 							<Button className='button' onClick={() => onDelete(order)}>
 								Delete

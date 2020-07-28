@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import { sortProducts } from '../../actions/products';
@@ -8,7 +6,6 @@ import { loadUser } from '../../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Products from '../layout/Products';
-import { Dropdown, ButtonGroup } from 'react-bootstrap';
 import Cart from '../layout/Cart';
 
 const Shop = ({
