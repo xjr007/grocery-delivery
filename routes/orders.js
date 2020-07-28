@@ -5,16 +5,12 @@ const User = require('../models/User');
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
-// @route   GET api/orders
-// @desc    Get all users orders
-// @access  Private
-
 router.get('/', auth, async (req, res) => {
 	try {
 		const orders = await Order.find({ user: req.user._id }).sort({ timestamps: -1 });
 		res.json(orders);
 	} catch (err) {
-		res.status(500).json('Error loading orders');
+		res.status(500).json({ msg: 'Error loading orders' });
 	}
 });
 
@@ -28,6 +24,7 @@ router.post(
 		}
 
 		const { _id, referenceNumber, deliveryType, cartOrder } = req.body;
+
 		try {
 			const newOrder = new Order({
 				_id,

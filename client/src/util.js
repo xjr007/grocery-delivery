@@ -1,7 +1,13 @@
 import axios from 'axios';
 
 export const formatCurrency = num => {
-	return 'R' + Number(num.toFixed(1)).toLocaleString() + ' ';
+	let currencyZAR = null;
+	try {
+		currencyZAR = Number(num.toFixed(1)).toLocaleString() + ' ';
+		return 'R' + currencyZAR;
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 export const setAuthToken = token => {

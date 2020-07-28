@@ -107,10 +107,9 @@ const Register = ({
 					</div>
 					<input type='submit' value='Register' className='button' />
 					<br />
-					<div className='login-register'>
+					<div className='login-register container d-flex flex-column flex-wrap justify-content-center'>
 						<span>
-							Have an account?
-							<Link to={ROUTES.LOGIN}>Sign in</Link>
+							Already have an account? Sign in <Link to={ROUTES.LOGIN}> here</Link>.
 						</span>
 					</div>
 				</form>

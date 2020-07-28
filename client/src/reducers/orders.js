@@ -8,27 +8,25 @@ import {
 	CLEAR_ORDER,
 } from '../types';
 
-export const orders = (state = { orders: null }, action) => {
+export const orders = (state = { orders: null, current: null, error: null }, action) => {
 	switch (action.type) {
 		case FETCH_ORDERS:
 			return {
 				...state,
 				orders: action.payload,
-			};
-		case UPDATE_ORDER:
-			return {
-				...state,
-				orders: state.orders.map(order => (order._id === action.payload._id ? action.payload : order)),
+				loading: false,
 			};
 		case DELETE_ORDER:
 			return {
 				...state,
 				orders: state.orders.filter(order => order._id !== action.payload),
+				loading: false,
 			};
 		case ORDER_ERROR:
 			return {
 				...state,
 				error: action.payload,
+				loading: false,
 			};
 		case SET_ORDER:
 			return {
@@ -39,6 +37,14 @@ export const orders = (state = { orders: null }, action) => {
 			return {
 				...state,
 				current: null,
+				orders: null,
+				error: null,
+			};
+		case CREATE_ORDER:
+			return {
+				...state,
+				order: action.payload,
+				loading: false,
 			};
 		default:
 			return state;
