@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../types';
 import { formatCurrency } from '../../util';
@@ -23,6 +23,7 @@ const Cart = ({
 	removeFromCart,
 	setOrder,
 	createOrder,
+	clearErrors,
 	orders: { current },
 }) => {
 	const alertContext = useContext(AlertContext);
@@ -38,7 +39,16 @@ const Cart = ({
 		try {
 			setDeliveryType(e.target.value);
 
-			console.log('Order created!');
+			setAlert('Order created!', 'success');
+		} catch (err) {
+			setAlert(err, 'danger');
+		}
+	};
+
+	const onProceed = () => {
+		try {
+			setOrder({ ...cartItems });
+			setViewOrder({ ...cartItems });
 		} catch (err) {
 			setAlert(err, 'danger');
 		}
@@ -46,13 +56,10 @@ const Cart = ({
 
 	const onClick = () => {
 		try {
-			setOrder({ ...cartItems });
-			setViewOrder({ ...cartItems });
 			createOrder({
 				deliveryType: deliveryType,
 				cartOrder: viewOrder,
 			});
-
 			if (viewOrder) {
 				setViewOrder(null);
 			}
@@ -77,16 +84,16 @@ const Cart = ({
 							<div>{item.title}</div>
 							<div className='right'>
 								{formatCurrency(item.price)} x {item.count}
-								<Button className='button' type='button' onClick={() => removeFromCart(item)}>
+								<Button className='button' type='dropdown-toggle' onClick={() => removeFromCart(item)}>
 									Remove
 								</Button>
 							</div>
 						</Dropdown.Item>
 					))}
 					<Dropdown.Divider />
-					<Button type='button' className='button' onClick={onClick}>
+					<Dropdown.Item type='button' className='button' onClick={onProceed}>
 						Proceed
-					</Button>
+					</Dropdown.Item>
 				</DropdownButton>
 			)}
 
@@ -135,6 +142,7 @@ Cart.propTypes = {
 	setOrder: PropTypes.func.isRequired,
 	orders: PropTypes.object.isRequired,
 	createOrder: PropTypes.func.isRequired,
+	clearErrors: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -146,4 +154,5 @@ export default connect(mapStateToProps, {
 	removeFromCart,
 	setOrder,
 	createOrder,
+	clearErrors,
 })(Cart);

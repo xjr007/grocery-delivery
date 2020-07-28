@@ -35,21 +35,6 @@ export const createOrder = order => async dispatch => {
 	}
 };
 
-export const updateOrder = order => async dispatch => {
-	const config = {
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-
-	try {
-		const res = await axios.put(`/api/contacts/${order._id}`, order, config);
-		dispatch({ type: UPDATE_ORDER, payload: res.data });
-	} catch (err) {
-		dispatch({ type: ORDER_ERROR, payload: err.response.data.msg });
-	}
-};
-
 export const deleteOrder = id => async dispatch => {
 	try {
 		await axios.delete(`/api/orders/${id}`);
