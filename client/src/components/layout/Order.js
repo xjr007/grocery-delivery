@@ -37,8 +37,8 @@ const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated, loading },
 					<Card className='order' key={order._id}>
 						<Card.Header>Reference Number: #{order.referenceNumber}</Card.Header>
 						<Card.Body>
-							<Card.Title>Order created: {date.format(Date.parse(order.createdAt))}</Card.Title>
-							<Card.Title>Order type: {order.deliveryType}</Card.Title>
+							<Card.Title>Order Created: {date.format(Date.parse(order.createdAt))}</Card.Title>
+							<Card.Title>Delivery Type: {order.deliveryType}</Card.Title>
 							{/* 
 							<DropdownButton id='dropdown-basic-button' title='Item List'>
 								{order.cartOrder.map(item => (

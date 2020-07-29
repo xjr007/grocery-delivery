@@ -1,10 +1,11 @@
-import { FETCH_PRODUCTS, ORDER_PRODUCTS_BY_PRICE } from '../types';
+import { FETCH_PRODUCTS, ORDER_PRODUCTS_BY_PRICE, ORDER_BY_CATEGORY } from '../types';
 
 export const products = (
 	state = {
 		filteredItems: null,
 		sort: null,
 		items: null,
+		selectedCategory: null,
 	},
 	action
 ) => {
@@ -19,6 +20,12 @@ export const products = (
 			return {
 				items: action.payload,
 				filteredItems: action.payload,
+			};
+		case ORDER_BY_CATEGORY:
+			return {
+				...state,
+				selectedCategory: action.payload.selectedCategory,
+				filteredItems: action.payload.items,
 			};
 		default:
 			return state;
