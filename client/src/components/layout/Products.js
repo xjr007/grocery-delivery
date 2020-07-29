@@ -39,17 +39,23 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 				) : (
 					<div className='d-flex flex-wrap'>
 						{products.map(product => (
-							<Card
-								className='product-card shadow-sm p-3 mb-5 bg-white'
-								key={product._id}
-								onClick={() => openModal(product)}>
-								<Card.Img variant='top' src={product.image} />
+							<Card className='product-card shadow-sm p-3 mb-5 bg-white' key={product._id}>
+								<Card.Img onClick={() => openModal(product)} variant='top' src={product.image} />
 								<Card.Body>
 									<Card.Title>
 										{' '}
 										{formatCurrency(product.price)} <br /> {product.title}
 									</Card.Title>
 									<Card.Text>{product.description}</Card.Text>
+									<Button
+										className='button'
+										onClick={() => {
+											addToCart(product);
+											setShowProduct(null);
+											setProduct(null);
+										}}>
+										Add To Cart
+									</Button>
 								</Card.Body>
 							</Card>
 						))}

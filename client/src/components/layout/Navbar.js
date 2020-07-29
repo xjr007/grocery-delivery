@@ -27,14 +27,13 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 						<span className='d-logo'>H</span>
 					</Nav.Link>
 				</LinkContainer>
-				{isAuthenticated ? (
-					<DropdownButton as={Nav.Item} className='ml-auto' title='Profile'>
+				{isAuthenticated && !loading ? (
+					<DropdownButton as={Nav.Item} variant={'button'} className='ml-auto' title='Profile'>
 						<LinkContainer to={ROUTES.PROFILE}>
 							<Dropdown.Item>Account</Dropdown.Item>
 						</LinkContainer>
 						<Dropdown.Divider />
-
-						{isAuthenticated && !loading && <Dropdown.Item onClick={logout}>Log out</Dropdown.Item>}
+						<Dropdown.Item onClick={logout}>Log out</Dropdown.Item>
 					</DropdownButton>
 				) : (
 					<div className='ml-auto d-flex flex-row'>
@@ -48,7 +47,8 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 					</div>
 				)}
 			</Nav>
-			<Navbar collapseOnSelect className=' ml-auto' expand='lg' variant='light'>
+
+			<Navbar collapseOnSelect className=' ml-auto ' expand='lg'>
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 				<Navbar.Collapse id='responsive-navbar-nav '>
 					<Nav>
