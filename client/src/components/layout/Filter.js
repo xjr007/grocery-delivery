@@ -14,7 +14,6 @@ const Filter = ({
 	products,
 	sortProducts,
 	sortCategory,
-	loadUser,
 }) => {
 	const onSort = e => {
 		e.preventDefault();
@@ -40,7 +39,7 @@ const Filter = ({
 	return !isAuthenticated && !loading ? (
 		<div>Loading...</div>
 	) : (
-		<div>
+    <div>
 			<Form>
 				<Form.Row>
 					<Col>

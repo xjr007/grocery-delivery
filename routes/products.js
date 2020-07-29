@@ -3,10 +3,6 @@ const Order = require('../models/Order');
 const Product = require('../models/Product');
 const router = express.Router();
 
-// @route   GET api/prudcts
-// @desc    Get all Orders
-// @access  Private
-
 router.get('/', async (req, res) => {
 	try {
 		const products = await Product.find({});

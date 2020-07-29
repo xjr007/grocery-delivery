@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../types';
-import { setAuthToken } from '../../util';
 
 const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, history }) => {
 	const alertContext = useContext(AlertContext);
