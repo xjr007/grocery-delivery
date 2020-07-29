@@ -39,14 +39,6 @@ const Order = ({ deleteOrder, orders, auth: { error, isAuthenticated, loading },
 						<Card.Body>
 							<Card.Title>Order Created: {date.format(Date.parse(order.createdAt))}</Card.Title>
 							<Card.Title>Delivery Type: {order.deliveryType}</Card.Title>
-							{/* 
-							<DropdownButton id='dropdown-basic-button' title='Item List'>
-								{order.cartOrder.map(item => (
-									<Dropdown.Item key={item._id}>
-										<div>{item.title}</div>
-									</Dropdown.Item>
-								))}
-							</DropdownButton> */}
 
 							<Button className='button' onClick={() => onDelete(order)}>
 								Delete
