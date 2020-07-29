@@ -32,8 +32,8 @@ const App = () => {
 			<AlertState>
 				<Router>
 					<Fragment>
+						<NavbarComp />
 						<div className='container'>
-							<NavbarComp />
 							<Alerts />
 							<Switch>
 								<PrivateRoute exact path={ROUTES.DELIVERY} component={CreateDelivery} />
