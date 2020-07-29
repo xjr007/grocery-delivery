@@ -1,0 +1,4 @@
+{
+	"MONGODB_URI": "mongodb+srv://aaqieldb:hCA0iocyJqonwaVo@accounts.c08od.mongodb.net/db?retryWrites=true&w=majority",
+	"SECRET_KEY": "secret"
+}
