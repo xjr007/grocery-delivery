@@ -2,58 +2,99 @@ import React, { useState, useEffect } from 'react';
 import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
-import Modal from 'react-modal';
+import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/products';
 import PropTypes from 'prop-types';
 import { addToCart } from '../../actions/cart';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts, addToCart }) => {
 	const [product, setProduct] = useState(null);
+	const [showProduct, setShowProduct] = useState(null);
 
 	useEffect(() => {
 		if (isAuthenticated) {
 			fetchProducts();
 		}
-		Modal.setAppElement('body');
+		// Modal.setAppElement('body');
 
 		//eslint-disable-next-line
 	}, [fetchProducts]);
 
 	const openModal = product => {
 		setProduct(product);
+		setShowProduct(true);
 	};
 
 	const closeModal = () => {
 		setProduct(null);
 	};
 	return (
-		<div>
+		<div className='container'>
 			<Fade bottom cascade>
 				{!products || (!isAuthenticated && loading) ? (
 					<div>Loading...</div>
 				) : (
-					<ul className='products d-flex flex-wrap'>
+					<div className='d-flex flex-wrap'>
 						{products.map(product => (
-							<li key={product._id}>
-								<div className='product'>
-									<a href={'#' + product._id} onClick={() => openModal(product)}>
-										<img src={product.image} alt={product.title} />
-										<h5>{product.title}</h5>
-									</a>
-									<div className='product-price'>{formatCurrency(product.price)}</div>
-									<Button className='button primary' onClick={() => addToCart(product)}>
+							<Card className='product-card shadow-sm p-3 mb-5 bg-white' key={product._id}>
+								<Card.Img onClick={() => openModal(product)} variant='top' src={product.image} />
+								<Card.Body>
+									<Card.Title>
+										{' '}
+										{formatCurrency(product.price)} <br /> {product.title}
+									</Card.Title>
+									<Card.Text>{product.description}</Card.Text>
+									<Button
+										className='button'
+										onClick={() => {
+											addToCart(product);
+											setShowProduct(null);
+											setProduct(null);
+										}}>
 										Add To Cart
-									</Button>{' '}
-								</div>
-							</li>
+									</Button>
+								</Card.Body>
+							</Card>
 						))}
-					</ul>
+					</div>
 				)}
 			</Fade>
+
 			{product && (
-				<Modal isOpen={true} onRequestClose={closeModal}>
+				<Fade bottom>
+					<Modal
+						size='md'
+						show={showProduct}
+						onHide={() => setShowProduct(null)}
+						aria-labelledby='product-modal-size'>
+						<Modal.Header closeButton>
+							<Modal.Title id='container justify-content-center product-modal-size'>
+								<img className='product-image' src={product.image} alt={product.title} />
+							</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>
+							{product.title} <br />
+							{product.description} <br />
+							{formatCurrency(product.price)} <br />
+							<Button
+								className='button'
+								onClick={() => {
+									addToCart(product);
+									setShowProduct(null);
+									setProduct(null);
+								}}>
+								Add To Cart
+							</Button>
+						</Modal.Body>
+					</Modal>
+				</Fade>
+			)}
+
+			{/* {product && (
+				<Modal className='custom-modal' isOpen={true} onRequestClose={closeModal}>
 					<Zoom>
 						<button className='close-modal' onClick={closeModal}>
 							x
@@ -81,7 +122,7 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 						</div>
 					</Zoom>
 				</Modal>
-			)}
+			)} */}
 		</div>
 	);
 };
