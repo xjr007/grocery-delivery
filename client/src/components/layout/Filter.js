@@ -77,11 +77,10 @@ const Filter = ({
 
 Filter.propTypes = {
 	auth: PropTypes.object.isRequired,
-	products: PropTypes.array.isRequired,
+	products: PropTypes.array,
 	sort: PropTypes.string,
 	category: PropTypes.string,
 	filteredProducts: PropTypes.array,
-	loadUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
