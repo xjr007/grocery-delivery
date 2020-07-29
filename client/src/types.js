@@ -23,13 +23,6 @@ export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const SET_ALERT = 'SET_ALERT';
 export const PRODUCTS_ERROR = 'PRODUCTS_ERROR';
 
-// Routes
-// export const HOME = '/';
-// export const LOGIN = '/login';
-// export const REGISTER = '/register';
-// export const DELIVERY = '/delivery';
-// export const PROFILE = '/profile';
-
 export const ROUTES = {
 	HOME: '/',
 	ABOUT: '/about',

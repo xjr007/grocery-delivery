@@ -1,12 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../types';
+import React, { useState, useContext } from 'react';
 import { formatCurrency } from '../../util';
-import Fade from 'react-reveal/Fade';
 import { removeFromCart } from '../../actions/cart';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { createOrder, clearOrder } from '../actions/orderActions';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 import { setOrder, createOrder } from '../../actions/orders';
@@ -15,15 +11,12 @@ import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import AlertContext from '../../context/alert/AlertContext';
 import Form from 'react-bootstrap/Form';
-import { clearErrors } from '../../actions/auth';
-import Alerts from '../../components/layout/Alerts';
 
 const Cart = ({
 	cart: { cartItems },
 	removeFromCart,
 	setOrder,
 	createOrder,
-	clearErrors,
 	orders: { current },
 }) => {
 	const alertContext = useContext(AlertContext);
@@ -142,7 +135,6 @@ Cart.propTypes = {
 	setOrder: PropTypes.func.isRequired,
 	orders: PropTypes.object.isRequired,
 	createOrder: PropTypes.func.isRequired,
-	clearErrors: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -154,5 +146,4 @@ export default connect(mapStateToProps, {
 	removeFromCart,
 	setOrder,
 	createOrder,
-	clearErrors,
 })(Cart);

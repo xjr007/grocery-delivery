@@ -6,8 +6,6 @@ import { ROUTES } from '../../types';
 import { logout } from '../../actions/auth';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import { Dropdown } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
@@ -73,7 +71,7 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
-		</Nav>
+    </Nav>
 	);
 };
 

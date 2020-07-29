@@ -50,13 +50,11 @@ router.post(
 				},
 			};
 
-			// Change expire to 3600
-
 			token.sign(
 				payload,
 				config.get('SECRET_KEY'),
 				{
-					expiresIn: 36000,
+					expiresIn: 3600,
 				},
 				(err, token) => {
 					if (err) throw err;

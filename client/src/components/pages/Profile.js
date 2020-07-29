@@ -6,7 +6,6 @@ import Order from '../layout/Order';
 import User from '../layout/User';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
-import { ROUTES } from '../../types';
 
 const Profile = ({ auth: { isAuthenticated, loading }, fetchOrders }) => {
 	useEffect(() => {

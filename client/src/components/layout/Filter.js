@@ -39,7 +39,7 @@ const Filter = ({
 	return !isAuthenticated && !loading ? (
 		<div>Loading...</div>
 	) : (
-		<div>
+    <div>
 			<Form>
 				<Form.Row>
 					<Col>
