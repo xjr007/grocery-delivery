@@ -21,7 +21,6 @@ export const addToCart = product => (dispatch, getState) => {
 };
 
 export const removeFromCart = product => (dispatch, getState) => {
-	// console.log(getState);
 	const cartItems = getState()
 		.cart.cartItems.slice()
 		.filter(item => item._id !== product._id);

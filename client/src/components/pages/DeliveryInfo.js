@@ -30,7 +30,7 @@ const DeliveryInfo = () => {
 					Use our <span>High Priority</span> courier services, ETA 20 - 30 minutes <br />
 				</p>
 				<p className='solo-center'>
-					View our delivery zones <a href='#'>here.</a>
+					View our delivery zones <a href='http://www.google.com'>here.</a>
 				</p>
 			</div>
 		</div>

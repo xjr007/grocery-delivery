@@ -17,7 +17,7 @@ const About = () => {
 				<b>reliable</b> and <b> no contact </b> courier services
 			</p>
 
-			<a href='#'>Sign up for our newsletter</a>
+			<a href='http://www.google.com'>Sign up for our newsletter</a>
 		</div>
 	);
 };

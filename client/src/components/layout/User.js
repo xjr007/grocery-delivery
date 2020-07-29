@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 
-export const User = ({ auth: { user, isAuthenticated, loading } }) => {
+export const User = ({ auth: { user } }) => {
 	return (
 		<Form className='prof-form'>
 			<fieldset disabled>

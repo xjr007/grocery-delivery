@@ -85,7 +85,7 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 		</div>
 	);
 };
-//.items
+
 Products.propTypes = {
 	products: PropTypes.array,
 	fetchProducts: PropTypes.func.isRequired,
