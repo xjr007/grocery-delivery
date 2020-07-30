@@ -11,7 +11,6 @@ import Register from './components/auth/Register';
 import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
-import CreateDelivery from './components/pages/createDelivery';
 import DeliveryInfo from './components/pages/DeliveryInfo';
 import Contact from './components/pages/Contact';
 import Profile from './components/pages/Profile';
@@ -36,7 +35,6 @@ const App = () => {
 						<div className='container app'>
 							<Alerts />
 							<Switch>
-								<PrivateRoute exact path={ROUTES.DELIVERY} component={CreateDelivery} />
 								<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
 								<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />
 								<Route exact path={ROUTES.HOME} component={Home} />

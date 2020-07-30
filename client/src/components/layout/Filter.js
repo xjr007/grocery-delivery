@@ -4,17 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
-import Collapse from 'react-bootstrap/Collapse';
 
-const Filter = ({
-	auth: { isAuthenticated, loading },
-	sort,
-	category,
-	filteredProducts,
-	products,
-	sortProducts,
-	sortCategory,
-}) => {
+const Filter = ({ sort, category, filteredProducts, products, sortProducts, sortCategory }) => {
 	const onSort = e => {
 		e.preventDefault();
 		try {
@@ -27,7 +18,7 @@ const Filter = ({
 	const onCategory = e => {
 		e.preventDefault();
 		try {
-			if (e.target.value == '') {
+			if (e.target.value === '') {
 				sortCategory(products, '');
 			}
 			sortCategory(products, e.target.value);
@@ -67,7 +58,6 @@ const Filter = ({
 };
 
 Filter.propTypes = {
-	auth: PropTypes.object.isRequired,
 	products: PropTypes.array,
 	sort: PropTypes.string,
 	category: PropTypes.string,
@@ -75,7 +65,6 @@ Filter.propTypes = {
 };
 
 const mapStateToProps = state => ({
-	auth: state.auth,
 	sort: state.products.sort,
 	category: state.products.selectedCategory,
 	products: state.products.items,

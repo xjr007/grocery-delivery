@@ -9,15 +9,13 @@ import Filter from '../layout/Filter';
 const Home = ({ auth: { isAuthenticated, loading } }) => {
 	return (
 		<div className='container d-flex justify-content-center flex-column align-items-center'>
-			<div className='container d-flex home-image justify-content-center mt-3 flex-column align-items-center p-1'>
-				<span className='home-text'>STAY SAFE.</span>
-				<span className='home-text'>WE DELIVER.</span>
+			<div className='container d-flex home-image  mt-3 flex-wrapalign-items-center justify-content-center p-1'>
+				<span className='home-text'>Corona? We Deliver.</span>
 			</div>
 
 			<Filter />
 
 			<Products />
-			{isAuthenticated && !loading ? <div>Logged in</div> : <div>Logged out</div>}
 		</div>
 	);
 };

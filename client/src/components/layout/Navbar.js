@@ -8,8 +8,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Dropdown } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Logo from '../../assets/linkedin_banner_image_1.png';
 
 const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 	return (
@@ -34,10 +32,10 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 				{isAuthenticated && !loading ? (
 					<NavDropdown title='Account' id='nav-dropdown' className='ml-auto mt-2'>
 						<LinkContainer to={ROUTES.PROFILE}>
-							<NavDropdown.Item eventKey='4.1'>Account info</NavDropdown.Item>
+							<NavDropdown.Item className='link'>Account info</NavDropdown.Item>
 						</LinkContainer>
 
-						<NavDropdown.Item eventKey='4.1' onClick={logout}>
+						<NavDropdown.Item onClick={logout} className='link'>
 							Log out
 						</NavDropdown.Item>
 					</NavDropdown>
@@ -50,49 +48,29 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 					</Nav>
 				)}
 			</Nav>
-			<Navbar collapseOnSelect className='ml-auto navbar-custom ' expand='lg'>
-				<Navbar.Toggle aria-controls='responsive-navbar-nav' className='navbar-custom' />
+			<Navbar collapseOnSelect className='ml-auto navbar-custom navbar-dark ' expand='lg'>
+				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 				<Navbar.Collapse id='responsive-navbar-nav '>
 					<Nav>
 						<LinkContainer to={ROUTES.HOME}>
-							<Nav.Link className='link '>Home</Nav.Link>
+							<Nav.Link className='link-nav '>Home</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.ABOUT}>
-							<Nav.Link className='link'>About us</Nav.Link>
+							<Nav.Link className='link-nav'>About us</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to='/'>
-							<Nav.Link className='link'>Search</Nav.Link>
+							<Nav.Link className='link-nav'>Search</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.SHOP}>
-							<Nav.Link className='link'>Shop</Nav.Link>
+							<Nav.Link className='link-nav'>Shop</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.DELIVERYINFO}>
-							<Nav.Link className='link'>Delivery Info</Nav.Link>
+							<Nav.Link className='link-nav'>Delivery Info</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to={ROUTES.CONTACT}>
-							<Nav.Link className='link'>Contact</Nav.Link>
+							<Nav.Link className='link-nav'>Contact</Nav.Link>
 						</LinkContainer>
 						<Dropdown.Divider />
-
-						{/* {isAuthenticated && !loading ? (
-								<DropdownButton as={Nav.Item} variant={'button'} title='Profile'>
-									<LinkContainer to={ROUTES.PROFILE}>
-										<Dropdown.Item>Account</Dropdown.Item>
-									</LinkContainer>
-									<Dropdown.Divider />
-									<Dropdown.Item onClick={logout}>Log out</Dropdown.Item>
-								</DropdownButton>
-							) : (
-								<div className=''>
-									{' '}
-									<LinkContainer to={ROUTES.LOGIN}>
-										<Nav.Link className='link'>Login </Nav.Link>
-									</LinkContainer>
-									<LinkContainer to={ROUTES.REGISTER}>
-										<Nav.Link className='link'>Register </Nav.Link>
-									</LinkContainer>
-								</div>
-							)} */}
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>

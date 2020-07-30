@@ -17,9 +17,11 @@ const DeliveryInfo = () => {
 				<h6>Your privacy is important to us:</h6>
 				<p>
 					{' '}
-					We took great care in selecting our trusted payment gateways so you can feel safe at all times!{' '}
-					<br /> Only <span>registered</span> <i>third party</i> has access to Information such as the
-					items you buy.
+					We took great care in selecting our trusted payment gateways so that you can feel safe at all
+					times!
+					<br /> <br /> With your permission, we track the items you buy to better meet your needs so
+					that we may always provide our customers with <span className='imp-text'>quality</span>{' '}
+					services and products they deserve.
 				</p>
 			</div>
 			<div className='delivery-content'>
@@ -27,7 +29,8 @@ const DeliveryInfo = () => {
 				<p>
 					{' '}
 					Expect your order to be delivered within 40 - 50 minutes. <br /> Need faster deliveries? <br />{' '}
-					Use our <span>High Priority</span> courier services, ETA 20 - 30 minutes <br />
+					Use our <span className='imp-text'>High Priority</span> courier services, ETA 20 - 30 minutes{' '}
+					<br />
 				</p>
 				<p className='solo-center'>
 					View our delivery zones <a href='http://www.google.com'>here.</a>
