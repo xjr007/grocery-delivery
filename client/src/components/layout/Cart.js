@@ -68,19 +68,23 @@ const Cart = ({
 	return (
 		<div className='m-1'>
 			{cartItems.length === 0 || !cartTotal ? (
-				<div className='cart cart-header'> You have {cartItems.length} items in your cart</div>
+				<div className='cart-header'> {cartItems.length} items in your cart</div>
 			) : (
-				<DropdownButton className='float-right' id='dropdown-basic-button' title='Cart'>
-					Total: {formatCurrency(cartItems.reduce((acc, curr) => acc + curr.price * curr.count, 0))}
+				<DropdownButton className='m-3' id='dropdown-basic-button' title='Cart'>
 					{cartItems.map(item => (
-						<Dropdown.Item key={item._id}>
-							<div>{item.title}</div>
-							<div className='right'>
+						<Dropdown.Item className='d-flex flex-column' key={item._id}>
+							<span className='cart-total'>
+								Cart Total:{' '}
+								{formatCurrency(cartItems.reduce((acc, curr) => acc + curr.price * curr.count, 0))}
+							</span>
+							<img className='cart-image' src={item.image} alt={item.title} />
+							<div className='cart-title'>{item.title}</div>
+							<div className='right cart-price'>
 								{formatCurrency(item.price)} x {item.count}
-								<Button className='button' type='dropdown-toggle' onClick={() => removeFromCart(item)}>
-									Remove
-								</Button>
 							</div>
+							<Button className='button' type='dropdown-toggle' onClick={() => removeFromCart(item)}>
+								Remove
+							</Button>
 						</Dropdown.Item>
 					))}
 					<Dropdown.Divider />
