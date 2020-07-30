@@ -3,7 +3,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 const Contact = () => {
 	const [status, setStatus] = useState('');
-	const [validated, setValidated] = useState(false);
+	const [isFill, setIsFill] = useState(false);
+	const [validated, setValidated] = useState(null);
 	const [sendMail, setSendMail] = useState({
 		name: '',
 		email: '',
@@ -23,27 +24,31 @@ const Contact = () => {
 
 	const onSubmit = e => {
 		e.preventDefault();
+		setValidated(true);
 		const form = e.target;
 		if (form.checkValidity() === false || name === '' || email === '' || message === '') {
 			e.stopPropagation();
+		} else {
+			setIsFill(true);
 		}
-		setValidated(true);
 
-		const data = new FormData(form);
-		const xhr = new XMLHttpRequest();
+		if (isFill) {
+			const data = new FormData(form);
+			const xhr = new XMLHttpRequest();
 
-		xhr.open(form.method, form.action);
-		xhr.setRequestHeader('Accept', 'application/json');
-		xhr.onreadystatechange = () => {
-			if (xhr.readyState !== XMLHttpRequest.DONE) return;
-			if (xhr.status === 200) {
-				form.reset();
-				setStatus('SUCCESS');
-			} else {
-				setStatus('ERROR');
-			}
-		};
-		xhr.send(data);
+			xhr.open(form.method, form.action);
+			xhr.setRequestHeader('Accept', 'application/json');
+			xhr.onreadystatechange = () => {
+				if (xhr.readyState !== XMLHttpRequest.DONE) return;
+				if (xhr.status === 200) {
+					form.reset();
+					setStatus('SUCCESS');
+				} else {
+					setStatus('ERROR');
+				}
+			};
+			xhr.send(data);
+		}
 	};
 
 	return (
@@ -106,8 +111,8 @@ const Contact = () => {
 				</Form.Group>
 			</Form.Row>
 
-			{status === 'SUCCESS' ? (
-				<p>Message sent successfully!</p>
+			{status ? (
+				<p>Message sent!</p>
 			) : (
 				<input
 					className='button pl-4 pr-4 pt-2 pb-2'
