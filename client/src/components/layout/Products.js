@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
-import Zoom from 'react-reveal/Zoom';
+import { loadUser } from '../../actions/auth';
 import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/products';
@@ -10,14 +10,20 @@ import { addToCart } from '../../actions/cart';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts, addToCart }) => {
+const Products = ({
+	auth: { isAuthenticated, loading },
+	loadUser,
+	products,
+	fetchProducts,
+	addToCart,
+}) => {
 	const [product, setProduct] = useState(null);
 	const [showProduct, setShowProduct] = useState(null);
 
 	useEffect(() => {
-		if (isAuthenticated) {
-			fetchProducts();
-		}
+		loadUser();
+		fetchProducts();
+
 		// Modal.setAppElement('body');
 
 		//eslint-disable-next-line
@@ -34,12 +40,14 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 	return (
 		<div className='container'>
 			<Fade bottom cascade>
-				{!products || (!isAuthenticated && loading) ? (
+				{!products || loading ? (
 					<div>Loading...</div>
 				) : (
-					<div className='d-flex flex-wrap'>
+					<div className='d-flex flex-wrap '>
 						{products.map(product => (
-							<Card className='product-card shadow-sm p-3 mb-5 bg-white' key={product._id}>
+							<Card
+								className='product-card shadow-sm p-3 mb-5 bg-white d-flex flex-column justify-content-center align-items-center'
+								key={product._id}>
 								<Card.Img onClick={() => openModal(product)} variant='top' src={product.image} />
 								<Card.Body>
 									<Card.Title>
@@ -66,29 +74,35 @@ const Products = ({ auth: { isAuthenticated, loading }, products, fetchProducts,
 			{product && (
 				<Fade bottom>
 					<Modal
+						className='container '
 						size='md'
 						show={showProduct}
 						onHide={() => setShowProduct(null)}
 						aria-labelledby='product-modal-size'>
-						<Modal.Header closeButton>
-							<Modal.Title id='container justify-content-center product-modal-size'>
-								<img className='product-image' src={product.image} alt={product.title} />
-							</Modal.Title>
-						</Modal.Header>
-						<Modal.Body>
-							{product.title} <br />
-							{product.description} <br />
-							{formatCurrency(product.price)} <br />
-							<Button
-								className='button'
-								onClick={() => {
-									addToCart(product);
-									setShowProduct(null);
-									setProduct(null);
-								}}>
-								Add To Cart
-							</Button>
-						</Modal.Body>
+						<div className='modal-container'>
+							{' '}
+							<Modal.Header closeButton>
+								<Modal.Title id='product-modal-size'>
+									<img className='product-image' src={product.image} alt={product.title} />
+								</Modal.Title>
+							</Modal.Header>
+							<Modal.Body className='container d-flex flex-column '>
+								<div className='d-flex justify-content-center align-items-center flex-column'>
+									<div>Name: {product.title}</div>
+									<div>Description: {product.description}</div>
+									<div>Price:{formatCurrency(product.price)}</div>
+								</div>
+								<Button
+									className='button m-2'
+									onClick={() => {
+										addToCart(product);
+										setShowProduct(null);
+										setProduct(null);
+									}}>
+									Add To Cart
+								</Button>
+							</Modal.Body>
+						</div>
 					</Modal>
 				</Fade>
 			)}
@@ -142,4 +156,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
 	fetchProducts,
 	addToCart,
+	loadUser,
 })(Products);
