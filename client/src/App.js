@@ -14,6 +14,7 @@ import About from './components/pages/About';
 import DeliveryInfo from './components/pages/DeliveryInfo';
 import Contact from './components/pages/Contact';
 import Profile from './components/pages/Profile';
+import ContactFooter from './components/layout/ContactFooter';
 
 import { ROUTES } from './types';
 
@@ -45,6 +46,7 @@ const App = () => {
 								<Route exact path={ROUTES.ABOUT} component={About} />
 							</Switch>
 						</div>
+						<ContactFooter />
 					</Fragment>
 				</Router>
 			</AlertState>

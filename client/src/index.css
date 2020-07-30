@@ -82,8 +82,26 @@
 }
 
 .link {
+	text-decoration: none !important;
 	color: black !important;
 }
+
+.link .footer {
+	font-weight: normal;
+	color: black;
+	font-size: 12px !important;
+}
+
+.link .footer:hover {
+	font-weight: normal;
+	color: white;
+	font-size: 12px !important;
+}
+
+.footer {
+	color: black;
+}
+
 .link-nav {
 	color: white !important;
 }
@@ -117,6 +135,10 @@
 
 button .navbar-toggler {
 	border: var(--dark-brown-colour);
+}
+
+.footer-navigation {
+	background-color: orange;
 }
 
 /*Home*/

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // MUST STILL ADD MAP OF COURIER OUTPOSTS
 const DeliveryInfo = () => {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	return (
 		<div className='container delivery-info'>
 			<h4>Delivery Information</h4>

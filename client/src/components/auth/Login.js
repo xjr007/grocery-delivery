@@ -43,7 +43,7 @@ const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, 
 	};
 
 	return (
-		<div className='form-container'>
+		<div className='form-container m-3'>
 			{!isAuthenticated && !loading ? (
 				<form onSubmit={onSubmit}>
 					<h1>

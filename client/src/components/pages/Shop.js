@@ -8,6 +8,7 @@ import Cart from '../layout/Cart';
 const Shop = ({ loadUser }) => {
 	useEffect(() => {
 		loadUser();
+		window.scrollTo(0, 0);
 		//eslint-disable-next-line
 	}, [loadUser]);
 
