@@ -6,6 +6,7 @@
 	--light-brown-colour: #b37400;
 	overflow-x: hidden;
 	font-weight: 500;
+	scroll-behavior: smooth;
 }
 
 * {
