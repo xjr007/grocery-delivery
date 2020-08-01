@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
+import { setAlert } from '../../actions/alert';
+import { clearErrors } from '../../actions/auth';
 
-export const User = ({ auth: { user } }) => {
+export const User = ({ auth: { user, error }, setAlert, clearErrors }) => {
+	useEffect(() => {
+		if (error) {
+			setAlert(error, 'danger');
+			clearErrors();
+		}
+		//eslint-disable-next-line
+	}, [setAlert, clearErrors]);
 	return (
 		<Form className='prof-form'>
 			<fieldset disabled>
@@ -28,4 +37,7 @@ const mapStateToProps = state => ({
 	auth: state.auth,
 });
 
-export default connect(mapStateToProps)(User);
+export default connect(mapStateToProps, {
+	setAlert,
+	clearErrors,
+})(User);

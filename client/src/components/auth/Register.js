@@ -1,27 +1,25 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AlertContext from '../../context/alert/AlertContext';
 import { register, clearErrors } from '../../actions/auth';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../types';
+import { setAlert } from '../../actions/alert';
 
 const Register = ({
 	auth: { isAuthenticated, error, loading },
 	register,
 	clearErrors,
 	history,
+	setAlert,
 }) => {
-	const alertContext = useContext(AlertContext);
-
-	const { setAlert } = alertContext;
 	useEffect(() => {
 		if (error) {
 			setAlert(error, 'danger');
 			clearErrors();
 		}
 		//eslint-disable-next-line
-	}, [error, setAlert]);
+	}, [error, setAlert, clearErrors]);
 
 	const [user, setUser] = useState({
 		name: '',
@@ -131,4 +129,4 @@ const mapStateToProps = state => ({
 	error: state.err,
 });
 
-export default connect(mapStateToProps, { clearErrors, register })(Register);
+export default connect(mapStateToProps, { clearErrors, register, setAlert })(Register);

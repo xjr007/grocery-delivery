@@ -1,16 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
-import AlertContext from '../../context/alert/AlertContext';
+import React, { useState, useEffect } from 'react';
 import { clearErrors, login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../types';
+import { setAlert } from '../../actions/alert';
 
-const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, history }) => {
-	const alertContext = useContext(AlertContext);
-
-	const { setAlert } = alertContext;
-
+const Login = ({
+	auth: { isAuthenticated, loading, error },
+	clearErrors,
+	login,
+	history,
+	setAlert,
+}) => {
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
@@ -23,7 +25,7 @@ const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, 
 		}
 
 		//eslint-disable-next-line
-	}, [error, setAlert]);
+	}, [error, setAlert, clearErrors]);
 
 	const { email, password } = user;
 
@@ -43,7 +45,7 @@ const Login = ({ auth: { isAuthenticated, loading, error }, clearErrors, login, 
 	};
 
 	return (
-		<div className='form-container'>
+		<div className='form-container m-3'>
 			{!isAuthenticated && !loading ? (
 				<form onSubmit={onSubmit}>
 					<h1>
@@ -97,7 +99,7 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
 	auth: state.auth,
-	error: state.err,
+	error: state.error,
 });
 
-export default connect(mapStateToProps, { clearErrors, login })(Login);
+export default connect(mapStateToProps, { clearErrors, login, setAlert })(Login);

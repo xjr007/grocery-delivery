@@ -4,25 +4,28 @@ import { connect } from 'react-redux';
 import Products from '../layout/Products';
 import Filter from '../layout/Filter';
 import Cart from '../layout/Cart';
+import Searchbar from '../layout/Searchbar';
 
 const Shop = ({ loadUser }) => {
 	useEffect(() => {
 		loadUser();
+		window.scrollTo(0, 0);
 		//eslint-disable-next-line
 	}, [loadUser]);
 
 	return (
-		<div className='container fluid shop mt-5'>
-			<div className=' d-flex flex-row'>
-				<div className='mr-auto'>
-					<Filter />
+		<div>
+			<Searchbar />
+			<Cart />
+			<div className='container fluid shop mt-5'>
+				<div className=' d-flex flex-row'>
+					<div className='mr-auto'>
+						<Filter />
+					</div>
 				</div>
-				<div className='ml-auto'>
-					<Cart />
-				</div>
-			</div>
 
-			<Products />
+				<Products />
+			</div>
 		</div>
 	);
 };
