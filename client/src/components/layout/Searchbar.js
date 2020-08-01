@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import { searchProducts } from '../../actions/products';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Searchbar = ({ searchProducts, products, searchedProduct }) => {
+	const currSearchFor = React.createRef();
+
+	useEffect(() => {
+		if (products == null) {
+			currSearchFor.current.value = null;
+		}
+	});
+
 	const onSearch = e => {
-		const searchedProduct = React.createRef();
 		e.preventDefault();
 		try {
-			if (searchedProduct.current.value !== '') {
+			if (currSearchFor.current.value !== '') {
 				searchProducts(products, e.target.value);
 			}
 		} catch (err) {
@@ -24,7 +31,7 @@ const Searchbar = ({ searchProducts, products, searchedProduct }) => {
 					onChange={onSearch}
 					placeholder='Search'
 					className='mr-sm-2'
-					ref={searchedProduct}
+					ref={currSearchFor}
 				/>
 			</Form>
 		</div>
@@ -38,6 +45,7 @@ Searchbar.propTypes = {
 
 const mapStateToProps = state => ({
 	products: state.products.items,
+	searchedProduct: state.products.searchedProduct,
 });
 export default connect(mapStateToProps, {
 	searchProducts,

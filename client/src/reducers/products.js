@@ -35,10 +35,8 @@ export const products = (
 		case SEARCH_PRODUCTS:
 			return {
 				...state,
-				filteredItems: state.products.filter(item => {
-					const regex = new RegExp(`${action.payload}`, 'gi');
-					return item.title.match(regex) || item.description.match(regex);
-				}),
+				searchedProduct: action.payload.searchedProduct,
+				filteredItems: action.payload.items,
 			};
 		default:
 			return state;

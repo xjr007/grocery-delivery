@@ -6,15 +6,26 @@ import Order from '../layout/Order';
 import User from '../layout/User';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
+import { setAlert } from '../../actions/alert';
+import { clearErrors } from '../../actions/auth';
 
-const Profile = ({ auth: { isAuthenticated, loading }, fetchOrders }) => {
+const Profile = ({
+	auth: { isAuthenticated, loading, error },
+	fetchOrders,
+	setAlert,
+	clearErrors,
+}) => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 		if (isAuthenticated) {
 			fetchOrders();
 		}
+		if (error) {
+			setAlert(error, 'danger');
+			clearErrors();
+		}
 		//eslint-disable-next-line
-	}, [fetchOrders, isAuthenticated]);
+	}, [fetchOrders, isAuthenticated, setAlert, clearErrors]);
 
 	return (
 		<div>
@@ -44,4 +55,4 @@ const mapStateToProps = state => ({
 	auth: state.auth,
 });
 
-export default connect(mapStateToProps, { fetchOrders })(Profile);
+export default connect(mapStateToProps, { fetchOrders, setAlert, clearErrors })(Profile);

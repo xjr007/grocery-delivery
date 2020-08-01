@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
-import AlertState from './context/alert/AlertState';
 import { Provider } from 'react-redux';
 import store from './store';
 import { setAuthToken } from './util';
@@ -29,29 +28,26 @@ const App = () => {
 	}
 	return (
 		<Provider store={store}>
-			<AlertState>
-				<Router>
-					<Fragment>
-						<NavbarComp />
-						<div className='container'></div>
-						<div className='container app'>
-							<Alerts />
+			<Router>
+				<Fragment>
+					<NavbarComp />
+					<div className='container app'>
+						<Alerts />
 
-							<Switch>
-								<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
-								<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />
-								<Route exact path={ROUTES.HOME} component={Home} />
-								<Route exact path={ROUTES.LOGIN} component={Login} />
-								<Route exact path={ROUTES.REGISTER} component={Register} />
-								<Route exact path={ROUTES.CONTACT} component={Contact} />
-								<Route exact path={ROUTES.DELIVERYINFO} component={DeliveryInfo} />
-								<Route exact path={ROUTES.ABOUT} component={About} />
-							</Switch>
-						</div>
-						<ContactFooter />
-					</Fragment>
-				</Router>
-			</AlertState>
+						<Switch>
+							<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
+							<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />
+							<Route exact path={ROUTES.HOME} component={Home} />
+							<Route exact path={ROUTES.LOGIN} component={Login} />
+							<Route exact path={ROUTES.REGISTER} component={Register} />
+							<Route exact path={ROUTES.CONTACT} component={Contact} />
+							<Route exact path={ROUTES.DELIVERYINFO} component={DeliveryInfo} />
+							<Route exact path={ROUTES.ABOUT} component={About} />
+						</Switch>
+					</div>
+					<ContactFooter />
+				</Fragment>
+			</Router>
 		</Provider>
 	);
 };

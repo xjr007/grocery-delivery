@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { formatCurrency } from '../../util';
 import Fade from 'react-reveal/Fade';
-import { loadUser } from '../../actions/auth';
+import { loadUser, clearErrors } from '../../actions/auth';
 import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/products';
@@ -9,19 +9,30 @@ import PropTypes from 'prop-types';
 import { addToCart } from '../../actions/cart';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { setAlert } from '../../actions/alert';
 
-const Products = ({ auth: { loading }, loadUser, products, fetchProducts, addToCart }) => {
+const Products = ({
+	auth: { loading, error },
+	loadUser,
+	products,
+	fetchProducts,
+	addToCart,
+	setAlert,
+	clearErrors,
+}) => {
 	const [product, setProduct] = useState(null);
 	const [showProduct, setShowProduct] = useState(null);
 
 	useEffect(() => {
 		loadUser();
 		fetchProducts();
-
-		// Modal.setAppElement('body');
+		if (error) {
+			setAlert(error, 'danger');
+			clearErrors();
+		}
 
 		//eslint-disable-next-line
-	}, [fetchProducts]);
+	}, [fetchProducts, setAlert, clearErrors]);
 
 	const openModal = product => {
 		setProduct(product);
@@ -37,7 +48,7 @@ const Products = ({ auth: { loading }, loadUser, products, fetchProducts, addToC
 					<div className='d-flex flex-wrap '>
 						{products.map(product => (
 							<Card
-								className='product-card shadow-sm p-3 mb-5 bg-white d-flex flex-column justify-content-center align-items-center'
+								className='product-card shadow-sm p-3 mb-5 bg-white d-flex flex-column justify-content-center align-items-center flex-wrap'
 								key={product._id}>
 								<Card.Img onClick={() => openModal(product)} variant='top' src={product.image} />
 								<Card.Body>
@@ -117,4 +128,6 @@ export default connect(mapStateToProps, {
 	fetchProducts,
 	addToCart,
 	loadUser,
+	setAlert,
+	clearErrors,
 })(Products);

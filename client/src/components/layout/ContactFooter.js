@@ -17,12 +17,12 @@ const ContactFooter = () => {
 					<Link to={ROUTES.REGISTER} className='link foot-cntrl'>
 						Register
 					</Link>
-					<Link to={ROUTES.HOME} className='link foot-cntrl'>
-						Home
-					</Link>
 				</Col>
 
 				<Col className='footer-links-2 d-flex flex-column'>
+					<Link to={ROUTES.HOME} className='link foot-cntrl'>
+						Home
+					</Link>
 					<Link to={ROUTES.ABOUT} className='link foot-cntrl'>
 						About us
 					</Link>

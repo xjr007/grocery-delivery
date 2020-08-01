@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { formatCurrency } from '../../util';
 import { removeFromCart } from '../../actions/cart';
 import { connect } from 'react-redux';
@@ -8,20 +8,29 @@ import Zoom from 'react-reveal/Zoom';
 import { setOrder, createOrder } from '../../actions/orders';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-import AlertContext from '../../context/alert/AlertContext';
 import Form from 'react-bootstrap/Form';
 import cartIcon from '../../assets/cart.png';
 import { NavDropdown } from 'react-bootstrap';
+import { setAlert } from '../../actions/alert';
+import { clearErrors } from '../../actions/auth';
 
 const Cart = ({
 	cart: { cartItems },
 	removeFromCart,
 	setOrder,
 	createOrder,
-	orders: { current },
+	orders: { current, error },
+	setAlert,
+	clearErrors,
 }) => {
-	const alertContext = useContext(AlertContext);
-	const { setAlert } = alertContext;
+	useEffect(() => {
+		Modal.setAppElement('body');
+		if (error) {
+			setAlert(error, 'danger');
+			clearErrors();
+		}
+		//eslint-disable-nextline
+	}, [setAlert, clearErrors, error]);
 
 	const [viewOrder, setViewOrder] = useState(null);
 	const [deliveryType, setDeliveryType] = useState(null);
@@ -157,5 +166,7 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
 	removeFromCart,
 	setOrder,
+	setAlert,
+	clearErrors,
 	createOrder,
 })(Cart);

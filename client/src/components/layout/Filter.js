@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
 const Filter = ({ sort, category, filteredProducts, products, sortProducts, sortCategory }) => {
+	const getAllProducts = '';
 	const onSort = e => {
 		e.preventDefault();
 		try {
@@ -20,6 +21,8 @@ const Filter = ({ sort, category, filteredProducts, products, sortProducts, sort
 		try {
 			if (e.target.value !== '') {
 				sortCategory(products, e.target.value);
+			} else {
+				sortCategory(products, getAllProducts);
 			}
 		} catch (err) {
 			console.log(err);

@@ -260,6 +260,8 @@ button .navbar-toggler {
 	color: white !important;
 	border-style: none !important;
 	border: none;
+	margin-left: 2rem;
+	margin-right: 2rem;
 }
 
 .button-search {

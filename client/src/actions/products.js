@@ -40,7 +40,12 @@ export const searchProducts = (products, searchedProduct) => dispatch => {
 		payload: {
 			searchedProduct: searchedProduct,
 			items:
-				searchedProduct === '' ? products : products.filter(item => item.title === searchedProduct),
+				searchedProduct === ''
+					? products
+					: products.filter(item => {
+							const regex = new RegExp(`${searchedProduct}`, 'gi');
+							return item.title.match(regex) || item.description.match(regex);
+					  }),
 		},
 	});
 };
