@@ -18,10 +18,9 @@ const Filter = ({ sort, category, filteredProducts, products, sortProducts, sort
 	const onCategory = e => {
 		e.preventDefault();
 		try {
-			if (e.target.value === '') {
-				sortCategory(products, '');
+			if (e.target.value !== '') {
+				sortCategory(products, e.target.value);
 			}
-			sortCategory(products, e.target.value);
 		} catch (err) {
 			console.log(err);
 		}

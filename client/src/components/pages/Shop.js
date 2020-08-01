@@ -3,6 +3,8 @@ import { loadUser } from '../../actions/auth';
 import { connect } from 'react-redux';
 import Products from '../layout/Products';
 import Filter from '../layout/Filter';
+import Cart from '../layout/Cart';
+import Searchbar from '../layout/Searchbar';
 
 const Shop = ({ loadUser }) => {
 	useEffect(() => {
@@ -12,14 +14,18 @@ const Shop = ({ loadUser }) => {
 	}, [loadUser]);
 
 	return (
-		<div className='container fluid shop mt-5'>
-			<div className=' d-flex flex-row'>
-				<div className='mr-auto'>
-					<Filter />
+		<div>
+			<Searchbar />
+			<Cart />
+			<div className='container fluid shop mt-5'>
+				<div className=' d-flex flex-row'>
+					<div className='mr-auto'>
+						<Filter />
+					</div>
 				</div>
-			</div>
 
-			<Products />
+				<Products />
+			</div>
 		</div>
 	);
 };

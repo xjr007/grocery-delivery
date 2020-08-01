@@ -151,13 +151,6 @@ button .navbar-toggler {
 	border: var(--dark-brown-colour);
 }
 
-/* .footer-navigation {
-	background-color: orange;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-} */
-
 .footer-navigation {
 	background-color: darkslategray;
 }
@@ -269,6 +262,18 @@ button .navbar-toggler {
 	border: none;
 }
 
+.button-search {
+	background-color: var(--light-brown-colour) !important;
+	color: white !important;
+	border-style: none !important;
+	border: none;
+}
+
+.button-search:hover {
+	background-color: white !important;
+	color: var(--light-brown-colour) !important;
+}
+
 .button:hover {
 	background-color: white !important;
 	color: var(--dark-blue-colour) !important;
@@ -312,6 +317,20 @@ button .navbar-toggler {
 }
 
 /*Cart*/
+
+.cart {
+	position: relative;
+	right: 0;
+	width: fit-content;
+}
+.cart-img {
+	width: 48px;
+	height: 48px;
+}
+
+.cart-img:hover {
+	filter: grayscale(100%);
+}
 
 .cart-header {
 	margin: 10px;
