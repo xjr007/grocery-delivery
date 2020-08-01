@@ -15,6 +15,7 @@ import DeliveryInfo from './components/pages/DeliveryInfo';
 import Contact from './components/pages/Contact';
 import Profile from './components/pages/Profile';
 import ContactFooter from './components/layout/ContactFooter';
+import Cart from './components/layout/Cart';
 
 import { ROUTES } from './types';
 
@@ -35,6 +36,9 @@ const App = () => {
 						<NavbarComp />
 						<div className='container app'>
 							<Alerts />
+							<div className='float-right'>
+								<Cart />
+							</div>
 							<Switch>
 								<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
 								<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />
