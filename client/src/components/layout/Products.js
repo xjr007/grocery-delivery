@@ -10,13 +10,7 @@ import { addToCart } from '../../actions/cart';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const Products = ({
-	auth: { isAuthenticated, loading },
-	loadUser,
-	products,
-	fetchProducts,
-	addToCart,
-}) => {
+const Products = ({ auth: { loading }, loadUser, products, fetchProducts, addToCart }) => {
 	const [product, setProduct] = useState(null);
 	const [showProduct, setShowProduct] = useState(null);
 
@@ -106,37 +100,6 @@ const Products = ({
 					</Modal>
 				</Fade>
 			)}
-
-			{/* {product && (
-				<Modal className='custom-modal' isOpen={true} onRequestClose={closeModal}>
-					<Zoom>
-						<button className='close-modal' onClick={closeModal}>
-							x
-						</button>
-						<div className='product-details'>
-							<img src={product.image} alt={product.title} />
-							<div className='product-details-description'>
-								<p>
-									<strong>{product.title}</strong>
-								</p>
-								<p>{product.description}</p>
-
-								<div className='product-price'>
-									<div>{formatCurrency(product.price)}</div>
-									<button
-										className='button'
-										onClick={() => {
-											addToCart(product);
-											closeModal();
-										}}>
-										Add To Cart
-									</button>
-								</div>
-							</div>
-						</div>
-					</Zoom>
-				</Modal>
-			)} */}
 		</div>
 	);
 };

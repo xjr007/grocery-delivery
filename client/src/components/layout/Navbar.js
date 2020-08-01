@@ -58,9 +58,6 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 						<LinkContainer to={ROUTES.ABOUT}>
 							<Nav.Link className='link-nav'>About us</Nav.Link>
 						</LinkContainer>
-						<LinkContainer to='/'>
-							<Nav.Link className='link-nav'>Search</Nav.Link>
-						</LinkContainer>
 						<LinkContainer to={ROUTES.SHOP}>
 							<Nav.Link className='link-nav'>Shop</Nav.Link>
 						</LinkContainer>

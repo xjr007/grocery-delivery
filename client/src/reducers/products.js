@@ -1,4 +1,9 @@
-import { FETCH_PRODUCTS, ORDER_PRODUCTS_BY_PRICE, ORDER_BY_CATEGORY } from '../types';
+import {
+	FETCH_PRODUCTS,
+	ORDER_PRODUCTS_BY_PRICE,
+	ORDER_BY_CATEGORY,
+	SEARCH_PRODUCTS,
+} from '../types';
 
 export const products = (
 	state = {
@@ -26,6 +31,14 @@ export const products = (
 				...state,
 				selectedCategory: action.payload.selectedCategory,
 				filteredItems: action.payload.items,
+			};
+		case SEARCH_PRODUCTS:
+			return {
+				...state,
+				filteredItems: state.products.filter(item => {
+					const regex = new RegExp(`${action.payload}`, 'gi');
+					return item.title.match(regex) || item.description.match(regex);
+				}),
 			};
 		default:
 			return state;

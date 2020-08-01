@@ -35,11 +35,7 @@ const App = () => {
 				<Router>
 					<Fragment>
 						<NavbarComp />
-						<div className='container'>
-							<Searchbar />
-
-							<Cart />
-						</div>
+						<div className='container'></div>
 						<div className='container app'>
 							<Alerts />
 

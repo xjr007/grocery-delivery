@@ -17,19 +17,15 @@ const ContactFooter = () => {
 					<Link to={ROUTES.REGISTER} className='link foot-cntrl'>
 						Register
 					</Link>
-				</Col>
-				<Col className='footer-links-1 d-flex flex-column'>
 					<Link to={ROUTES.HOME} className='link foot-cntrl'>
 						Home
 					</Link>
+				</Col>
+
+				<Col className='footer-links-2 d-flex flex-column'>
 					<Link to={ROUTES.ABOUT} className='link foot-cntrl'>
 						About us
 					</Link>
-					<Link to={ROUTES.HOME} className='link foot-cntrl'>
-						Search
-					</Link>
-				</Col>
-				<Col className='footer-links-2 d-flex flex-column'>
 					<Link to={ROUTES.CONTACT} className='link  foot-cntrl'>
 						Contact
 					</Link>

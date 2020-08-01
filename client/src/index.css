@@ -262,6 +262,18 @@ button .navbar-toggler {
 	border: none;
 }
 
+.button-search {
+	background-color: var(--light-brown-colour) !important;
+	color: white !important;
+	border-style: none !important;
+	border: none;
+}
+
+.button-search:hover {
+	background-color: white !important;
+	color: var(--light-brown-colour) !important;
+}
+
 .button:hover {
 	background-color: white !important;
 	color: var(--dark-blue-colour) !important;

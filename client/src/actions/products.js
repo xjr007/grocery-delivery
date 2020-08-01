@@ -3,6 +3,7 @@ import {
 	ORDER_PRODUCTS_BY_PRICE,
 	PRODUCTS_ERROR,
 	ORDER_BY_CATEGORY,
+	SEARCH_PRODUCTS,
 } from '../types';
 import axios from 'axios';
 
@@ -29,6 +30,17 @@ export const sortCategory = (products, selectedCategory) => dispatch => {
 				selectedCategory === ''
 					? products
 					: products.filter(item => item.category === selectedCategory),
+		},
+	});
+};
+
+export const searchProducts = (products, searchedProduct) => dispatch => {
+	dispatch({
+		type: SEARCH_PRODUCTS,
+		payload: {
+			searchedProduct: searchedProduct,
+			items:
+				searchedProduct === '' ? products : products.filter(item => item.title === searchedProduct),
 		},
 	});
 };

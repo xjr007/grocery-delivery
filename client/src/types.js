@@ -22,6 +22,7 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const SET_ALERT = 'SET_ALERT';
 export const PRODUCTS_ERROR = 'PRODUCTS_ERROR';
+export const SEARCH_PRODUCTS = 'SEARCH_PRODUCTS';
 
 export const ROUTES = {
 	HOME: '/',
