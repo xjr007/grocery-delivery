@@ -28,9 +28,6 @@ const Products = ({ auth: { loading }, loadUser, products, fetchProducts, addToC
 		setShowProduct(true);
 	};
 
-	const closeModal = () => {
-		setProduct(null);
-	};
 	return (
 		<div className='container'>
 			<Fade bottom cascade>

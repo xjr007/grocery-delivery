@@ -15,7 +15,6 @@ import DeliveryInfo from './components/pages/DeliveryInfo';
 import Contact from './components/pages/Contact';
 import Profile from './components/pages/Profile';
 import ContactFooter from './components/layout/ContactFooter';
-import Cart from './components/layout/Cart';
 
 import { ROUTES } from './types';
 
@@ -23,7 +22,6 @@ import NavbarComp from './components/layout/Navbar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Shop from './components/pages/Shop';
-import Searchbar from './components/layout/Searchbar';
 
 const App = () => {
 	if (localStorage.token) {

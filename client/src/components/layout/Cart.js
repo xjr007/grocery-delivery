@@ -8,11 +8,10 @@ import Zoom from 'react-reveal/Zoom';
 import { setOrder, createOrder } from '../../actions/orders';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import AlertContext from '../../context/alert/AlertContext';
 import Form from 'react-bootstrap/Form';
 import cartIcon from '../../assets/cart.png';
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 
 const Cart = ({
 	cart: { cartItems },
@@ -28,6 +27,7 @@ const Cart = ({
 	const [deliveryType, setDeliveryType] = useState(null);
 
 	const cartTotal = cartItems.reduce((acc, curr) => acc + curr.price * curr.count, 0);
+	const inCart = cartItems.reduce((acc, curr) => acc + curr.count, 0);
 
 	const onChange = e => {
 		e.preventDefault();
@@ -72,7 +72,13 @@ const Cart = ({
 			{cartItems.length === 0 || !cartTotal ? (
 				<div className='cart-header'> {cartItems.length} items in your cart</div>
 			) : (
-				<NavDropdown title={<img className=' cart-img' src={cartIcon} alt='Cart Icon' />}>
+				<NavDropdown
+					title={
+						<div>
+							<img className=' cart-img' src={cartIcon} alt='Cart Icon' />
+							<span>{inCart}</span>
+						</div>
+					}>
 					{cartItems.map(item => (
 						<Dropdown.Item className='d-flex flex-column' key={item._id}>
 							<span className='cart-total'>

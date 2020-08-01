@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import { Form, FormControl } from 'react-bootstrap';
 import { searchProducts } from '../../actions/products';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
