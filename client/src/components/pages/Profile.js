@@ -9,10 +9,10 @@ import Tab from 'react-bootstrap/Tab';
 
 const Profile = ({ auth: { isAuthenticated, loading }, fetchOrders }) => {
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		if (isAuthenticated) {
 			fetchOrders();
 		}
-
 		//eslint-disable-next-line
 	}, [fetchOrders, isAuthenticated]);
 

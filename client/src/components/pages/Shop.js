@@ -3,11 +3,11 @@ import { loadUser } from '../../actions/auth';
 import { connect } from 'react-redux';
 import Products from '../layout/Products';
 import Filter from '../layout/Filter';
-import Cart from '../layout/Cart';
 
 const Shop = ({ loadUser }) => {
 	useEffect(() => {
 		loadUser();
+		window.scrollTo(0, 0);
 		//eslint-disable-next-line
 	}, [loadUser]);
 
@@ -16,9 +16,6 @@ const Shop = ({ loadUser }) => {
 			<div className=' d-flex flex-row'>
 				<div className='mr-auto'>
 					<Filter />
-				</div>
-				<div className='ml-auto'>
-					<Cart />
 				</div>
 			</div>
 
