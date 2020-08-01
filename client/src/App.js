@@ -23,6 +23,7 @@ import NavbarComp from './components/layout/Navbar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Shop from './components/pages/Shop';
+import Searchbar from './components/layout/Searchbar';
 
 const App = () => {
 	if (localStorage.token) {
@@ -34,11 +35,14 @@ const App = () => {
 				<Router>
 					<Fragment>
 						<NavbarComp />
+						<div className='container'>
+							<Searchbar />
+
+							<Cart />
+						</div>
 						<div className='container app'>
 							<Alerts />
-							<div className='float-right'>
-								<Cart />
-							</div>
+
 							<Switch>
 								<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
 								<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />

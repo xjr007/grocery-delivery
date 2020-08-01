@@ -11,6 +11,8 @@ import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import AlertContext from '../../context/alert/AlertContext';
 import Form from 'react-bootstrap/Form';
+import cartIcon from '../../assets/cart.png';
+import { Nav, NavDropdown } from 'react-bootstrap';
 
 const Cart = ({
 	cart: { cartItems },
@@ -66,11 +68,11 @@ const Cart = ({
 	};
 
 	return (
-		<div className='m-1'>
+		<div className='cart ml-auto'>
 			{cartItems.length === 0 || !cartTotal ? (
 				<div className='cart-header'> {cartItems.length} items in your cart</div>
 			) : (
-				<DropdownButton className='m-3' id='dropdown-basic-button' title='Cart'>
+				<NavDropdown title={<img className=' cart-img' src={cartIcon} alt='Cart Icon' />}>
 					{cartItems.map(item => (
 						<Dropdown.Item className='d-flex flex-column' key={item._id}>
 							<span className='cart-total'>
@@ -91,7 +93,7 @@ const Cart = ({
 					<Dropdown.Item type='button' className='button' onClick={onProceed}>
 						Proceed
 					</Dropdown.Item>
-				</DropdownButton>
+				</NavDropdown>
 			)}
 
 			{viewOrder && (
