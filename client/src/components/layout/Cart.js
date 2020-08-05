@@ -22,6 +22,7 @@ const Cart = ({
 	orders: { current, error },
 	setAlert,
 	clearErrors,
+	auth: { isAuthenticated },
 }) => {
 	useEffect(() => {
 		Modal.setAppElement('body');
@@ -78,7 +79,7 @@ const Cart = ({
 
 	return (
 		<div className='cart ml-auto'>
-			{cartItems.length === 0 || !cartTotal ? (
+			{cartItems.length === 0 && !cartTotal ? (
 				<div className='cart-header'> {cartItems.length} items in your cart</div>
 			) : (
 				<NavDropdown
@@ -105,9 +106,9 @@ const Cart = ({
 						</Dropdown.Item>
 					))}
 					<Dropdown.Divider />
-					<Dropdown.Item type='button' className='button' onClick={onProceed}>
+					<Button type='button' className='button' onClick={onProceed}>
 						Proceed
-					</Dropdown.Item>
+					</Button>
 				</NavDropdown>
 			)}
 
@@ -151,6 +152,7 @@ const Cart = ({
 };
 
 Cart.propTypes = {
+	auth: PropTypes.object.isRequired,
 	cart: PropTypes.object.isRequired,
 	removeFromCart: PropTypes.func.isRequired,
 	setOrder: PropTypes.func.isRequired,
@@ -159,6 +161,7 @@ Cart.propTypes = {
 };
 
 const mapStateToProps = state => ({
+	auth: state.auth,
 	cart: state.cart,
 	orders: state.orders,
 });

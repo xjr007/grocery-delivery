@@ -12,7 +12,7 @@ import Card from 'react-bootstrap/Card';
 import { setAlert } from '../../actions/alert';
 
 const Products = ({
-	auth: { loading, error },
+	auth: { isAuthenticated, loading, error },
 	loadUser,
 	products,
 	fetchProducts,
@@ -45,10 +45,10 @@ const Products = ({
 				{!products || loading ? (
 					<div>Loading...</div>
 				) : (
-					<div className='d-flex flex-wrap '>
+					<div className='product-list'>
 						{products.map(product => (
 							<Card
-								className='product-card shadow-sm p-3 mb-5 bg-white d-flex flex-column justify-content-center align-items-center flex-wrap'
+								className='product-card shadow-sm p-3 mb-5 bg-white d-flex flex-column justify-content-center align-items-center'
 								key={product._id}>
 								<Card.Img onClick={() => openModal(product)} variant='top' src={product.image} />
 								<Card.Body>
@@ -57,15 +57,17 @@ const Products = ({
 										{formatCurrency(product.price)} <br /> {product.title}
 									</Card.Title>
 									<Card.Text>{product.description}</Card.Text>
-									<Button
-										className='button'
-										onClick={() => {
-											addToCart(product);
-											setShowProduct(null);
-											setProduct(null);
-										}}>
-										Add To Cart
-									</Button>
+									{isAuthenticated && (
+										<Button
+											className='button'
+											onClick={() => {
+												addToCart(product);
+												setShowProduct(null);
+												setProduct(null);
+											}}>
+											Add To Cart
+										</Button>
+									)}
 								</Card.Body>
 							</Card>
 						))}
@@ -76,14 +78,13 @@ const Products = ({
 			{product && (
 				<Fade bottom>
 					<Modal
-						className='container '
 						size='md'
 						show={showProduct}
 						onHide={() => setShowProduct(null)}
 						aria-labelledby='product-modal-size'>
 						<div className='modal-container'>
 							{' '}
-							<Modal.Header closeButton>
+							<Modal.Header closeButton className='modal_header'>
 								<Modal.Title id='product-modal-size'>
 									<img className='product-image' src={product.image} alt={product.title} />
 								</Modal.Title>
@@ -94,15 +95,17 @@ const Products = ({
 									<div>Description: {product.description}</div>
 									<div>Price:{formatCurrency(product.price)}</div>
 								</div>
-								<Button
-									className='button m-2'
-									onClick={() => {
-										addToCart(product);
-										setShowProduct(null);
-										setProduct(null);
-									}}>
-									Add To Cart
-								</Button>
+								{isAuthenticated && (
+									<Button
+										className='button m-2'
+										onClick={() => {
+											addToCart(product);
+											setShowProduct(null);
+											setProduct(null);
+										}}>
+										Add To Cart
+									</Button>
+								)}
 							</Modal.Body>
 						</div>
 					</Modal>

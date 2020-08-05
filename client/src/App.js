@@ -31,9 +31,8 @@ const App = () => {
 			<Router>
 				<Fragment>
 					<NavbarComp />
+					<Alerts />
 					<div className='container app'>
-						<Alerts />
-
 						<Switch>
 							<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
 							<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />

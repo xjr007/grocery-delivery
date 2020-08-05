@@ -4,7 +4,7 @@ import products from './reducers/products';
 import auth from './reducers/auth';
 import cart from './reducers/cart';
 import orders from './reducers/orders';
-
+import alerts from './reducers/alert';
 const middleware = [thunk];
 
 const rootReducer = combineReducers({
@@ -12,6 +12,7 @@ const rootReducer = combineReducers({
 	auth: auth,
 	cart: cart,
 	orders: orders,
+	alerts: alerts,
 });
 
 const initialState = {};

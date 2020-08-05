@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 export const Alerts = props => {
+	console.log('Alert');
 	const { alerts } = props;
 	if (!alerts && alerts !== null && alerts !== undefined) {
 		const alertsList = alerts.map(alert => {
