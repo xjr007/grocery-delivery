@@ -17,3 +17,5 @@ export const setAlert = (msg, alertType, timeout = 4000) => dispatch => {
 		timeout
 	);
 };
+
+export default setAlert;
