@@ -65,6 +65,14 @@
 		height: max-content;
 		width: auto;
 	}
+
+	.form-heading {
+		margin-top: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
 }
 /*navbar*/
 
@@ -167,6 +175,14 @@ button .navbar-toggler {
 	margin-top: 10%;
 }
 
+.form-heading {
+	margin-top: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 .form-control {
 	width: 20rem;
 }
@@ -183,15 +199,6 @@ button .navbar-toggler {
 .form-container form .login-register {
 	display: flex;
 	justify-content: center;
-}
-.form-msg {
-	width: 100% !important;
-}
-.form-email {
-	width: 100% !important;
-}
-.form-name {
-	width: 100% !important;
 }
 
 /*About*/
