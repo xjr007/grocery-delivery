@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 	auth: auth,
 	cart: cart,
 	orders: orders,
-	alerts: alerts,
+	alert: alerts,
 });
 
 const initialState = {};

@@ -7,20 +7,20 @@ import { setAuthToken } from './util';
 
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Alerts from './components/layout/Alerts';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import DeliveryInfo from './components/pages/DeliveryInfo';
 import Contact from './components/pages/Contact';
 import Profile from './components/pages/Profile';
+import Shop from './components/pages/Shop';
+
+import NavbarComp from './components/layout/Navbar';
 import ContactFooter from './components/layout/ContactFooter';
 
 import { ROUTES } from './types';
 
-import NavbarComp from './components/layout/Navbar';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Shop from './components/pages/Shop';
+import Alerts from './components/layout/Alerts';
 
 const App = () => {
 	if (localStorage.token) {
@@ -31,8 +31,9 @@ const App = () => {
 			<Router>
 				<Fragment>
 					<NavbarComp />
-					<Alerts />
+
 					<div className='container app'>
+						<Alerts />
 						<Switch>
 							<PrivateRoute exact path={ROUTES.PROFILE} component={Profile} />
 							<PrivateRoute exact path={ROUTES.SHOP} component={Shop} />

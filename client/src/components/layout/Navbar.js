@@ -29,6 +29,7 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 						<span className='sub-logo'>...FROM THE COMFORT OF YOUR COUCH</span>
 					</Nav.Link>
 				</LinkContainer>
+
 				{isAuthenticated && !loading ? (
 					<NavDropdown title='Account' id='nav-dropdown' className='ml-auto mt-2'>
 						<LinkContainer to={ROUTES.PROFILE}>

@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-export const Alerts = props => {
-	console.log('Alert');
-	const { alerts } = props;
-	if (!alerts && alerts !== null && alerts !== undefined) {
+export const Alerts = ({ alerts }) => {
+	if (alerts.length !== 0) {
 		const alertsList = alerts.map(alert => {
 			return (
 				<div key={alert.id} className={`alert alert-${alert.alertType}`}>
