@@ -49,25 +49,33 @@ const Products = ({
 						{products.map(product => (
 							<Card
 								className='product-card shadow-sm p-3 mb-5 bg-white d-flex flex-column justify-content-center align-items-center'
-								key={product._id}>
-								<Card.Img onClick={() => openModal(product)} variant='top' src={product.image} />
+								key={product._id}
+							>
+								<Card.Img
+									onClick={() => openModal(product)}
+									variant='top'
+									src={product.image}
+								/>
 								<Card.Body>
 									<Card.Title>
 										{' '}
 										{formatCurrency(product.price)} <br /> {product.title}
 									</Card.Title>
 									<Card.Text>{product.description}</Card.Text>
-									{isAuthenticated && (
-										<Button
-											className='button'
-											onClick={() => {
-												addToCart(product);
-												setShowProduct(null);
-												setProduct(null);
-											}}>
-											Add To Cart
-										</Button>
-									)}
+									<Card.Footer className='footer-card'>
+										{isAuthenticated && (
+											<Button
+												className='button'
+												onClick={() => {
+													addToCart(product);
+													setShowProduct(null);
+													setProduct(null);
+												}}
+											>
+												Add To Cart
+											</Button>
+										)}
+									</Card.Footer>
 								</Card.Body>
 							</Card>
 						))}
@@ -81,7 +89,8 @@ const Products = ({
 						size='md'
 						show={showProduct}
 						onHide={() => setShowProduct(null)}
-						aria-labelledby='product-modal-size'>
+						aria-labelledby='product-modal-size'
+					>
 						<div className='modal-container'>
 							{' '}
 							<Modal.Header closeButton className='modal_header'>
@@ -102,7 +111,8 @@ const Products = ({
 											addToCart(product);
 											setShowProduct(null);
 											setProduct(null);
-										}}>
+										}}
+									>
 										Add To Cart
 									</Button>
 								)}
