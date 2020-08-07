@@ -55,11 +55,11 @@ const Contact = () => {
 		<Form
 			noValidate
 			validated={validated}
-			className='align-items-center flex-column d-flex'
+			className=''
 			onSubmit={onSubmit}
 			action='https://formspree.io/mjvapdoq'
 			method='POST'>
-			<div className='form-heading mt-5 d-flex flex-column align-items-center'>
+			<div className='form-heading'>
 				<h3>
 					<span>Got something to say?</span>
 				</h3>
@@ -69,7 +69,7 @@ const Contact = () => {
 			{status === 'ERROR' && <p>Please make sure all fields are filled correctly...</p>}
 			{status === 'SUCCESS' && <p>Message sent successfully!</p>}
 			<Form.Row>
-				<Col>
+				<Col className='col-name'>
 					{' '}
 					<Form.Group className='form-name'>
 						<Form.Label htmlFor='name'>Name</Form.Label>
@@ -94,35 +94,43 @@ const Contact = () => {
 						<Form.Control.Feedback type='invalid'>Please fill this in.</Form.Control.Feedback>
 					</Form.Group>
 				</Col>
-
-				<Form.Group className='form-msg pl-1 pr-1'>
-					<Form.Label htmlFor='message'>Message</Form.Label>
-					<Form.Control
-						id='message'
-						name='message'
-						as='textarea'
-						row='5'
-						value={message}
-						onChange={onChange}
-						required
-					/>
-
-					<Form.Control.Feedback type='invalid'>Please fill this in.</Form.Control.Feedback>
-				</Form.Group>
 			</Form.Row>
+			<Form.Row>
+				{' '}
+				<Col className=' '>
+					<Form.Group className='form-msg'>
+						<Form.Label htmlFor='message'>Message</Form.Label>
+						<Form.Control
+							id='message'
+							name='message'
+							as='textarea'
+							row='5'
+							value={message}
+							onChange={onChange}
+							required
+						/>
 
-			{status ? (
-				<p>Message sent!</p>
-			) : (
-				<input
-					className='button pl-4 pr-4 pt-2 pb-2'
-					type='submit'
-					variant='primary'
-					rel='noopener noerferrer'
-					target='_blank'
-					value='Submit'
-				/>
-			)}
+						<Form.Control.Feedback type='invalid'>Please fill this in.</Form.Control.Feedback>
+					</Form.Group>
+				</Col>
+			</Form.Row>
+			<Form.Row>
+				<Col className='d-flex justify-content-center '>
+					{' '}
+					{status ? (
+						<p>Message sent!</p>
+					) : (
+						<input
+							className='button  pl-4 pr-4 pt-2 pb-2'
+							type='submit'
+							variant='primary'
+							rel='noopener noerferrer'
+							target='_blank'
+							value='Submit'
+						/>
+					)}
+				</Col>
+			</Form.Row>
 		</Form>
 	);
 };
