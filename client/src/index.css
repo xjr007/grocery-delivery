@@ -81,8 +81,6 @@
 }
 
 .nav-custom {
-	display: flex;
-	flex-direction: column;
 	background-color: var(--dark-blue-colour) !important;
 }
 
@@ -129,9 +127,9 @@
 	color: var(--light-brown-colour) !important;
 }
 
-.logo {
-	height: 4rem;
-	width: 10rem;
+.m-logo {
+	position: relative;
+	margin-left: 0;
 }
 
 .ampersamp {
@@ -139,12 +137,12 @@
 }
 
 .d-logo {
-	color: var(--blue-dominant-colour);
+	color: white;
 	font-size: 24px !important;
 }
 
 .sub-logo {
-	color: var(--light-blue-colour) !important;
+	color: white;
 	font-size: 8px;
 }
 
