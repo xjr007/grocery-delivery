@@ -7,12 +7,12 @@ import {
 	CLEAR_ORDER,
 } from '../types';
 
-export const orders = (state = { orders: null, current: null, error: null }, action) => {
+export const orders = (state = { orders: [], current: null, error: null }, action) => {
 	switch (action.type) {
 		case FETCH_ORDERS:
 			return {
 				...state,
-				orders: action.payload,
+				orders: action.payload.reverse(),
 				loading: false,
 			};
 		case DELETE_ORDER:
