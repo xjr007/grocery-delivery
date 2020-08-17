@@ -24,7 +24,7 @@ const Searchbar = ({ searchProducts, products, searchedProduct }) => {
 		}
 	};
 	return (
-		<div className='container d-flex justify-content-center m-3'>
+		<div className='d-flex ml-auto mr-auto mt-3'>
 			<Form inline>
 				<FormControl
 					type='text'

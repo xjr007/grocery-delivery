@@ -30,8 +30,9 @@ const Filter = ({ sort, category, filteredProducts, products, sortProducts, sort
 	};
 
 	return (
-		<Form>
-			<Form.Row className='m-3 '>
+		<Form className='mt-3'>
+			Filter
+			<Form.Row className='m-3'>
 				<Col>
 					<Form.Group controlId='Form.ControlSort my-2'>
 						<Form.Control size='sm' as='select' value={sort} onChange={onSort}>
