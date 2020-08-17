@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Dropdown } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Cart from './Cart';
 
 const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 	return (
@@ -73,6 +74,7 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 					</LinkContainer>
 				</Nav>
 			)}
+			<Cart />
 		</Navbar>
 	);
 };

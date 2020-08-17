@@ -79,9 +79,7 @@ const Cart = ({
 
 	return (
 		<div className='cart ml-auto'>
-			{cartItems.length === 0 && !cartTotal ? (
-				<div className='cart-header'> {cartItems.length} items in your cart</div>
-			) : (
+			{cartItems.length !== 0 && (
 				<NavDropdown
 					title={
 						<div>
