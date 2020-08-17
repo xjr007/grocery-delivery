@@ -133,9 +133,9 @@ const Cart = ({
 								</fieldset>
 								<Form.Group controlId='Form.ControlSort my-2'>
 									<Form.Control size='sm' as='select' value={deliveryType} onChange={onChange}>
-										<option>Delivery Type: </option>
-										<option value='High'>Priority: High</option>
+										{' '}
 										<option value='Normal'>Priority: Normal</option>
+										<option value='High'>Priority: High</option>
 									</Form.Control>
 								</Form.Group>
 
