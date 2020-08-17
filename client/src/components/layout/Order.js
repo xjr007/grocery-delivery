@@ -18,9 +18,11 @@ const Order = ({ deleteOrder, orders }) => {
 		deleteOrder(order._id);
 	};
 
+	console.log(orders);
+
 	return (
 		<div>
-			{orders === null ? (
+			{orders.length === 0 ? (
 				<h6 className='no-order'>
 					<span>You don't have any orders!</span> <span>Purchase an item to place an order...</span>
 				</h6>
