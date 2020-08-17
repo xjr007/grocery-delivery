@@ -15,7 +15,10 @@ const Shop = ({ loadUser }) => {
 
 	return (
 		<div>
-			<Searchbar />
+			<div className='d-flex flex-column flex-wrap'>
+				<Searchbar />
+				<Filter />
+			</div>
 			<div className='container fluid shop mt-5'>
 				<div className=' d-flex flex-row'>
 					<div className='mr-auto'>
