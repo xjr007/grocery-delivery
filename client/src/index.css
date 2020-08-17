@@ -151,7 +151,7 @@ button .navbar-toggler {
 }
 
 .footer-navigation {
-	background-color: darkslategray;
+	background-color: var(--dark-blue-colour);
 }
 
 /*Home*/
