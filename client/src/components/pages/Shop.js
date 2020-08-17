@@ -16,7 +16,6 @@ const Shop = ({ loadUser }) => {
 	return (
 		<div>
 			<Searchbar />
-			<Cart />
 			<div className='container fluid shop mt-5'>
 				<div className=' d-flex flex-row'>
 					<div className='mr-auto'>
