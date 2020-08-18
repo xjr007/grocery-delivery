@@ -10,7 +10,7 @@ const Home = () => {
 	}, []);
 	return (
 		<div>
-			<div className='d-flex flex-column flex-wrap'>
+			<div className='search-filter'>
 				<Searchbar />
 				<Filter />
 			</div>
