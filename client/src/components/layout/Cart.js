@@ -78,17 +78,18 @@ const Cart = ({
 	};
 
 	return (
-		<div className='cart ml-auto'>
-			{cartItems.length !== 0 && (
+		<div className='cart'>
+			{viewOrder === null && cartItems.length !== 0 && (
 				<NavDropdown
 					title={
 						<div>
 							<img className=' cart-img' src={cartIcon} alt='Cart Icon' />
 							<span>{inCart}</span>
 						</div>
-					}>
+					}
+					className='dropdown-menu-left'>
 					{cartItems.map(item => (
-						<Dropdown.Item className='d-flex flex-column' key={item._id}>
+						<NavDropdown.Item className=' d-flex flex-column ' key={item._id}>
 							<span className='cart-total'>
 								Cart Total:{' '}
 								{formatCurrency(cartItems.reduce((acc, curr) => acc + curr.price * curr.count, 0))}
@@ -101,7 +102,7 @@ const Cart = ({
 							<Button className='button' type='dropdown-toggle' onClick={() => removeFromCart(item)}>
 								Remove
 							</Button>
-						</Dropdown.Item>
+						</NavDropdown.Item>
 					))}
 					<Dropdown.Divider />
 					<Button type='button' className='button' onClick={onProceed}>
