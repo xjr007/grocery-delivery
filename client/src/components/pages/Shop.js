@@ -15,16 +15,12 @@ const Shop = ({ loadUser }) => {
 
 	return (
 		<div>
-			<div className='d-flex flex-column flex-wrap'>
+			<div className='search-filter'>
 				<Searchbar />
 				<Filter />
 			</div>
 			<div className='container fluid shop mt-5'>
-				<div className=' d-flex flex-row'>
-					<div className='mr-auto'>
-						<Filter />
-					</div>
-				</div>
+				<div className=' d-flex flex-row'></div>
 
 				<Products />
 			</div>
