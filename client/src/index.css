@@ -382,13 +382,16 @@ button .navbar-toggler {
 	margin: 0.5rem;
 	transition: all 0.3s ease;
 	border-radius: 3rem !important;
+	-webkit-box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem #ccc !important;
+	-moz-box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem #ccc !important;
+	box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem #ccc !important;
 }
 
 .product-card:hover {
 	cursor: pointer;
-	-webkit-box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem #ccc !important;
-	-moz-box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem #ccc !important;
-	box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem #ccc !important;
+	-webkit-box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem #ccc !important;
+	-moz-box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem #ccc !important;
+	box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem #ccc !important;
 }
 
 .custom-modal {
