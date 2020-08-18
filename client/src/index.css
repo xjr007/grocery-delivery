@@ -47,9 +47,20 @@
 		width: 19rem !important;
 	}
 
+	.para-b-i {
+		font-weight: bold;
+		font-style: italic;
+	}
+
+	.para-fonts {
+		font-weight: bold !important;
+		color: var(--blue-dominant-colour) !important;
+	}
+
 	.d-logo {
 		font-weight: normal;
 		font-size: 32px !important;
+		color: var(--light-brown-colour) !important;
 	}
 
 	.home-text {
@@ -73,6 +84,13 @@
 		align-items: center;
 		flex-direction: column;
 	}
+	.ReactModal__Content {
+		margin-top: 10% !important;
+		margin-left: auto;
+		margin-right: auto;
+		width: 50%;
+		height: 50%;
+	}
 }
 /*navbar*/
 
@@ -87,6 +105,17 @@
 .link {
 	text-decoration: none !important;
 	color: black !important;
+}
+
+.link-footer {
+	text-decoration: none !important;
+	color: white !important;
+}
+
+.link-footer:hover {
+	font-weight: normal;
+	color: var(--light-brown-colour) !important;
+	font-size: 12px !important;
 }
 
 .link .footer:hover {
@@ -152,6 +181,7 @@ button .navbar-toggler {
 
 .footer-navigation {
 	background-color: var(--dark-blue-colour);
+	color: white !important;
 }
 
 /*Home*/
@@ -239,7 +269,8 @@ button .navbar-toggler {
 .solo-center {
 	margin-top: 3rem;
 	text-align: center;
-	color: var(--dark-brown-colour);
+	font-weight: bolder;
+	font-style: oblique;
 }
 
 .delivery-content {
@@ -316,6 +347,14 @@ button .navbar-toggler {
 
 /*Cart*/
 
+.ReactModal__Content {
+	margin-top: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	height: 50%;
+}
+
 .cart {
 	width: fit-content;
 }
@@ -354,6 +393,14 @@ button .navbar-toggler {
 	background-color: var(--dark-blue-colour);
 	font-weight: 500;
 }
+
+.cart-drop {
+	transform: translateX(-60%);
+}
+
+/* .dropdown-menu {
+} */
+
 /*shop*/
 .modal_header {
 	display: flex;

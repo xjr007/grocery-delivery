@@ -70,7 +70,7 @@ const NavbarComp = ({ auth: { isAuthenticated, loading }, logout }) => {
 				<Nav className='ml-auto m-3'>
 					{' '}
 					<LinkContainer to={ROUTES.LOGIN}>
-						<Nav.Link className='link '>Login </Nav.Link>
+						<Nav.Link className='link-nav '>Login </Nav.Link>
 					</LinkContainer>
 				</Nav>
 			)}

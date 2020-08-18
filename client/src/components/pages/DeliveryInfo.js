@@ -20,8 +20,8 @@ const DeliveryInfo = () => {
 				<h6>Your privacy is important to us:</h6>
 				<p>
 					{' '}
-					We took great care in selecting our trusted payment gateways so that you can feel safe at all
-					times!
+					We took great care in selecting our <span className='para-fonts'>trusted </span> payment
+					gateways so that you can feel safe at all times!
 					<br /> <br /> With your permission, we track the items you buy to better meet your needs so
 					that we may always provide our customers with <span className='imp-text'>Quality</span>{' '}
 					services and products they deserve.
