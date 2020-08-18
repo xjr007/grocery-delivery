@@ -216,6 +216,10 @@ button .navbar-toggler {
 }
 /*form*/
 
+.msgbox {
+	width: 100% !important;
+}
+
 .form-container {
 	display: flex;
 	flex-direction: column;

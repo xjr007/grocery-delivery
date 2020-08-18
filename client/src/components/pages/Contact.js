@@ -104,6 +104,7 @@ const Contact = () => {
 							id='message'
 							name='message'
 							as='textarea'
+							className='msgbox'
 							row='5'
 							value={message}
 							onChange={onChange}
