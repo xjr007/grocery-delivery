@@ -73,7 +73,15 @@ const Contact = () => {
 					{' '}
 					<Form.Group className='form-name'>
 						<Form.Label htmlFor='name'>Name</Form.Label>
-						<Form.Control id='name' name='name' type='text' value={name} onChange={onChange} required />
+						<Form.Control
+							id='name'
+							className='msgbox'
+							name='name'
+							type='text'
+							value={name}
+							onChange={onChange}
+							required
+						/>
 
 						<Form.Control.Feedback type='invalid'>Please fill this in.</Form.Control.Feedback>
 					</Form.Group>
@@ -86,6 +94,7 @@ const Contact = () => {
 							id='email'
 							name='email'
 							type='email'
+							className='msgbox'
 							value={email}
 							onChange={onChange}
 							required
